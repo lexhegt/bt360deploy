@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="257be52d-c123-485a-b946-f2e4705d2456" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/BizTalk360/Services.REST/BizTalkGroupService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BizTalkGroupService.xsd" MetadataType="Schema" ID="2489539c-0e75-426e-92cc-8298ce943d3b" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BizTalkGroupService1.xsd" MetadataType="Schema" ID="b8cb245a-6156-465b-8118-9c2a35205ae3" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd29" />
+    <MetadataFile FileName="BizTalkGroupService.wsdl" MetadataType="Wsdl" ID="cedab1df-087a-48ae-ab4c-7c5e0fd17c1e" SourceId="1" SourceUrl="http://localhost/BizTalk360/Services.REST/BizTalkGroupService.svc?wsdl" />
+    <MetadataFile FileName="BizTalkGroupService2.xsd" MetadataType="Schema" ID="d36fec8c-3fa4-430e-aba4-da4f6e51da39" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd18" />
+    <MetadataFile FileName="BizTalkGroupService3.xsd" MetadataType="Schema" ID="62088110-a3f8-4ec5-8689-917be4874bc2" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd28" />
+    <MetadataFile FileName="BizTalkGroupService4.xsd" MetadataType="Schema" ID="83a02392-e34e-448b-b9a4-840df5a914eb" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd17" />
+    <MetadataFile FileName="BizTalkGroupService5.xsd" MetadataType="Schema" ID="eb4c137f-e767-4478-9d15-49182cb924f2" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BizTalkGroupService6.xsd" MetadataType="Schema" ID="e6270713-2cde-4475-adae-1187913914a9" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd27" />
+    <MetadataFile FileName="BizTalkGroupService7.xsd" MetadataType="Schema" ID="6b8db920-a1a0-4a4b-b627-7eadf54dcf3b" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd30" />
+    <MetadataFile FileName="BizTalkGroupService8.xsd" MetadataType="Schema" ID="921c0255-a2bd-4414-8735-64306e7b3675" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd22" />
+    <MetadataFile FileName="BizTalkGroupService9.xsd" MetadataType="Schema" ID="b2ab3cac-9bef-4bc8-8b84-a46533b41f8a" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd32" />
+    <MetadataFile FileName="BizTalkGroupService10.xsd" MetadataType="Schema" ID="798bf9ae-0fc8-441b-abbc-00714a9d8450" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd19" />
+    <MetadataFile FileName="BizTalkGroupService11.xsd" MetadataType="Schema" ID="54998207-8c5e-430d-bee4-9c324ac3c603" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd26" />
+    <MetadataFile FileName="BizTalkGroupService12.xsd" MetadataType="Schema" ID="ec9f653d-8046-43f0-945d-8cacf3d9407f" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd14" />
+    <MetadataFile FileName="BizTalkGroupService13.xsd" MetadataType="Schema" ID="8d43e15a-c9a3-45a8-bb38-25e82ff3403f" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd24" />
+    <MetadataFile FileName="BizTalkGroupService14.xsd" MetadataType="Schema" ID="2c17c403-1a7d-4751-a4b8-336b17d25515" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd23" />
+    <MetadataFile FileName="BizTalkGroupService15.xsd" MetadataType="Schema" ID="6fca6e19-8454-4218-8f20-0e2cf232b741" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd8" />
+    <MetadataFile FileName="BizTalkGroupService16.xsd" MetadataType="Schema" ID="0a74c85a-1cc4-4ae5-8ff2-dde37dc74091" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd33" />
+    <MetadataFile FileName="BizTalkGroupService17.xsd" MetadataType="Schema" ID="753b427d-f99d-4bef-8dec-94bbb2a42b76" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd12" />
+    <MetadataFile FileName="BizTalkGroupService1.wsdl" MetadataType="Wsdl" ID="3fec1c76-8ecc-46cc-bd2a-34154667dbec" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BizTalkGroupService18.xsd" MetadataType="Schema" ID="4c91105d-b29f-421a-936d-de664dc4e705" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd15" />
+    <MetadataFile FileName="BizTalkGroupService19.xsd" MetadataType="Schema" ID="b4434c5e-df46-4a0f-99cb-ab68708dcf73" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd25" />
+    <MetadataFile FileName="BizTalkGroupService20.xsd" MetadataType="Schema" ID="2562b4f0-f525-4411-ab79-b97096958465" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" />
+    <MetadataFile FileName="BizTalkGroupService21.xsd" MetadataType="Schema" ID="97ed5e30-07af-47b8-bbf8-da827cd0231b" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd5" />
+    <MetadataFile FileName="BizTalkGroupService22.xsd" MetadataType="Schema" ID="b2bcd5a3-81e3-4925-a697-02f55af72deb" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd6" />
+    <MetadataFile FileName="BizTalkGroupService23.xsd" MetadataType="Schema" ID="499abfc3-0633-41ce-a1be-980e1875a5d4" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd13" />
+    <MetadataFile FileName="BizTalkGroupService24.xsd" MetadataType="Schema" ID="7599aec1-1103-4558-bbfd-06aa38d7fdeb" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd7" />
+    <MetadataFile FileName="BizTalkGroupService25.xsd" MetadataType="Schema" ID="d881ddc1-0fec-4e41-b9f6-f2236808ba44" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd9" />
+    <MetadataFile FileName="BizTalkGroupService2.wsdl" MetadataType="Wsdl" ID="4f073807-f938-4f0e-950b-66a120d12c87" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?wsdl" />
+    <MetadataFile FileName="BizTalkGroupService26.xsd" MetadataType="Schema" ID="dc68d967-ca61-4c48-a7a4-11cde4ce4767" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd11" />
+    <MetadataFile FileName="BizTalkGroupService27.xsd" MetadataType="Schema" ID="b2ec7233-0ca9-416a-a3d5-8346288a2556" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BizTalkGroupService28.xsd" MetadataType="Schema" ID="fce8bf24-f7ff-4fe4-b91a-7bb8466f7cee" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd21" />
+    <MetadataFile FileName="BizTalkGroupService29.xsd" MetadataType="Schema" ID="85ff3a50-1720-442c-af66-c5f32b15fc80" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BizTalkGroupService30.xsd" MetadataType="Schema" ID="27bbad6b-e0a8-4915-ad8e-c69bbfd2a151" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd31" />
+    <MetadataFile FileName="BizTalkGroupService31.xsd" MetadataType="Schema" ID="97c8352b-026c-47be-9ec7-ff29a88dc5f7" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd10" />
+    <MetadataFile FileName="BizTalkGroupService32.xsd" MetadataType="Schema" ID="3a40b982-fad3-4504-b57a-97475f0b1d7d" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" />
+    <MetadataFile FileName="BizTalkGroupService33.xsd" MetadataType="Schema" ID="b9ec2655-f909-4153-abf7-1ed01cf86b3e" SourceId="1" SourceUrl="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd16" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/schedulerService/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/schedulerService/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd24" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:complexType name="GetProcessMonitorScheduleListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="scheduleBasicInfoList" nillable="true" type="q2:ScheduleBasicInfoList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorScheduleListResponse" nillable="true" type="tns:GetProcessMonitorScheduleListResponse" />
+  <xs:complexType name="ManageProcessMonitorScheduleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="processMonitorSchedule" nillable="true" type="q4:ProcessMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageProcessMonitorScheduleResponse" nillable="true" type="tns:ManageProcessMonitorScheduleResponse" />
+  <xs:complexType name="GetProcessMonitorStatusResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="statuses" nillable="true" type="q6:ProcessMonitorStatuses">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorStatusResponse" nillable="true" type="tns:GetProcessMonitorStatusResponse" />
+  <xs:complexType name="SchedulerServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SchedulerServiceResponse" nillable="true" type="tns:SchedulerServiceResponse" />
+  <xs:complexType name="GetProcessMonitorScheduleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q8:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="processMonitorSchedule" nillable="true" type="q9:ProcessMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorScheduleResponse" nillable="true" type="tns:GetProcessMonitorScheduleResponse" />
+  <xs:complexType name="GetDataMonitorScheduleListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q10:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="scheduleBasicInfoList" nillable="true" type="q11:ScheduleBasicInfoList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorScheduleListResponse" nillable="true" type="tns:GetDataMonitorScheduleListResponse" />
+  <xs:complexType name="ManageDataMonitorScheduleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q12:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="dataMonitorSchedule" nillable="true" type="q13:DataMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageDataMonitorScheduleResponse" nillable="true" type="tns:ManageDataMonitorScheduleResponse" />
+  <xs:complexType name="GetDataMonitorStatusResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q14:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="statuses" nillable="true" type="q15:DataMonitorStatuses">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorStatusResponse" nillable="true" type="tns:GetDataMonitorStatusResponse" />
+  <xs:complexType name="GetProcessMonitorStatusByDayResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="statuses" nillable="true" type="q17:ProcessMonitorStatusesByDay">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorStatusByDayResponse" nillable="true" type="tns:GetProcessMonitorStatusByDayResponse" />
+  <xs:complexType name="GetProcessMonitorExecutionResultResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="results" nillable="true" type="q19:ProcessMonitorResults">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorExecutionResultResponse" nillable="true" type="tns:GetProcessMonitorExecutionResultResponse" />
+  <xs:complexType name="GetDataMonitorScheduleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q20:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="dataMonitorSchedule" nillable="true" type="q21:DataMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorScheduleResponse" nillable="true" type="tns:GetDataMonitorScheduleResponse" />
+  <xs:complexType name="GetDataMonitorStatusByDayResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q22:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="statuses" nillable="true" type="q23:DataMonitorStatusesByDay">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorStatusByDayResponse" nillable="true" type="tns:GetDataMonitorStatusByDayResponse" />
+  <xs:complexType name="GetDataMonitoringStatisticsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q24:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="statistics" nillable="true" type="q25:DataMonitoringStatistics">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitoringStatisticsResponse" nillable="true" type="tns:GetDataMonitoringStatisticsResponse" />
+  <xs:complexType name="GetDataMonitorExecutionResultResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q26:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" minOccurs="0" name="results" nillable="true" type="q27:DataMonitorResults">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorExecutionResultResponse" nillable="true" type="tns:GetDataMonitorExecutionResultResponse" />
+  <xs:complexType name="DownloadArchiveFileResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q28:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadArchiveFileResponse" nillable="true" type="tns:DownloadArchiveFileResponse" />
+  <xs:complexType name="GetProcessMonitorScheduleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q29:BaseRequest">
+        <xs:sequence>
+          <xs:element name="scheduleId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMonitorScheduleRequest" nillable="true" type="tns:GetProcessMonitorScheduleRequest" />
+  <xs:complexType name="ManageProcessMonitorScheduleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q30:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" name="operation" type="q31:ScheduleOperation" />
+          <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" name="processMonitorSchedule" nillable="true" type="q32:ProcessMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageProcessMonitorScheduleRequest" nillable="true" type="tns:ManageProcessMonitorScheduleRequest" />
+  <xs:complexType name="DeleteMultipleProcessMonitorSchedulesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q33:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="scheduleIds" nillable="true" type="q34:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteMultipleProcessMonitorSchedulesRequest" nillable="true" type="tns:DeleteMultipleProcessMonitorSchedulesRequest" />
+  <xs:complexType name="SchedulerServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q35:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SchedulerServiceRequest" nillable="true" type="tns:SchedulerServiceRequest" />
+  <xs:complexType name="GetDataMonitorScheduleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q36:BaseRequest">
+        <xs:sequence>
+          <xs:element name="scheduleId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDataMonitorScheduleRequest" nillable="true" type="tns:GetDataMonitorScheduleRequest" />
+  <xs:complexType name="ManageDataMonitorScheduleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q37:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" name="operation" type="q38:ScheduleOperation" />
+          <xs:element xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" name="dataMonitorSchedule" nillable="true" type="q39:DataMonitorSchedule">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageDataMonitorScheduleRequest" nillable="true" type="tns:ManageDataMonitorScheduleRequest" />
+  <xs:complexType name="DeleteMultipleDataMonitorSchedulesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q40:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="scheduleIds" nillable="true" type="q41:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteMultipleDataMonitorSchedulesRequest" nillable="true" type="tns:DeleteMultipleDataMonitorSchedulesRequest" />
+</xs:schema>

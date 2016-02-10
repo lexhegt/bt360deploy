@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BizTalkEnvironmentSetting">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="mgmtDbSqlInstanceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="mgmtDbName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userAccessPolicy" nillable="true" type="tns:UserAccessPolicy">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="licenseKey" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="licenseEdition" type="tns:BizTalk360LicenseEdition" />
+      <xs:element minOccurs="0" name="isLicenseActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="colorCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkEnvironmentSetting" nillable="true" type="tns:BizTalkEnvironmentSetting" />
+  <xs:complexType name="UserAccessPolicy">
+    <xs:sequence>
+      <xs:element name="profile" type="tns:UserAccessPolicyProfileType" />
+      <xs:element minOccurs="0" name="applicationList" nillable="true" type="tns:uapApplicationList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="canAccessTopology" type="xs:boolean" />
+      <xs:element name="canAccessAEV" type="xs:boolean" />
+      <xs:element name="canAccessGlobalQuery" type="xs:boolean" />
+      <xs:element name="canAccessAuditData" type="xs:boolean" />
+      <xs:element name="canAccessBAM" type="xs:boolean" />
+      <xs:element name="canAccessPlatformSettings" type="xs:boolean" />
+      <xs:element name="canAccessMBV" type="xs:boolean" />
+      <xs:element name="canAccessSqlInstance" type="xs:boolean" />
+      <xs:element name="canOperateHostInstances" type="xs:boolean" />
+      <xs:element name="canOperateApplications" type="xs:boolean" />
+      <xs:element name="canOperateServiceInstances" type="xs:boolean" />
+      <xs:element name="canEditKnowledgebase" type="xs:boolean" />
+      <xs:element name="canViewMessageDetails" type="xs:boolean" />
+      <xs:element name="canViewTrackingData" type="xs:boolean" />
+      <xs:element name="canViewAlertHistory" type="xs:boolean" />
+      <xs:element name="canAccessCusomSQLQuery" type="xs:boolean" />
+      <xs:element name="canAccessMonitoringDashboard" type="xs:boolean" />
+      <xs:element name="canAccessESBPortal" type="xs:boolean" />
+      <xs:element name="canAccessThrottlingAnalyser" type="xs:boolean" />
+      <xs:element name="canAccessBackupDRVisualizer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessRuleEngine" type="xs:boolean" />
+      <xs:element minOccurs="0" name="customSQLAdvancedUserAccessPolicy" nillable="true" type="tns:CustomSQLAdvancedUserAccessPolicy">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="maxMatchesList" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="canViewEDIData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessMonitoringSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canResubmitESBMessage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessOperationSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessHosts" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessHostInstances" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessMessageBox" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessAdapters" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessBizTalkServers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canCreateMapMonitoringAlarms" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessDataMonitoring" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessDataMonitoringDashboard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessAnalyticSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessAnalyticMessageFlow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessRulesEditor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canCreateEditRules" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canPublishDeployRules" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canManageEDIPartiesAgreements" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessTrackingManager" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAccessPolicy" nillable="true" type="tns:UserAccessPolicy" />
+  <xs:simpleType name="UserAccessPolicyProfileType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SuperUser" />
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Custom" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserAccessPolicyProfileType" nillable="true" type="tns:UserAccessPolicyProfileType" />
+  <xs:complexType name="uapApplicationList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="applicationName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="uapApplicationList" nillable="true" type="tns:uapApplicationList" />
+  <xs:complexType name="CustomSQLAdvancedUserAccessPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="queryList" nillable="true" type="tns:uapSQLQueryList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="canAddCusomSQLQuery" type="xs:boolean" />
+      <xs:element name="canEditSaveCusomSQLQuery" type="xs:boolean" />
+      <xs:element name="canEditExecuteCusomSQLQuery" type="xs:boolean" />
+      <xs:element name="canDeleteCusomSQLQuery" type="xs:boolean" />
+      <xs:element name="canExportQueryResults" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomSQLAdvancedUserAccessPolicy" nillable="true" type="tns:CustomSQLAdvancedUserAccessPolicy" />
+  <xs:complexType name="uapSQLQueryList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="queryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="uapSQLQueryList" nillable="true" type="tns:uapSQLQueryList" />
+  <xs:simpleType name="BizTalk360LicenseEdition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Developer" />
+      <xs:enumeration value="Standard" />
+      <xs:enumeration value="Enterprise" />
+      <xs:enumeration value="StandardSubscription" />
+      <xs:enumeration value="EnterpriseSubscription" />
+      <xs:enumeration value="Trial" />
+      <xs:enumeration value="Partner" />
+      <xs:enumeration value="ProductSpecialist" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BizTalk360LicenseEdition" nillable="true" type="tns:BizTalk360LicenseEdition" />
+  <xs:complexType name="ReceiveHandler">
+    <xs:sequence>
+      <xs:element name="host" nillable="true" type="tns:BizTalkHost">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transportType" nillable="true" type="tns:ProtocolType">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveHandler" nillable="true" type="tns:ReceiveHandler" />
+  <xs:complexType name="BizTalkHost">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="hostType" type="tns:BizTalkHostType" />
+      <xs:element minOccurs="0" name="isTrackingEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isAuthenticationTrusted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isClustered" type="tns:ClusterType" />
+      <xs:element minOccurs="0" name="isDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="is32bitOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isSendHandlersPresent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isReceiveHandlersPresent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isOrchestrationsPresent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NTGroupName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="throttling" nillable="true" type="tns:HostThrottling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="certificate" nillable="true" type="tns:HostCertificate">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="hostInstances" nillable="true" type="tns:BizTalkHostInstances">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHost" nillable="true" type="tns:BizTalkHost" />
+  <xs:simpleType name="BizTalkHostType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InProcess" />
+      <xs:enumeration value="Isolated" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BizTalkHostType" nillable="true" type="tns:BizTalkHostType" />
+  <xs:simpleType name="ClusterType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Clustered" />
+      <xs:enumeration value="UnClustered" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClusterType" nillable="true" type="tns:ClusterType" />
+  <xs:complexType name="HostThrottling">
+    <xs:sequence>
+      <xs:element name="throttlingThreshold" nillable="true" type="tns:ThrottlingThreshold">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publishingThrottling" nillable="true" type="tns:ThrottlingSettings">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="processingThrottling" nillable="true" type="tns:ThrottlingSettings">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maxNumberOfMessagingEngineThreadsPerCPU" type="xs:int" />
+      <xs:element name="hostName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HostThrottling" nillable="true" type="tns:HostThrottling" />
+  <xs:complexType name="ThrottlingThreshold">
+    <xs:sequence>
+      <xs:element name="internalMessageQueueSize" type="xs:int" />
+      <xs:element name="databaseConnectionsPerCPU" type="xs:int" />
+      <xs:element name="threadsPerCPU" type="xs:int" />
+      <xs:element name="inprocessMessagesPerCPU" type="xs:int" />
+      <xs:element name="messageCountInDatabase" type="xs:int" />
+      <xs:element name="memoryUsage" nillable="true" type="tns:ThrottlingMemoryUsage">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingThreshold" nillable="true" type="tns:ThrottlingThreshold" />
+  <xs:complexType name="ThrottlingMemoryUsage">
+    <xs:sequence>
+      <xs:element name="physicalMemoryUsage" type="xs:int" />
+      <xs:element name="processMemoryUsage" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingMemoryUsage" nillable="true" type="tns:ThrottlingMemoryUsage" />
+  <xs:complexType name="ThrottlingSettings">
+    <xs:sequence>
+      <xs:element name="rateSettings" nillable="true" type="tns:ThrottlingRateSetting">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maximumThrottlingDelayInMilliseconds" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingSettings" nillable="true" type="tns:ThrottlingSettings" />
+  <xs:complexType name="ThrottlingRateSetting">
+    <xs:sequence>
+      <xs:element name="minimumNumberOfSamples" type="xs:int" />
+      <xs:element name="samplingWindowDurationInMilliseconds" type="xs:int" />
+      <xs:element name="rateOverrideFactorInPercentage" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingRateSetting" nillable="true" type="tns:ThrottlingRateSetting" />
+  <xs:complexType name="HostCertificate">
+    <xs:sequence>
+      <xs:element name="decryptCertName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="decryptCertThumbprint" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HostCertificate" nillable="true" type="tns:HostCertificate" />
+  <xs:complexType name="BizTalkHostInstances">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="hostInstance" nillable="true" type="tns:BizTalkHostInstance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHostInstances" nillable="true" type="tns:BizTalkHostInstances" />
+  <xs:complexType name="BizTalkHostInstance">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="isDisabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="hostType" type="tns:BizTalkHostType" />
+      <xs:element minOccurs="0" name="logOn" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="installationContext" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="status" type="tns:BizTalkHostInstanceStatus" />
+      <xs:element minOccurs="0" name="clusterType" type="tns:ClusterType" />
+      <xs:element minOccurs="0" name="hostInstanceRegistrySettings" nillable="true" type="tns:BizTalkHostInstanceRegistrySettings">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="isIgnoreMonitoring" type="xs:boolean" />
+      <xs:element minOccurs="0" name="creationTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHostInstance" nillable="true" type="tns:BizTalkHostInstance" />
+  <xs:simpleType name="BizTalkHostInstanceStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Started" />
+      <xs:enumeration value="Stopped" />
+      <xs:enumeration value="Paused" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="NotApplicable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BizTalkHostInstanceStatus" nillable="true" type="tns:BizTalkHostInstanceStatus" />
+  <xs:complexType name="BizTalkHostInstanceRegistrySettings">
+    <xs:sequence>
+      <xs:element name="clrHosting" nillable="true" type="tns:RegistryCLRHosting">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHostInstanceRegistrySettings" nillable="true" type="tns:BizTalkHostInstanceRegistrySettings" />
+  <xs:complexType name="RegistryCLRHosting">
+    <xs:sequence>
+      <xs:element name="maxIOThreads" type="xs:long" />
+      <xs:element name="maxWorkerThreads" type="xs:long" />
+      <xs:element name="minIOThreads" type="xs:long" />
+      <xs:element name="minWorkerThreads" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistryCLRHosting" nillable="true" type="tns:RegistryCLRHosting" />
+  <xs:complexType name="ProtocolType">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProtocolType" nillable="true" type="tns:ProtocolType" />
+  <xs:complexType name="EncryptCertificate">
+    <xs:sequence>
+      <xs:element name="encryptCertName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="encryptCertThumbprint" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EncryptCertificate" nillable="true" type="tns:EncryptCertificate" />
+  <xs:complexType name="SendHandler">
+    <xs:sequence>
+      <xs:element name="IsDefault" type="xs:boolean" />
+      <xs:element name="host" nillable="true" type="tns:BizTalkHost">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transportType" nillable="true" type="tns:ProtocolType">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendHandler" nillable="true" type="tns:SendHandler" />
+  <xs:complexType name="StringList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StringList" nillable="true" type="tns:StringList" />
+  <xs:complexType name="NameValueList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="name" nillable="true" type="tns:NameValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameValueList" nillable="true" type="tns:NameValueList" />
+  <xs:complexType name="NameValue">
+    <xs:sequence>
+      <xs:element name="PropKey" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PropValue" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameValue" nillable="true" type="tns:NameValue" />
+  <xs:complexType name="ArticleIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="articleId" nillable="true" type="tns:ArticleIdTitle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleIds" nillable="true" type="tns:ArticleIds" />
+  <xs:complexType name="ArticleIdTitle">
+    <xs:sequence>
+      <xs:element name="articleId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="articleTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleIdTitle" nillable="true" type="tns:ArticleIdTitle" />
+  <xs:simpleType name="BizTalkHostInstanceOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="Stop" />
+      <xs:enumeration value="Disable" />
+      <xs:enumeration value="Enable" />
+      <xs:enumeration value="SetIgnoreMonitoring" />
+      <xs:enumeration value="ReleaseIgnoreMonitoring" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BizTalkHostInstanceOperation" nillable="true" type="tns:BizTalkHostInstanceOperation" />
+  <xs:complexType name="SendHandlers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="sendHandler" nillable="true" type="tns:SendHandler" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendHandlers" nillable="true" type="tns:SendHandlers" />
+  <xs:complexType name="ReceiveHandlers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="receiveHandler" nillable="true" type="tns:ReceiveHandler" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveHandlers" nillable="true" type="tns:ReceiveHandlers" />
+  <xs:simpleType name="BizTalkHostOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="Stop" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BizTalkHostOperation" nillable="true" type="tns:BizTalkHostOperation" />
+  <xs:complexType name="BizTalkHosts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="host" nillable="true" type="tns:BizTalkHost" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHosts" nillable="true" type="tns:BizTalkHosts" />
+  <xs:simpleType name="ChoiceYesNoUnknown">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="YES" />
+      <xs:enumeration value="NO" />
+      <xs:enumeration value="UNKNOWN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ChoiceYesNoUnknown" nillable="true" type="tns:ChoiceYesNoUnknown" />
+  <xs:complexType name="SystemProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="canAccessAEV" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessBAM" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessMBV" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canViewEDIData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessMonitoringDashboard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessESBPortal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessThrottlingAnalyser" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessBackupDRVisualizer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="canAccessRuleEngine" type="xs:boolean" />
+      <xs:element minOccurs="0" name="maxMatchesList" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemProfile" nillable="true" type="tns:SystemProfile" />
+  <xs:complexType name="DaysOfWeek">
+    <xs:sequence>
+      <xs:element name="Mon" type="xs:boolean" />
+      <xs:element name="Tue" type="xs:boolean" />
+      <xs:element name="Wed" type="xs:boolean" />
+      <xs:element name="Thu" type="xs:boolean" />
+      <xs:element name="Fri" type="xs:boolean" />
+      <xs:element name="Sat" type="xs:boolean" />
+      <xs:element name="Sun" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DaysOfWeek" nillable="true" type="tns:DaysOfWeek" />
+  <xs:complexType name="TimeOfDays">
+    <xs:sequence>
+      <xs:element name="Zero" type="xs:boolean" />
+      <xs:element name="One" type="xs:boolean" />
+      <xs:element name="Two" type="xs:boolean" />
+      <xs:element name="Three" type="xs:boolean" />
+      <xs:element name="Four" type="xs:boolean" />
+      <xs:element name="Five" type="xs:boolean" />
+      <xs:element name="Six" type="xs:boolean" />
+      <xs:element name="Seven" type="xs:boolean" />
+      <xs:element name="Eight" type="xs:boolean" />
+      <xs:element name="Nine" type="xs:boolean" />
+      <xs:element name="Ten" type="xs:boolean" />
+      <xs:element name="Eleven" type="xs:boolean" />
+      <xs:element name="Twelve" type="xs:boolean" />
+      <xs:element name="Thirteen" type="xs:boolean" />
+      <xs:element name="Fourteen" type="xs:boolean" />
+      <xs:element name="Fifteen" type="xs:boolean" />
+      <xs:element name="Sixteen" type="xs:boolean" />
+      <xs:element name="Seventeen" type="xs:boolean" />
+      <xs:element name="Eighteen" type="xs:boolean" />
+      <xs:element name="Nineteen" type="xs:boolean" />
+      <xs:element name="Twenty" type="xs:boolean" />
+      <xs:element name="TwentyOne" type="xs:boolean" />
+      <xs:element name="TwentyTwo" type="xs:boolean" />
+      <xs:element name="TwentyThree" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeOfDays" nillable="true" type="tns:TimeOfDays" />
+  <xs:complexType name="StoredUserAccessPolicyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policies" nillable="true" type="tns:StoredUserAccessPolicy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StoredUserAccessPolicyList" nillable="true" type="tns:StoredUserAccessPolicyList" />
+  <xs:complexType name="StoredUserAccessPolicy">
+    <xs:sequence>
+      <xs:element name="profileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uap" nillable="true" type="tns:UserAccessPolicy">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StoredUserAccessPolicy" nillable="true" type="tns:StoredUserAccessPolicy" />
+  <xs:simpleType name="ChoiceYesUnknownNotApplicable">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Yes" />
+      <xs:enumeration value="No" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="NotApplicable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ChoiceYesUnknownNotApplicable" nillable="true" type="tns:ChoiceYesUnknownNotApplicable" />
+  <xs:complexType name="BizTalkEnvironmentSettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bizTalkEnvironmentSetting" nillable="true" type="tns:BizTalkEnvironmentSetting" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkEnvironmentSettings" nillable="true" type="tns:BizTalkEnvironmentSettings" />
+</xs:schema>

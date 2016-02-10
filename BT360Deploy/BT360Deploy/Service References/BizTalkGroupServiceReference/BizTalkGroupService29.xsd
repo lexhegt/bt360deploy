@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:complexType name="BaseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="context" nillable="true" type="tns:BaseResponseContext">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="success" type="xs:boolean" />
+      <xs:element minOccurs="0" name="errors" nillable="true" type="tns:BaseErrors">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="warnings" nillable="true" type="tns:BaseWarnings">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="information" nillable="true" type="tns:BaseInformationCollection">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseResponse" nillable="true" type="tns:BaseResponse" />
+  <xs:complexType name="BaseResponseContext">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseContext">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseResponseContext" nillable="true" type="tns:BaseResponseContext" />
+  <xs:complexType name="BaseContext">
+    <xs:sequence>
+      <xs:element name="callerReference" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseContext" nillable="true" type="tns:BaseContext" />
+  <xs:complexType name="BaseRequestContext">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseContext">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="environmentSettings" nillable="true" type="q1:BizTalkEnvironmentSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseRequestContext" nillable="true" type="tns:BaseRequestContext" />
+  <xs:complexType name="BaseErrors">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="error" nillable="true" type="tns:BaseError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseErrors" nillable="true" type="tns:BaseErrors" />
+  <xs:complexType name="BaseError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stackTrace" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="errorCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseError" nillable="true" type="tns:BaseError" />
+  <xs:complexType name="BaseWarnings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="warning" nillable="true" type="tns:BaseWarning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseWarnings" nillable="true" type="tns:BaseWarnings" />
+  <xs:complexType name="BaseWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="warningCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseWarning" nillable="true" type="tns:BaseWarning" />
+  <xs:complexType name="BaseInformationCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="information" nillable="true" type="tns:BaseInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseInformationCollection" nillable="true" type="tns:BaseInformationCollection" />
+  <xs:complexType name="BaseInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseInformation" nillable="true" type="tns:BaseInformation" />
+  <xs:complexType name="BaseRequest">
+    <xs:sequence>
+      <xs:element name="context" nillable="true" type="tns:BaseRequestContext">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseRequest" nillable="true" type="tns:BaseRequest" />
+</xs:schema>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd6" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="QueryDefinitionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="queryDefinition" nillable="true" type="tns:QueryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryDefinitionList" nillable="true" type="tns:QueryDefinitionList" />
+  <xs:complexType name="QueryDefinition">
+    <xs:sequence>
+      <xs:element name="queryAlias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="queryType" type="tns:QueryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryDefinition" nillable="true" type="tns:QueryDefinition" />
+  <xs:simpleType name="QueryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AllInProgressServiceInstances" />
+      <xs:enumeration value="RunningServiceInstances" />
+      <xs:enumeration value="SuspendedServiceInstances" />
+      <xs:enumeration value="Messages" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QueryType" nillable="true" type="tns:QueryType" />
+  <xs:complexType name="ValueList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="propertyValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueList" nillable="true" type="tns:ValueList" />
+  <xs:complexType name="TrackingQueryDefinitionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="queryDefinition" nillable="true" type="tns:TrackingQueryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackingQueryDefinitionList" nillable="true" type="tns:TrackingQueryDefinitionList" />
+  <xs:complexType name="TrackingQueryDefinition">
+    <xs:sequence>
+      <xs:element name="queryAlias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="queryType" type="tns:TrackingQueryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackingQueryDefinition" nillable="true" type="tns:TrackingQueryDefinition" />
+  <xs:simpleType name="TrackingQueryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TrackedServiceInstances" />
+      <xs:enumeration value="TrackedMessageEvents" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TrackingQueryType" nillable="true" type="tns:TrackingQueryType" />
+  <xs:complexType name="MessageFlow">
+    <xs:sequence>
+      <xs:element name="serviceInstanceInfo" nillable="true" type="tns:MessageFlowServiceInstanceInfo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="receivedMessageEvents" nillable="true" type="tns:MessageFlowReceivedMessageEvents">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="transmittedMessageEvents" nillable="true" type="tns:MessageFlowTransmittedMessageEvents">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlow" nillable="true" type="tns:MessageFlow" />
+  <xs:complexType name="MessageFlowServiceInstanceInfo">
+    <xs:sequence>
+      <xs:element name="activityId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instanceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceClassId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceShortName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="startTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="deploymentTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceInstanceState" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="exitCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="errorInfo" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:long" />
+      <xs:element name="host" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assemblyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assemblyVersion" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="associatedTo" type="tns:ServiceInstanceAssociation" />
+      <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="receivePort" nillable="true" type="q1:ReceivePort">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="sendPort" nillable="true" type="q2:SendPort">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="orchestration" nillable="true" type="q3:BizTalkOrchestration">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowServiceInstanceInfo" nillable="true" type="tns:MessageFlowServiceInstanceInfo" />
+  <xs:simpleType name="ServiceInstanceAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Orchestration" />
+      <xs:enumeration value="SendPort" />
+      <xs:enumeration value="ReceivePort" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceInstanceAssociation" nillable="true" type="tns:ServiceInstanceAssociation" />
+  <xs:complexType name="MessageFlowReceivedMessageEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="receivedMessageEvent" nillable="true" type="tns:MessageFlowReceivedMessageEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowReceivedMessageEvents" nillable="true" type="tns:MessageFlowReceivedMessageEvents" />
+  <xs:complexType name="MessageFlowReceivedMessageEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="messageEvent" nillable="true" type="tns:MessageFlowMessageEvent">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serviceInstanceInfos" nillable="true" type="tns:MessageFlowServiceInstanceInfos">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowReceivedMessageEvent" nillable="true" type="tns:MessageFlowReceivedMessageEvent" />
+  <xs:complexType name="MessageFlowMessageEvent">
+    <xs:sequence>
+      <xs:element name="messageType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventType" type="tns:MessageFlowEventType" />
+      <xs:element name="messageEventStatus" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageSize" type="xs:long" />
+      <xs:element name="timeStamp" type="xs:dateTime" />
+      <xs:element name="adapter" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="port" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowMessageEvent" nillable="true" type="tns:MessageFlowMessageEvent" />
+  <xs:simpleType name="MessageFlowEventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Send" />
+      <xs:enumeration value="Receive" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageFlowEventType" nillable="true" type="tns:MessageFlowEventType" />
+  <xs:complexType name="MessageFlowServiceInstanceInfos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="serviceInstanceInfo" nillable="true" type="tns:MessageFlowServiceInstanceInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowServiceInstanceInfos" nillable="true" type="tns:MessageFlowServiceInstanceInfos" />
+  <xs:complexType name="MessageFlowTransmittedMessageEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="transmittedMessageEvent" nillable="true" type="tns:MessageFlowTransmittedMessageEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowTransmittedMessageEvents" nillable="true" type="tns:MessageFlowTransmittedMessageEvents" />
+  <xs:complexType name="MessageFlowTransmittedMessageEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="messageEvent" nillable="true" type="tns:MessageFlowMessageEvent">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serviceInstanceInfos" nillable="true" type="tns:MessageFlowServiceInstanceInfos">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowTransmittedMessageEvent" nillable="true" type="tns:MessageFlowTransmittedMessageEvent" />
+  <xs:complexType name="PropertyInfoList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="propertyInfo" nillable="true" type="tns:PropertyInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertyInfoList" nillable="true" type="tns:PropertyInfoList" />
+  <xs:complexType name="PropertyInfo">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataType" type="tns:PropertyDataType" />
+      <xs:element name="isList" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertyInfo" nillable="true" type="tns:PropertyInfo" />
+  <xs:simpleType name="PropertyDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PropertyDataType" nillable="true" type="tns:PropertyDataType" />
+  <xs:complexType name="MessageFlowActivityIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="activityId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageFlowActivityIds" nillable="true" type="tns:MessageFlowActivityIds" />
+  <xs:complexType name="SearchArtifactQueryDefinitionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="queryDefinition" nillable="true" type="tns:SearchArtifactQueryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchArtifactQueryDefinitionList" nillable="true" type="tns:SearchArtifactQueryDefinitionList" />
+  <xs:complexType name="SearchArtifactQueryDefinition">
+    <xs:sequence>
+      <xs:element name="queryAlias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="queryType" type="tns:SearchArtifactQueryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchArtifactQueryDefinition" nillable="true" type="tns:SearchArtifactQueryDefinition" />
+  <xs:simpleType name="SearchArtifactQueryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Application" />
+      <xs:enumeration value="Orchestration" />
+      <xs:enumeration value="ReceivePort" />
+      <xs:enumeration value="ReceiveLocation" />
+      <xs:enumeration value="SendPort" />
+      <xs:enumeration value="SendPortGroup" />
+      <xs:enumeration value="Schema" />
+      <xs:enumeration value="Pipeline" />
+      <xs:enumeration value="Transform" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SearchArtifactQueryType" nillable="true" type="tns:SearchArtifactQueryType" />
+  <xs:complexType name="SearchArtifactQueryRequest">
+    <xs:sequence>
+      <xs:element name="queryType" type="tns:SearchArtifactQueryType" />
+      <xs:element minOccurs="0" name="queryString" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="maxMatches" type="xs:int" />
+      <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="compositeFilter" nillable="true" type="q4:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchArtifactQueryRequest" nillable="true" type="tns:SearchArtifactQueryRequest" />
+  <xs:complexType name="QueryRequest">
+    <xs:sequence>
+      <xs:element name="queryType" type="tns:QueryType" />
+      <xs:element name="maxMatches" type="xs:int" />
+      <xs:element xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="compositeFilter" nillable="true" type="q5:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryRequest" nillable="true" type="tns:QueryRequest" />
+  <xs:complexType name="TrackingQueryRequest">
+    <xs:sequence>
+      <xs:element name="queryType" type="tns:TrackingQueryType" />
+      <xs:element name="maxMatches" type="xs:int" />
+      <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="compositeFilter" nillable="true" type="q6:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackingQueryRequest" nillable="true" type="tns:TrackingQueryRequest" />
+</xs:schema>

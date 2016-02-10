@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/rulesEngineService/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/rulesEngineService/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd7" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="GetPolicyBRLXmlResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="policyBRLXml" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPolicyBRLXmlResponse" nillable="true" type="tns:GetPolicyBRLXmlResponse" />
+  <xs:complexType name="GetVocabularyDataAsCsvListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q2:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="vocabularyData" nillable="true" type="q3:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetVocabularyDataAsCsvListResponse" nillable="true" type="tns:GetVocabularyDataAsCsvListResponse" />
+  <xs:complexType name="GetAllVocabulariesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q4:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="vocabularies" nillable="true" type="q5:BREVocabularyList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAllVocabulariesResponse" nillable="true" type="tns:GetAllVocabulariesResponse" />
+  <xs:complexType name="GetAllPoliciesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q6:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="policies" nillable="true" type="q7:BREPolicyList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAllPoliciesResponse" nillable="true" type="tns:GetAllPoliciesResponse" />
+  <xs:complexType name="DownloadBREDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q8:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadUrl" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadBREDataResponse" nillable="true" type="tns:DownloadBREDataResponse" />
+  <xs:complexType name="IsValidValueResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="result" nillable="true" type="q10:EncodedValue">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsValidValueResponse" nillable="true" type="tns:IsValidValueResponse" />
+  <xs:complexType name="GetRequiredFactListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="data" nillable="true" type="q12:RequiredFactList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRequiredFactListResponse" nillable="true" type="tns:GetRequiredFactListResponse" />
+  <xs:complexType name="IsCompatibleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isCompatible" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsCompatibleResponse" nillable="true" type="tns:IsCompatibleResponse" />
+  <xs:complexType name="CanConvertResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q14:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="canConvert" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CanConvertResponse" nillable="true" type="tns:CanConvertResponse" />
+  <xs:complexType name="CheckTypeResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q15:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckTypeResponse" nillable="true" type="tns:CheckTypeResponse" />
+  <xs:complexType name="SavePolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SavePolicyResponse" nillable="true" type="tns:SavePolicyResponse" />
+  <xs:complexType name="PublishPolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q17:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PublishPolicyResponse" nillable="true" type="tns:PublishPolicyResponse" />
+  <xs:complexType name="IsValidDataConnectionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="isValid" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsValidDataConnectionResponse" nillable="true" type="tns:IsValidDataConnectionResponse" />
+  <xs:complexType name="RemovePolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q19:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePolicyResponse" nillable="true" type="tns:RemovePolicyResponse" />
+  <xs:complexType name="DeployPolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q20:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeployPolicyResponse" nillable="true" type="tns:DeployPolicyResponse" />
+  <xs:complexType name="UndeployPolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q21:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UndeployPolicyResponse" nillable="true" type="tns:UndeployPolicyResponse" />
+  <xs:complexType name="GetAssemblyListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q22:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="data" nillable="true" type="q23:AssemblyList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAssemblyListResponse" nillable="true" type="tns:GetAssemblyListResponse" />
+  <xs:complexType name="GetRulesAuditDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q24:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="rulesAuditCollection" nillable="true" type="q25:RulesAuditCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRulesAuditDataResponse" nillable="true" type="tns:GetRulesAuditDataResponse" />
+  <xs:complexType name="TestPolicyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q26:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="trace" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TestPolicyResponse" nillable="true" type="tns:TestPolicyResponse" />
+  <xs:complexType name="GetAssemblyTypesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q27:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" minOccurs="0" name="types" nillable="true" type="q28:typesList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAssemblyTypesResponse" nillable="true" type="tns:GetAssemblyTypesResponse" />
+  <xs:complexType name="TestPolicyRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q29:BaseRequest">
+        <xs:sequence>
+          <xs:element name="env" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="policyname" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="major" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="minor" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" name="dbfacts" nillable="true" type="q30:DbFactsList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" name="xmlfacts" nillable="true" type="q31:XmlFactsList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" name="netfacts" nillable="true" type="q32:NetFactsList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TestPolicyRequest" nillable="true" type="tns:TestPolicyRequest" />
+  <xs:complexType name="GetRulesAuditDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q33:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="filter" nillable="true" type="q34:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="pageNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="rowPerPage" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRulesAuditDataRequest" nillable="true" type="tns:GetRulesAuditDataRequest" />
+</xs:schema>

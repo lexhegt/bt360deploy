@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkQuery/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkQuery/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd9" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd10" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="GetQueryDefinitionListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="queryDefinitionList" nillable="true" type="q2:QueryDefinitionList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetQueryDefinitionListResponse" nillable="true" type="tns:GetQueryDefinitionListResponse" />
+  <xs:complexType name="GetServiceInstanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="serviceInstance" nillable="true" type="q4:ServiceInstance">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetServiceInstanceResponse" nillable="true" type="tns:GetServiceInstanceResponse" />
+  <xs:complexType name="ExecuteServiceInstanceQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="groupResultBy" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="serviceInstances" nillable="true" type="q6:ServiceInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteServiceInstanceQueryResponse" nillable="true" type="tns:ExecuteServiceInstanceQueryResponse" />
+  <xs:complexType name="DownloadMessageInstanceMessagesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadMessageInstanceMessagesResponse" nillable="true" type="tns:DownloadMessageInstanceMessagesResponse" />
+  <xs:complexType name="ExecuteServiceInstanceOperationResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q8:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteServiceInstanceOperationResponse" nillable="true" type="tns:ExecuteServiceInstanceOperationResponse" />
+  <xs:complexType name="ExecuteTrackingServiceInstanceQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="trackingServiceInstances" nillable="true" type="q10:TrackingServiceInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteTrackingServiceInstanceQueryResponse" nillable="true" type="tns:ExecuteTrackingServiceInstanceQueryResponse" />
+  <xs:complexType name="GetValueListForPropertyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="propertyName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="valueList" nillable="true" type="q12:ValueList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetValueListForPropertyResponse" nillable="true" type="tns:GetValueListForPropertyResponse" />
+  <xs:complexType name="ExecuteTrackingMessageEventQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="trackingMessageEvents" nillable="true" type="q14:TrackingMessageEvents">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="trackingMessageEventsAsXElement" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteTrackingMessageEventQueryResponse" nillable="true" type="tns:ExecuteTrackingMessageEventQueryResponse" />
+  <xs:complexType name="GetTrackingQueryDefinitionListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q15:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="trackingQueryDefinitionList" nillable="true" type="q16:TrackingQueryDefinitionList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetTrackingQueryDefinitionListResponse" nillable="true" type="tns:GetTrackingQueryDefinitionListResponse" />
+  <xs:complexType name="GetMessageFlowResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q17:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="messageFlow" nillable="true" type="q18:MessageFlow">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMessageFlowResponse" nillable="true" type="tns:GetMessageFlowResponse" />
+  <xs:complexType name="GetPropertyListForQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q19:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="propertyInfoList" nillable="true" type="q20:PropertyInfoList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPropertyListForQueryResponse" nillable="true" type="tns:GetPropertyListForQueryResponse" />
+  <xs:complexType name="GetSchemaPromotedPropertyListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q21:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="propertyInfoList" nillable="true" type="q22:PropertyInfoList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSchemaPromotedPropertyListResponse" nillable="true" type="tns:GetSchemaPromotedPropertyListResponse" />
+  <xs:complexType name="GetServiceInstanceAuditDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q23:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="serviceInstanceAuditCollection" nillable="true" type="q24:ServiceInstanceAuditCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetServiceInstanceAuditDataResponse" nillable="true" type="tns:GetServiceInstanceAuditDataResponse" />
+  <xs:complexType name="GetServiceInstanceActivityIdsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q25:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="serviceInstanceId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="activityIds" nillable="true" type="q26:MessageFlowActivityIds">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetServiceInstanceActivityIdsResponse" nillable="true" type="tns:GetServiceInstanceActivityIdsResponse" />
+  <xs:complexType name="GetMessageInstancesForServiceInstanceIDResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q27:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="messageInstances" nillable="true" type="q28:MessageInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMessageInstancesForServiceInstanceIDResponse" nillable="true" type="tns:GetMessageInstancesForServiceInstanceIDResponse" />
+  <xs:complexType name="GetMessagePartResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q29:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="part" nillable="true" type="q30:MessagePart">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMessagePartResponse" nillable="true" type="tns:GetMessagePartResponse" />
+  <xs:complexType name="GetSearchArtifactQueryDefinitionListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q31:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" minOccurs="0" name="searchArtifactQueryDefinitionList" nillable="true" type="q32:SearchArtifactQueryDefinitionList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSearchArtifactQueryDefinitionListResponse" nillable="true" type="tns:GetSearchArtifactQueryDefinitionListResponse" />
+  <xs:complexType name="ExecuteMessageInstanceQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q33:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="messageInstances" nillable="true" type="q34:MessageInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteMessageInstanceQueryResponse" nillable="true" type="tns:ExecuteMessageInstanceQueryResponse" />
+  <xs:complexType name="GetContextPropertiesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q35:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="partNames" nillable="true" type="q36:MessagePartNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" minOccurs="0" name="contextProperties" nillable="true" type="q37:MessageContextProperties">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetContextPropertiesResponse" nillable="true" type="tns:GetContextPropertiesResponse" />
+  <xs:complexType name="DownloadServiceInstanceMessagesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q38:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadServiceInstanceMessagesResponse" nillable="true" type="tns:DownloadServiceInstanceMessagesResponse" />
+  <xs:complexType name="DownloadTrackedMessageInstanceMessagesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q39:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadTrackedMessageInstanceMessagesResponse" nillable="true" type="tns:DownloadTrackedMessageInstanceMessagesResponse" />
+  <xs:complexType name="ExecuteMessageInstanceQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q40:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" name="query" nillable="true" type="q41:QueryRequest">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteMessageInstanceQueryRequest" nillable="true" type="tns:ExecuteMessageInstanceQueryRequest" />
+  <xs:complexType name="ExecuteTrackingServiceInstanceQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q42:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q43="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" name="query" nillable="true" type="q43:TrackingQueryRequest">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteTrackingServiceInstanceQueryRequest" nillable="true" type="tns:ExecuteTrackingServiceInstanceQueryRequest" />
+  <xs:complexType name="ExecuteTrackingMessageEventQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q44:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q45="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" name="query" nillable="true" type="q45:TrackingQueryRequest">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteTrackingMessageEventQueryRequest" nillable="true" type="tns:ExecuteTrackingMessageEventQueryRequest" />
+  <xs:complexType name="BizTalkQueryServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q46:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BizTalkQueryServiceRequest" nillable="true" type="tns:BizTalkQueryServiceRequest" />
+  <xs:complexType name="ExecuteServiceInstanceQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q47="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q47:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q48="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" name="query" nillable="true" type="q48:QueryRequest">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteServiceInstanceQueryRequest" nillable="true" type="tns:ExecuteServiceInstanceQueryRequest" />
+  <xs:complexType name="ExecuteServiceInstanceOperationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q49:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q50="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" name="serviceInstances" nillable="true" type="q50:ServiceInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q51="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" name="operation" type="q51:ServiceInstanceOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteServiceInstanceOperationRequest" nillable="true" type="tns:ExecuteServiceInstanceOperationRequest" />
+  <xs:complexType name="GetServiceInstanceAuditDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q52:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q53="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q53:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="rowPerPage" type="xs:int" />
+          <xs:element name="pageNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetServiceInstanceAuditDataRequest" nillable="true" type="tns:GetServiceInstanceAuditDataRequest" />
+</xs:schema>

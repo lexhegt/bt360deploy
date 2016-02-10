@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:complexType name="BREPolicyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="policy" nillable="true" type="tns:BREPolicy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREPolicyList" nillable="true" type="tns:BREPolicyList" />
+  <xs:complexType name="BREPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="descriptiveName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="majorRevision" type="xs:long" />
+      <xs:element minOccurs="0" name="minorRevision" type="xs:long" />
+      <xs:element minOccurs="0" name="modifiedBy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="modifiedTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="published" type="tns:BREPolicyStatus" />
+      <xs:element minOccurs="0" name="rules" nillable="true" type="tns:BRERuleList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tracking" nillable="true" type="tns:BREPolicyTracking">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="deploymentHistory" nillable="true" type="tns:BREDeploymentHistoryCollection">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="parsingException" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREPolicy" nillable="true" type="tns:BREPolicy" />
+  <xs:simpleType name="BREPolicyStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Saved" />
+      <xs:enumeration value="Published" />
+      <xs:enumeration value="Deployed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BREPolicyStatus" nillable="true" type="tns:BREPolicyStatus" />
+  <xs:complexType name="BRERuleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="rule" nillable="true" type="tns:BRERule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRERuleList" nillable="true" type="tns:BRERuleList" />
+  <xs:complexType name="BRERule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="priority" type="xs:long" />
+      <xs:element minOccurs="0" name="condition" nillable="true" type="tns:BRETreeItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="action" nillable="true" type="q1:StringList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRERule" nillable="true" type="tns:BRERule" />
+  <xs:complexType name="BRETreeItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="text" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="item" nillable="true" type="tns:BRETreeItems">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRETreeItem" nillable="true" type="tns:BRETreeItem" />
+  <xs:complexType name="BRETreeItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="treeItem" nillable="true" type="tns:BRETreeItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRETreeItems" nillable="true" type="tns:BRETreeItems" />
+  <xs:complexType name="BREPolicyTracking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="factActivity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="agendaUpdates" type="xs:boolean" />
+      <xs:element minOccurs="0" name="conditionEvaluation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ruleFirings" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREPolicyTracking" nillable="true" type="tns:BREPolicyTracking" />
+  <xs:complexType name="BREDeploymentHistoryCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="history" nillable="true" type="tns:BREDeploymentHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREDeploymentHistoryCollection" nillable="true" type="tns:BREDeploymentHistoryCollection" />
+  <xs:complexType name="BREDeploymentHistory">
+    <xs:sequence>
+      <xs:element name="policyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="majorRevision" type="xs:long" />
+      <xs:element name="minorRevision" type="xs:long" />
+      <xs:element name="status" type="tns:BREPolicyStatus" />
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREDeploymentHistory" nillable="true" type="tns:BREDeploymentHistory" />
+  <xs:complexType name="BREVocabularyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="vocabulary" nillable="true" type="tns:BREVocabulary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREVocabularyList" nillable="true" type="tns:BREVocabularyList" />
+  <xs:complexType name="BREVocabulary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="descriptiveName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="majorRevision" type="xs:long" />
+      <xs:element minOccurs="0" name="minorRevision" type="xs:long" />
+      <xs:element minOccurs="0" name="modifiedBy" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="modifiedTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="published" type="xs:boolean" />
+      <xs:element minOccurs="0" name="vocabularyDefinitionList" nillable="true" type="tns:BREVocabularyDefinitionList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREVocabulary" nillable="true" type="tns:BREVocabulary" />
+  <xs:complexType name="BREVocabularyDefinitionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="vocabularyDefinition" nillable="true" type="tns:BREVocabularyDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREVocabularyDefinitionList" nillable="true" type="tns:BREVocabularyDefinitionList" />
+  <xs:complexType name="BREVocabularyDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="descriptiveName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="formatStrings" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="language" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="delimiter" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="argument" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fieldAlias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="vocabularyBindingInfo" nillable="true" type="tns:BREVocabularyBindingInfo">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREVocabularyDefinition" nillable="true" type="tns:BREVocabularyDefinition" />
+  <xs:complexType name="BREVocabularyBindingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="instanceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="schema" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="selectorAlias" type="xs:long" />
+      <xs:element minOccurs="0" name="xpathField" type="xs:long" />
+      <xs:element minOccurs="0" name="xpathSelector" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BREVocabularyBindingInfo" nillable="true" type="tns:BREVocabularyBindingInfo" />
+  <xs:complexType name="EncodedValue">
+    <xs:sequence>
+      <xs:element name="value" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="base64" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EncodedValue" nillable="true" type="tns:EncodedValue" />
+  <xs:complexType name="RequiredFactList">
+    <xs:sequence>
+      <xs:element name="xml" nillable="true" type="tns:FactTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="db" nillable="true" type="tns:FactTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="net" nillable="true" type="tns:FactTypes">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequiredFactList" nillable="true" type="tns:RequiredFactList" />
+  <xs:complexType name="FactTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="requiredFact" nillable="true" type="tns:RequiredFact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FactTypes" nillable="true" type="tns:FactTypes" />
+  <xs:complexType name="RequiredFact">
+    <xs:sequence>
+      <xs:element name="factName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequiredFact" nillable="true" type="tns:RequiredFact" />
+  <xs:complexType name="AssemblyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="assemblyObject" nillable="true" type="tns:AssemblyObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssemblyList" nillable="true" type="tns:AssemblyList" />
+  <xs:complexType name="AssemblyObject">
+    <xs:sequence>
+      <xs:element name="assemblyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssemblyObject" nillable="true" type="tns:AssemblyObject" />
+  <xs:complexType name="RulesAuditCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="rulesAudit" nillable="true" type="tns:RulesAudit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RulesAuditCollection" nillable="true" type="tns:RulesAuditCollection" />
+  <xs:complexType name="RulesAudit">
+    <xs:sequence>
+      <xs:element name="policyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="policyVersion" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="auditTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domainName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operation" type="tns:RuleAuditOperation" />
+      <xs:element name="userName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="userProfileImageUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RulesAudit" nillable="true" type="tns:RulesAudit" />
+  <xs:simpleType name="RuleAuditOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Create" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="Publish" />
+      <xs:enumeration value="Deploy" />
+      <xs:enumeration value="Undeploy" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleAuditOperation" nillable="true" type="tns:RuleAuditOperation" />
+  <xs:complexType name="typesList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="types" nillable="true" type="tns:types" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="typesList" nillable="true" type="tns:typesList" />
+  <xs:complexType name="types">
+    <xs:sequence>
+      <xs:element name="text" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="items" nillable="true" type="tns:methodsList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="types" nillable="true" type="tns:types" />
+  <xs:complexType name="methodsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="method" nillable="true" type="tns:methods" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="methodsList" nillable="true" type="tns:methodsList" />
+  <xs:complexType name="methods">
+    <xs:sequence>
+      <xs:element name="text" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="methods" nillable="true" type="tns:methods" />
+  <xs:complexType name="DbFactsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbFacts" nillable="true" type="tns:DbFacts" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbFactsList" nillable="true" type="tns:DbFactsList" />
+  <xs:complexType name="DbFacts">
+    <xs:sequence>
+      <xs:element name="server" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="db" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="table" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbFacts" nillable="true" type="tns:DbFacts" />
+  <xs:complexType name="XmlFactsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="xmlFacts" nillable="true" type="tns:XmlFacts" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlFactsList" nillable="true" type="tns:XmlFactsList" />
+  <xs:complexType name="XmlFacts">
+    <xs:sequence>
+      <xs:element name="data" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlFacts" nillable="true" type="tns:XmlFacts" />
+  <xs:complexType name="NetFactsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="netFacts" nillable="true" type="tns:NetFacts" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NetFactsList" nillable="true" type="tns:NetFactsList" />
+  <xs:complexType name="NetFacts">
+    <xs:sequence>
+      <xs:element name="assembly" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_class" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NetFacts" nillable="true" type="tns:NetFacts" />
+</xs:schema>

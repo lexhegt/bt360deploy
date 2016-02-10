@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/services/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/services/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd2" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd5" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd11" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" />
+  <xs:element name="GetBizTalkServerList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkServerListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkServerListResult" nillable="true" type="q1:GetBizTalkServerListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="biztalkServerName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkServerResult" nillable="true" type="q2:GetBizTalkServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlJobs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sqlInstanceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlJobsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSqlJobsResult" nillable="true" type="q3:GetSqlJobsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerPhysicalNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerPhysicalNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSqlServerPhysicalNamesResult" nillable="true" type="q4:GetSqlServerPhysicalNamesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPhysicalSqlServers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPhysicalSqlServersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetPhysicalSqlServersResult" nillable="true" type="q5:GetPhysicalSqlServersResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPhysicalSqlServer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sqlPhysicalServerName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPhysicalSqlServerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetPhysicalSqlServerResult" nillable="true" type="q6:GetPhysicalSqlServerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerInstances">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerInstancesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSqlServerInstancesResult" nillable="true" type="q7:GetSqlServerInstancesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sqlServerInstanceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSqlServerInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSqlServerInstanceResult" nillable="true" type="q8:GetSqlServerInstanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostsMinimal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostsMinimalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkHostsMinimalResult" nillable="true" type="q9:GetBizTalkHostsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHosts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkHostsResult" nillable="true" type="q10:GetBizTalkHostsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkHostResult" nillable="true" type="q11:GetBizTalkHostResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostOperation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q12:ExecuteBizTalkHostOperationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostOperationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostOperationResult" nillable="true" type="q13:ExecuteBizTalkHostOperationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostInstanceByFilter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="filterName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="filter" type="q14:BizTalkHostInstanceFilter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostInstanceByFilterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkHostInstanceByFilterResult" nillable="true" type="q15:GetBizTalkHostInstancesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q16:ExecuteBizTalkHostInstanceOperationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostInstanceOperationResult" nillable="true" type="q17:ExecuteBizTalkHostInstanceOperationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationBulk">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q18:ExecuteBizTalkHostInstanceOperationBulkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationBulkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostInstanceOperationBulkResult" nillable="true" type="q19:ExecuteBizTalkHostInstanceOperationBulkResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkAdapterSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkAdapterSettingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkAdapterSettingsResult" nillable="true" type="q20:GetBizTalkAdapterSettingsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkAdapterSetting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="adapterName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkAdapterSettingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkAdapterSettingResult" nillable="true" type="q21:GetBizTalkAdapterSettingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkApplicationNamesResult" nillable="true" type="q22:GetBizTalkApplicationNamesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="applicationName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetBizTalkApplicationResult" nillable="true" type="q23:GetBizTalkApplicationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkApplicationsListResult" nillable="true" type="q24:GetBizTalkApplicationsListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsListForMonitoring">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsListForMonitoringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkApplicationsListForMonitoringResult" nillable="true" type="q25:GetBizTalkApplicationsListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessageBoxDatabases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessageBoxDatabasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetMessageBoxDatabasesResult" nillable="true" type="q26:GetMessageBoxDatabasesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlatformSettingsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlatformSettingsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetPlatformSettingsStatisticsResult" nillable="true" type="q27:GetPlatformSettingsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPorts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPortsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetSendPortsResult" nillable="true" type="q28:GetSendPortsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceivePorts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceivePortsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetReceivePortsResult" nillable="true" type="q29:GetReceivePortsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetOrchestrationsResult" nillable="true" type="q30:GetOrchestrationsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPortsBasic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPortsBasicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetSendPortsBasicResult" nillable="true" type="q31:GetSendPortsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceivePortsBasic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceivePortsBasicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetReceivePortsBasicResult" nillable="true" type="q32:GetReceivePortsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrationsBasic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrationsBasicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" minOccurs="0" name="GetOrchestrationsBasicResult" nillable="true" type="q33:GetOrchestrationsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTopology">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTopologyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetTopologyResult" nillable="true" type="q34:GetTopologyResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkGroupStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkGroupStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkGroupStatisticsResult" nillable="true" type="q35:GetBizTalkGroupStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkGeneral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkGeneralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkGeneralResult" nillable="true" type="q36:GetBizTalkGroupGeneralResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkDatabases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkDatabasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkDatabasesResult" nillable="true" type="q37:GetBizTalkGroupDatabasesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserNTGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserNTGroupsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetUserNTGroupsResult" nillable="true" type="q38:GetUserNTGroupsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSuspendedInstancesCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="applicationName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="level" type="q39:SuspendedInstancesLevel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSuspendedInstancesCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSuspendedInstancesCountResult" nillable="true" type="q40:GetSuspendedInstancesCountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHostInstanceAuditData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q41:GetHostInstanceAuditDataRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHostInstanceAuditDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetHostInstanceAuditDataResult" nillable="true" type="q42:GetHostInstanceAuditDataResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationAuditData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q43:GetApplicationAuditDataRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationAuditDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetApplicationAuditDataResult" nillable="true" type="q44:GetApplicationAuditDataResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGovernanceAuditActivityHistoryData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q45:GetGovernanceAuditActivityHistoryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGovernanceAuditActivityHistoryDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetGovernanceAuditActivityHistoryDataResult" nillable="true" type="q46:GetGovernanceAuditActivityHistoryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditArtifactsCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q47="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="auditType" type="q47:GovernanceAuditType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditArtifactsCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetAuditArtifactsCountResult" nillable="true" type="q48:GetAuditArtifactsCountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="profileId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetMBVReportResult" nillable="true" type="q49:GetMBVReportResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVReportList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVReportListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetMBVReportListResult" nillable="true" type="q50:GetMBVReportListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVLastReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMBVLastReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetMBVLastReportResult" nillable="true" type="q51:GetMBVLastReportResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunMBVNOW">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunMBVNOWResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="RunMBVNOWResult" nillable="true" type="q52:BizTalkGroupServiceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomSQLQueryNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomSQLQueryNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetCustomSQLQueryNamesResult" nillable="true" type="q53:GetCustomSQLQueryNamesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomSQLQuery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q54:ExecuteCustomSQLQueryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomSQLQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteCustomSQLQueryResult" nillable="true" type="q55:ExecuteCustomSQLQueryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ManageCustomSQLQuery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q56:ManageCustomSQLQueryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ManageCustomSQLQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ManageCustomSQLQueryResult" nillable="true" type="q57:ManageCustomSQLQueryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfiguredStandbySQLInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfiguredStandbySQLInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetConfiguredStandbySQLInstanceResult" nillable="true" type="q58:GetConfiguredStandbySQLInstanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveBackupHealthDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveBackupHealthDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetLiveBackupHealthDetailsResult" nillable="true" type="q59:GetLiveBackupHealthDetailsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStandByBackupHealthDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStandByBackupHealthDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetStandByBackupHealthDetailsResult" nillable="true" type="q60:GetStandByBackupHealthDetailsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBackupJobConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBackupJobConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBackupJobConfigurationResult" nillable="true" type="q61:GetBackupJobConfigurationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateConfiguredStandbySQLInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q62:UpdateConfiguredStandbySQLInstanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateConfiguredStandbySQLInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="UpdateConfiguredStandbySQLInstanceResult" nillable="true" type="q63:BizTalkGroupServiceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBackupJobConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="request" nillable="true" type="q64:UpdateBackupJobConfigurationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBackupJobConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="UpdateBackupJobConfigurationResult" nillable="true" type="q65:UpdateBackupJobConfigurationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostOperationRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostOperationRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostOperationRequestSampleResult" nillable="true" type="q66:ExecuteBizTalkHostOperationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostInstanceOperationRequestSampleResult" nillable="true" type="q67:ExecuteBizTalkHostInstanceOperationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationBulkRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteBizTalkHostInstanceOperationBulkRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteBizTalkHostInstanceOperationBulkRequestSampleResult" nillable="true" type="q68:ExecuteBizTalkHostInstanceOperationBulkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHostInstanceAuditDataRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHostInstanceAuditDataRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetHostInstanceAuditDataRequestSampleResult" nillable="true" type="q69:GetHostInstanceAuditDataRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationAuditDataRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetApplicationAuditDataRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetApplicationAuditDataRequestSampleResult" nillable="true" type="q70:GetApplicationAuditDataRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomSQLQueryRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomSQLQueryRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ExecuteCustomSQLQueryRequestSampleResult" nillable="true" type="q71:ExecuteCustomSQLQueryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ManageCustomSQLQueryRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ManageCustomSQLQueryRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="ManageCustomSQLQueryRequestSampleResult" nillable="true" type="q72:ManageCustomSQLQueryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateConfiguredStandbySQLInstanceRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateConfiguredStandbySQLInstanceRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="UpdateConfiguredStandbySQLInstanceRequestSampleResult" nillable="true" type="q73:UpdateConfiguredStandbySQLInstanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBackupJobConfigurationRequestSample">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBackupJobConfigurationRequestSampleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="UpdateBackupJobConfigurationRequestSampleResult" nillable="true" type="q74:UpdateBackupJobConfigurationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPortsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSendPortsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetSendPortsStatisticsResult" nillable="true" type="q75:GetSendPortsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceiveLocationsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReceiveLocationsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetReceiveLocationsStatisticsResult" nillable="true" type="q76:GetReceiveLocationsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrationsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrchestrationsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetOrchestrationsStatisticsResult" nillable="true" type="q77:GetOrchestrationsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkApplicationsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkApplicationsStatisticsResult" nillable="true" type="q78:GetBizTalkApplicationsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostsStatistics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBizTalkHostsStatisticsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetBizTalkHostsStatisticsResult" nillable="true" type="q79:GetBizTalkHostsStatisticsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocSpecPropertyNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocSpecPropertyNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" minOccurs="0" name="GetDocSpecPropertyNamesResult" nillable="true" type="q80:GetDocSpecPropertyNamesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

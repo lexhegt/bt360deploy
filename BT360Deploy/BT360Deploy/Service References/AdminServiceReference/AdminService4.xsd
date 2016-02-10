@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/applicationMonitoring/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/applicationMonitoring/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd6" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd27" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd13" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="GetPulseMonDataForApplicationResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="application" nillable="true" type="q2:BizTalkApplication">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPulseMonDataForApplicationResponse" nillable="true" type="tns:GetPulseMonDataForApplicationResponse" />
+  <xs:complexType name="RemovePulseMonitoringForEnvironmentResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePulseMonitoringForEnvironmentResponse" nillable="true" type="tns:RemovePulseMonitoringForEnvironmentResponse" />
+  <xs:complexType name="RemovePulseMonitoringResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q4:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePulseMonitoringResponse" nillable="true" type="tns:RemovePulseMonitoringResponse" />
+  <xs:complexType name="EnablePulseMonitoringResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnablePulseMonitoringResponse" nillable="true" type="tns:EnablePulseMonitoringResponse" />
+  <xs:complexType name="GetAuthorizedAccountsForViewResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q6:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" minOccurs="0" name="bamViewAccounts" nillable="true" type="q7:BamViewAccounts">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAuthorizedAccountsForViewResponse" nillable="true" type="tns:GetAuthorizedAccountsForViewResponse" />
+  <xs:complexType name="GetActivityInfoResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q8:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" minOccurs="0" name="activityColumnInfoCollection" nillable="true" type="q9:ActivityColumnInfoCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetActivityInfoResponse" nillable="true" type="tns:GetActivityInfoResponse" />
+  <xs:complexType name="GetActivityTimeWindowsForViewResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q10:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" minOccurs="0" name="activityTimeWindows" nillable="true" type="q11:BamActivityTimeWindows">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetActivityTimeWindowsForViewResponse" nillable="true" type="tns:GetActivityTimeWindowsForViewResponse" />
+  <xs:complexType name="GetActivityNamesForViewResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q12:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" minOccurs="0" name="activityNames" nillable="true" type="q13:BamActivityNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetActivityNamesForViewResponse" nillable="true" type="tns:GetActivityNamesForViewResponse" />
+  <xs:complexType name="GetBAMDatabasesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q14:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" minOccurs="0" name="databases" nillable="true" type="q15:DatabaseCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBAMDatabasesResponse" nillable="true" type="tns:GetBAMDatabasesResponse" />
+  <xs:complexType name="GetViewsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" minOccurs="0" name="bamViewNames" nillable="true" type="q17:BamViewNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetViewsResponse" nillable="true" type="tns:GetViewsResponse" />
+  <xs:complexType name="RemovePulseMonitoringRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseRequest">
+        <xs:sequence>
+          <xs:element name="biztalkApplicationName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePulseMonitoringRequest" nillable="true" type="tns:RemovePulseMonitoringRequest" />
+  <xs:complexType name="GetPulseMonDataForApplicationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q19:BaseRequest">
+        <xs:sequence>
+          <xs:element name="biztalkApplicationName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPulseMonDataForApplicationRequest" nillable="true" type="tns:GetPulseMonDataForApplicationRequest" />
+  <xs:complexType name="ExecuteActivitySearchRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q20:BaseRequest">
+        <xs:sequence>
+          <xs:element name="viewName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" name="selectedColumns" nillable="true" type="q21:BamActivitySearchSelectedColumns">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" name="orderbyColumns" nillable="true" type="q22:BamActivitySearchOrderbyColumns">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="orderbyDesc" type="xs:boolean" />
+          <xs:element name="maxMatches" type="xs:long" />
+          <xs:element xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="compositeFilter" nillable="true" type="q23:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecuteActivitySearchRequest" nillable="true" type="tns:ExecuteActivitySearchRequest" />
+  <xs:complexType name="ActivityMonitoringRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q24:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityMonitoringRequest" nillable="true" type="tns:ActivityMonitoringRequest" />
+  <xs:complexType name="EnablePulseMonitoringRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q25:BaseRequest">
+        <xs:sequence>
+          <xs:element name="biztalkApplicationName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnablePulseMonitoringRequest" nillable="true" type="tns:EnablePulseMonitoringRequest" />
+</xs:schema>

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/analyticsService/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/analyticsService/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd33" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:complexType name="GetThrottlingEnvironmentMatrixResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="matrix" nillable="true" type="q2:ThrottlingEnvironmentMatrix">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThrottlingEnvironmentMatrixResponse" nillable="true" type="tns:GetThrottlingEnvironmentMatrixResponse" />
+  <xs:complexType name="GetUnprocessedMessageThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="unprocessedMessageThrottling" nillable="true" type="q4:UnprocessedMessageThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUnprocessedMessageThrottlingResponse" nillable="true" type="tns:GetUnprocessedMessageThrottlingResponse" />
+  <xs:complexType name="GetThrottlingErrorsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="errorList" nillable="true" type="q6:ThrottlingCollectionErrors">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="totalErrors" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThrottlingErrorsResponse" nillable="true" type="tns:GetThrottlingErrorsResponse" />
+  <xs:complexType name="GetThrottlingDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="throttlingType" type="q8:ThrottlingType" />
+          <xs:element xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="throttlingErrors" nillable="true" type="q9:ThrottlingErrors">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="graphPoints" nillable="true" type="q10:GraphPoints">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThrottlingDataResponse" nillable="true" type="tns:GetThrottlingDataResponse" />
+  <xs:complexType name="FileUploadResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="file" nillable="true" type="q12:UploadedFile">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FileUploadResponse" nillable="true" type="tns:FileUploadResponse" />
+  <xs:complexType name="GetAnalyticsServicesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="analyticsServices" nillable="true" type="q14:AnalyticsServices">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="analyticsServiceHealth" nillable="true" type="q15:AnalyticsServiceHealth">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAnalyticsServicesResponse" nillable="true" type="tns:GetAnalyticsServicesResponse" />
+  <xs:complexType name="GetPerformanceMetricsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="performanceMetrics" nillable="true" type="q17:MetricItems">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPerformanceMetricsResponse" nillable="true" type="tns:GetPerformanceMetricsResponse" />
+  <xs:complexType name="GetRateThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="rateThrottling" nillable="true" type="q19:RateThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRateThrottlingResponse" nillable="true" type="tns:GetRateThrottlingResponse" />
+  <xs:complexType name="GetDatabaseSizeThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q20:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="databaseSizeThrottling" nillable="true" type="q21:DatabaseSizeThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDatabaseSizeThrottlingResponse" nillable="true" type="tns:GetDatabaseSizeThrottlingResponse" />
+  <xs:complexType name="GetThreadCountThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q22:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="threadCountThrottling" nillable="true" type="q23:ThreadCountThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThreadCountThrottlingResponse" nillable="true" type="tns:GetThreadCountThrottlingResponse" />
+  <xs:complexType name="GetDatabaseSessionThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q24:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="databaseSessionThrottling" nillable="true" type="q25:DatabaseSessionThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDatabaseSessionThrottlingResponse" nillable="true" type="tns:GetDatabaseSessionThrottlingResponse" />
+  <xs:complexType name="GetProcessMemoryThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q26:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="processMemoryThrottling" nillable="true" type="q27:ProcessMemoryThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetProcessMemoryThrottlingResponse" nillable="true" type="tns:GetProcessMemoryThrottlingResponse" />
+  <xs:complexType name="GetSystemMemoryThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q28:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="systemMemoryThrottling" nillable="true" type="q29:SystemMemoryThrottling">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSystemMemoryThrottlingResponse" nillable="true" type="tns:GetSystemMemoryThrottlingResponse" />
+  <xs:complexType name="AnalyticsServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q30:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q31:AnalyticsService">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnalyticsServiceResponse" nillable="true" type="tns:AnalyticsServiceResponse" />
+  <xs:complexType name="GetBizTalkServersPerformanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q32:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q33:MetricDataPointsList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBizTalkServersPerformanceResponse" nillable="true" type="tns:GetBizTalkServersPerformanceResponse" />
+  <xs:complexType name="GetBizTalkHostsPerformanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q34:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q35:MetricDataPointsList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBizTalkHostsPerformanceResponse" nillable="true" type="tns:GetBizTalkHostsPerformanceResponse" />
+  <xs:complexType name="GetPerformanceMetricDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q36:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q37:MetricDataPoints">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPerformanceMetricDataResponse" nillable="true" type="tns:GetPerformanceMetricDataResponse" />
+  <xs:complexType name="GetFailureRateBySchemaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q38:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q39:FailureRateBySchemaList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFailureRateBySchemaResponse" nillable="true" type="tns:GetFailureRateBySchemaResponse" />
+  <xs:complexType name="GetBizTalkMessagingPerformanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q40:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q41:MessagePerformanceList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBizTalkMessagingPerformanceResponse" nillable="true" type="tns:GetBizTalkMessagingPerformanceResponse" />
+  <xs:complexType name="GetMoniteredServersResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q42:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q43="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q43:MoniteredServersList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMoniteredServersResponse" nillable="true" type="tns:GetMoniteredServersResponse" />
+  <xs:complexType name="BringAnalyticsServerActiveResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q44:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q45="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="analyticsServers" nillable="true" type="q45:AnalyticsServers">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BringAnalyticsServerActiveResponse" nillable="true" type="tns:BringAnalyticsServerActiveResponse" />
+  <xs:complexType name="ManageAnalyticsServicesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q46:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q47="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="analyticsServices" nillable="true" type="q47:AnalyticsServices">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageAnalyticsServicesResponse" nillable="true" type="tns:ManageAnalyticsServicesResponse" />
+  <xs:complexType name="GetAnalyticsServersHAResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q48="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q48:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q49="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="analyticsServers" nillable="true" type="q49:AnalyticsServers">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAnalyticsServersHAResponse" nillable="true" type="tns:GetAnalyticsServersHAResponse" />
+  <xs:complexType name="SetMoniteredServersResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q50="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q50:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetMoniteredServersResponse" nillable="true" type="tns:SetMoniteredServersResponse" />
+  <xs:complexType name="SetAnalyticsSubServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q51="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q51:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetAnalyticsSubServiceResponse" nillable="true" type="tns:SetAnalyticsSubServiceResponse" />
+  <xs:complexType name="GetFlowLinksResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q52:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q53="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="flowLinkList" nillable="true" type="q53:FlowLinkList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFlowLinksResponse" nillable="true" type="tns:GetFlowLinksResponse" />
+  <xs:complexType name="GetFlowListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q54:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q55="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="flowList" nillable="true" type="q55:FlowList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFlowListResponse" nillable="true" type="tns:GetFlowListResponse" />
+  <xs:complexType name="GetFlowModifyResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q56="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q56:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="affectedRows" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFlowModifyResponse" nillable="true" type="tns:GetFlowModifyResponse" />
+  <xs:complexType name="GetFailureRateByPortResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q57="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q57:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q58="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q58:FailureRateByPortList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFailureRateByPortResponse" nillable="true" type="tns:GetFailureRateByPortResponse" />
+  <xs:complexType name="GetMessageVolumeBySchemaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q59="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q59:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q60="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="data" nillable="true" type="q60:MessageVolumeList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMessageVolumeBySchemaResponse" nillable="true" type="tns:GetMessageVolumeBySchemaResponse" />
+  <xs:complexType name="GetFlowNodeResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q61="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q61:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q62="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" minOccurs="0" name="flowNodeList" nillable="true" type="q62:FlowNodeList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFlowNodeResponse" nillable="true" type="tns:GetFlowNodeResponse" />
+  <xs:complexType name="GetThrottlingDetailRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q63="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q63:BaseRequest">
+        <xs:sequence>
+          <xs:element name="throttlingId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThrottlingDetailRequest" nillable="true" type="tns:GetThrottlingDetailRequest" />
+  <xs:complexType name="GetThrottlingErrorsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q64="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q64:BaseRequest">
+        <xs:sequence>
+          <xs:element name="hostName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="serverName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="from" type="xs:dateTime" />
+          <xs:element name="to" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetThrottlingErrorsRequest" nillable="true" type="tns:GetThrottlingErrorsRequest" />
+</xs:schema>

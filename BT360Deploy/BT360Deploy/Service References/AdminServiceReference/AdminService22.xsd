@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd13" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" />
+  <xs:complexType name="ApplicationAuditCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="applicationAudit" nillable="true" type="tns:ApplicationAudit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplicationAuditCollection" nillable="true" type="tns:ApplicationAuditCollection" />
+  <xs:complexType name="ApplicationAudit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicationName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="artifactName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="artifactType" type="tns:ApplicationAuditArtifactType" />
+      <xs:element minOccurs="0" name="operation" type="tns:ApplicationAuditOperation" />
+      <xs:element minOccurs="0" name="domainName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userProfileImageUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="auditTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApplicationAudit" nillable="true" type="tns:ApplicationAudit" />
+  <xs:simpleType name="ApplicationAuditArtifactType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SendPort" />
+      <xs:enumeration value="ReceiveLocation" />
+      <xs:enumeration value="Orchestration" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ApplicationAuditArtifactType" nillable="true" type="tns:ApplicationAuditArtifactType" />
+  <xs:simpleType name="ApplicationAuditOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Start" />
+      <xs:enumeration value="Stop" />
+      <xs:enumeration value="Enlist" />
+      <xs:enumeration value="Unenlist" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="Enable" />
+      <xs:enumeration value="Disable" />
+      <xs:enumeration value="SetIgnoreMonitoring" />
+      <xs:enumeration value="ReleaseIgnoreMonitoring" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ApplicationAuditOperation" nillable="true" type="tns:ApplicationAuditOperation" />
+  <xs:complexType name="GovernanceAuditActivityCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="governanceAuditActivity" nillable="true" type="tns:GovernanceAuditActivity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GovernanceAuditActivityCollection" nillable="true" type="tns:GovernanceAuditActivityCollection" />
+  <xs:complexType name="GovernanceAuditActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuditDateTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GovernanceAuditActivity" nillable="true" type="tns:GovernanceAuditActivity" />
+  <xs:complexType name="HostInstanceAuditCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="hostInstanceAudit" nillable="true" type="tns:HostInstanceAudit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HostInstanceAuditCollection" nillable="true" type="tns:HostInstanceAuditCollection" />
+  <xs:complexType name="HostInstanceAudit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="operation" type="q1:BizTalkHostInstanceOperation" />
+      <xs:element minOccurs="0" name="domainName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userProfileImageUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="auditTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HostInstanceAudit" nillable="true" type="tns:HostInstanceAudit" />
+  <xs:complexType name="BizTalkHostsStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inprocess" type="xs:long" />
+      <xs:element minOccurs="0" name="isolated" type="xs:long" />
+      <xs:element minOccurs="0" name="clustered" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkHostsStatistics" nillable="true" type="tns:BizTalkHostsStatistics" />
+  <xs:complexType name="OrchestrationsStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="started" type="xs:long" />
+      <xs:element minOccurs="0" name="stopped" type="xs:long" />
+      <xs:element minOccurs="0" name="unenlisted" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrchestrationsStatistics" nillable="true" type="tns:OrchestrationsStatistics" />
+  <xs:complexType name="BizTalkApplicationsStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="started" type="xs:long" />
+      <xs:element minOccurs="0" name="stopped" type="xs:long" />
+      <xs:element minOccurs="0" name="partiallyStarted" type="xs:long" />
+      <xs:element minOccurs="0" name="notApplicable" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BizTalkApplicationsStatistics" nillable="true" type="tns:BizTalkApplicationsStatistics" />
+  <xs:complexType name="ReceiveLocationsStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="enabled" type="xs:long" />
+      <xs:element minOccurs="0" name="disabled" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveLocationsStatistics" nillable="true" type="tns:ReceiveLocationsStatistics" />
+  <xs:complexType name="SendPortsStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="started" type="xs:long" />
+      <xs:element minOccurs="0" name="stopped" type="xs:long" />
+      <xs:element minOccurs="0" name="unenlisted" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendPortsStatistics" nillable="true" type="tns:SendPortsStatistics" />
+  <xs:complexType name="PersistFilterCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="persistFilter" nillable="true" type="tns:PersistFilter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersistFilterCollection" nillable="true" type="tns:PersistFilterCollection" />
+  <xs:complexType name="PersistFilter">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="userLogon" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="filterType" type="tns:FilterType" />
+      <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="compositeFilter" nillable="true" type="q2:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timeStamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersistFilter" nillable="true" type="tns:PersistFilter" />
+  <xs:simpleType name="FilterType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EventViewer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FilterType" nillable="true" type="tns:FilterType" />
+  <xs:complexType name="EventLogFilterColumnValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="columnValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventLogFilterColumnValues" nillable="true" type="tns:EventLogFilterColumnValues" />
+  <xs:complexType name="EventLogDataCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventLogData" nillable="true" type="tns:EventLogData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventLogDataCollection" nillable="true" type="tns:EventLogDataCollection" />
+  <xs:complexType name="EventLogData">
+    <xs:sequence>
+      <xs:element name="eventLogDataId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serverId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="articleIds" nillable="true" type="q3:ArticleIds">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="eventId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="eventLog" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="imageType" type="tns:EventLogDataImageType" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="timeStamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="source" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="category" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="user" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="computer" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="recordNumber" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventLogData" nillable="true" type="tns:EventLogData" />
+  <xs:simpleType name="EventLogDataImageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Information" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="SuccessAudit" />
+      <xs:enumeration value="FailureAudit" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EventLogDataImageType" nillable="true" type="tns:EventLogDataImageType" />
+  <xs:complexType name="EventLogMonitoringFilter">
+    <xs:sequence>
+      <xs:element name="Logs" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Sources" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventLogMonitoringFilter" nillable="true" type="tns:EventLogMonitoringFilter" />
+  <xs:complexType name="UserNTGroups">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="groupName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserNTGroups" nillable="true" type="tns:UserNTGroups" />
+  <xs:complexType name="Topology">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" minOccurs="0" name="general" nillable="true" type="q4:BizTalkGroupGeneral">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" minOccurs="0" name="biztalkServers" nillable="true" type="q5:BizTalkServers">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" minOccurs="0" name="sqlServers" nillable="true" type="q6:PhysicalSqlServers">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" minOccurs="0" name="ssoMasterSecretServer" nillable="true" type="q7:EnterpriseSSOMasterSecretServer">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Topology" nillable="true" type="tns:Topology" />
+  <xs:simpleType name="SuspendedInstancesLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Environment" />
+      <xs:enumeration value="Application" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SuspendedInstancesLevel" nillable="true" type="tns:SuspendedInstancesLevel" />
+</xs:schema>

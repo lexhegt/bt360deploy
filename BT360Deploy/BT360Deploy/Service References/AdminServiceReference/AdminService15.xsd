@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/advancedEventViewer/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/advancedEventViewer/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd12" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="SaveFilterResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveFilterResponse" nillable="true" type="tns:SaveFilterResponse" />
+  <xs:complexType name="GetSavedFiltersResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q2:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="persistFilterCollection" nillable="true" type="q3:PersistFilterCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSavedFiltersResponse" nillable="true" type="tns:GetSavedFiltersResponse" />
+  <xs:complexType name="GetEventLogDataMessageResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q4:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEventLogDataMessageResponse" nillable="true" type="tns:GetEventLogDataMessageResponse" />
+  <xs:complexType name="GetEventLogFilterColumnValuesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="eventLogFilterColumnValues" nillable="true" type="q6:EventLogFilterColumnValues">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEventLogFilterColumnValuesResponse" nillable="true" type="tns:GetEventLogFilterColumnValuesResponse" />
+  <xs:complexType name="GetEventLogDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="eventLogDataCollection" nillable="true" type="q8:EventLogDataCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEventLogDataResponse" nillable="true" type="tns:GetEventLogDataResponse" />
+  <xs:complexType name="RetrieveFilterResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="compositeFilter" nillable="true" type="q10:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveFilterResponse" nillable="true" type="tns:RetrieveFilterResponse" />
+  <xs:complexType name="GetEventLogMonitoringFilterResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" minOccurs="0" name="eventLogMonitoringFilter" nillable="true" type="q12:EventLogMonitoringFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEventLogMonitoringFilterResponse" nillable="true" type="tns:GetEventLogMonitoringFilterResponse" />
+  <xs:complexType name="IsAdvancedEventViewerEnabledResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsAdvancedEventViewerEnabledResponse" nillable="true" type="tns:IsAdvancedEventViewerEnabledResponse" />
+  <xs:complexType name="EnableAdvancedEventViewerResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q14:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnableAdvancedEventViewerResponse" nillable="true" type="tns:EnableAdvancedEventViewerResponse" />
+  <xs:complexType name="DisableAdvancedEventViewerResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q15:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DisableAdvancedEventViewerResponse" nillable="true" type="tns:DisableAdvancedEventViewerResponse" />
+  <xs:complexType name="AdvancedEventViewerServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdvancedEventViewerServiceResponse" nillable="true" type="tns:AdvancedEventViewerServiceResponse" />
+  <xs:complexType name="AdvancedEventViewerServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q17:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdvancedEventViewerServiceRequest" nillable="true" type="tns:AdvancedEventViewerServiceRequest" />
+  <xs:complexType name="GetEventLogDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" minOccurs="0" name="compositeFilter" nillable="true" type="q19:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEventLogDataRequest" nillable="true" type="tns:GetEventLogDataRequest" />
+</xs:schema>

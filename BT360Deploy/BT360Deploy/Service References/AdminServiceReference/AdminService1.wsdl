@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.kovai.co.uk/biztalk360/services/1.0" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminService" targetNamespace="http://www.kovai.co.uk/biztalk360/services/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.kovai.co.uk/biztalk360/services/1.0/Imports">
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd0" namespace="http://www.kovai.co.uk/biztalk360/services/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd2" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/admin/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd5" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd6" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd7" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd8" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkQuery/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd9" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd10" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd11" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd12" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd13" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd14" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/admin/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd15" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/environmentMgmt/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd16" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd17" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/esbManagementService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd18" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd19" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/advancedEventViewer/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd21" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd22" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/ediManagementService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd23" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/ediManagement/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd24" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd25" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/alert/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd26" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/applicationMonitoring/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd27" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd28" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/graphData/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd29" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/graphData/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd30" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/schedulerService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd31" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/rulesEngineService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd32" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/analyticsService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd33" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd34" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdminService_GetAllConfiguredEnvironments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfiguredEnvironments" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetAllConfiguredEnvironments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfiguredEnvironmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddEnvironment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddEnvironment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEnvironment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEnvironment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteEnvironment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteEnvironment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DisableEnvironment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableEnvironment" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DisableEnvironment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableEnvironmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_TestEnvironmentConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestEnvironmentConnection" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_TestEnvironmentConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestEnvironmentConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringPlugins_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringPlugins" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringPlugins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringPluginsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetPurgingPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPurgingPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetPurgingPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPurgingPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetPurgingPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurgingPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetPurgingPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurgingPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetBizTalk360Info_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalk360Info" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetBizTalk360Info_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalk360InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetBizTalk360ToDoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalk360ToDoList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetBizTalk360ToDoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalk360ToDoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GenerateLicenseRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateLicenseRequest" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GenerateLicenseRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateLicenseRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetDbCompatibilityInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbCompatibilityInfo" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetDbCompatibilityInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDbCompatibilityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetTimeZonesAndDateTimeFormats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeZonesAndDateTimeFormats" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetTimeZonesAndDateTimeFormats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeZonesAndDateTimeFormatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetConfiguredSystemRegionalSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredSystemRegionalSetting" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetConfiguredSystemRegionalSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredSystemRegionalSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSystemGlobalProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemGlobalProperties" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSystemGlobalProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemGlobalPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageGlobalProperties_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageGlobalProperties" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageGlobalProperties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageGlobalPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_InitialOnboarding_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitialOnboarding" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_InitialOnboarding_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitialOnboardingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetApiAuthDocumentation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiAuthDocumentation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetApiAuthDocumentation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApiAuthDocumentationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEsbExceptionDbConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEsbExceptionDbConfig" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEsbExceptionDbConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEsbExceptionDbConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetEsbExceptionDbConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEsbExceptionDbConfig" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetEsbExceptionDbConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEsbExceptionDbConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ValidateEsbPortalSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEsbPortalSetting" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ValidateEsbPortalSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEsbPortalSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfile" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSystemProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemProfile" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSystemProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSystemProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainSystemProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainSystemProfile" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainSystemProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainSystemProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSuperUserList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuperUserList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetSuperUserList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuperUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_IsSuperUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsSuperUser" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_IsSuperUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsSuperUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetCurrentUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetCurrentUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetDefaultUserAccessPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultUserAccessPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetDefaultUserAccessPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultUserAccessPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainUserAccessPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainUserAccessPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainUserAccessPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainUserAccessPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainAdminUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainAdminUser" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainAdminUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainAdminUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateDefaultUserAccessPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDefaultUserAccessPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateDefaultUserAccessPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDefaultUserAccessPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetStoredUserAccessPolicies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoredUserAccessPolicies" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetStoredUserAccessPolicies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStoredUserAccessPoliciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMBVSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVSchedule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMBVSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateMBVSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMBVSchedule" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateMBVSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMBVScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringServices" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageMonitoringServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageMonitoringServices" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageMonitoringServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageMonitoringServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringServers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringServers" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetMonitoringServers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMonitoringServersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_BringMonitoringServerActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:BringMonitoringServerActive" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_BringMonitoringServerActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BringMonitoringServerActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainServiceBusRegistration_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainServiceBusRegistration" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainServiceBusRegistration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainServiceBusRegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetServiceBusRegistration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceBusRegistration" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetServiceBusRegistration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceBusRegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetServiceBusListeners_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceBusListeners" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetServiceBusListeners_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceBusListenersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetLicenseActivations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLicenseActivations" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetLicenseActivations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLicenseActivationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseActivation_InputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseActivation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseActivation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseActivationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseDeactivation_InputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseDeactivation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseDeactivation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseDeactivationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_RemoveLicenseActivation_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLicenseActivation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_RemoveLicenseActivation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLicenseActivationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SubmitManualLicenseActivation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitManualLicenseActivation" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SubmitManualLicenseActivation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitManualLicenseActivationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidgetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidgetList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidgetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidgetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidget_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidget" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidget_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidgetScript_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidgetScript" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationWidgetScript_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationWidgetScriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateExternalIntegrationWidget_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExternalIntegrationWidget" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateExternalIntegrationWidget_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExternalIntegrationWidgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateExternalIntegrationWidget_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExternalIntegrationWidget" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateExternalIntegrationWidget_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExternalIntegrationWidgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteExternalIntegrationWidget_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExternalIntegrationWidget" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteExternalIntegrationWidget_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExternalIntegrationWidgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationPlaceHolderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationPlaceHolderList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetExternalIntegrationPlaceHolderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalIntegrationPlaceHolderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetRequiredExternalIntegrationPlaceHolderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequiredExternalIntegrationPlaceHolderList" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetRequiredExternalIntegrationPlaceHolderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequiredExternalIntegrationPlaceHolderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateExternalIntegrationPlaceHolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExternalIntegrationPlaceHolder" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateExternalIntegrationPlaceHolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateExternalIntegrationPlaceHolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateExternalIntegrationPlaceHolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExternalIntegrationPlaceHolder" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateExternalIntegrationPlaceHolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExternalIntegrationPlaceHolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteExternalIntegrationPlaceHolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExternalIntegrationPlaceHolder" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteExternalIntegrationPlaceHolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExternalIntegrationPlaceHolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddEnvironmentRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEnvironmentRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddEnvironmentRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEnvironmentRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_TestEnvironmentConnectionRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestEnvironmentConnectionRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_TestEnvironmentConnectionRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestEnvironmentConnectionRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEnvironmentRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEnvironmentRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEnvironmentRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEnvironmentRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteEnvironmentRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnvironmentRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteEnvironmentRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnvironmentRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetPurgingPolicyRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPurgingPolicyRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetPurgingPolicyRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPurgingPolicyRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainUserAccessPolicyRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainUserAccessPolicyRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainUserAccessPolicyRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainUserAccessPolicyRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainAdminUserRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainAdminUserRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainAdminUserRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainAdminUserRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateDefaultUserAccessPolicyRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDefaultUserAccessPolicyRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateDefaultUserAccessPolicyRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDefaultUserAccessPolicyRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateCentralKnowledgebaseArticleRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCentralKnowledgebaseArticleRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateCentralKnowledgebaseArticleRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCentralKnowledgebaseArticleRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateMBVScheduleRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMBVScheduleRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateMBVScheduleRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMBVScheduleRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageMonitoringServicesRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageMonitoringServicesRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ManageMonitoringServicesRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageMonitoringServicesRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_BringMonitoringServerActiveRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:BringMonitoringServerActiveRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_BringMonitoringServerActiveRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BringMonitoringServerActiveRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEsbExceptionDbConfigRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEsbExceptionDbConfigRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UpdateEsbExceptionDbConfigRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEsbExceptionDbConfigRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SaveQueryRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQueryRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SaveQueryRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQueryRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteSavedQueryRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSavedQueryRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteSavedQueryRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSavedQueryRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainServiceBusRegistrationRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainServiceBusRegistrationRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainServiceBusRegistrationRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainServiceBusRegistrationRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GenerateLicenseRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateLicenseRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GenerateLicenseRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateLicenseRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddKnowledgebaseArticleRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddKnowledgebaseArticleRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddKnowledgebaseArticleRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddKnowledgebaseArticleRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_EditKnowledgebaseArticleRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditKnowledgebaseArticleRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_EditKnowledgebaseArticleRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditKnowledgebaseArticleRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteKnowledgebaseArticlesBulkRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteKnowledgebaseArticlesBulkRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteKnowledgebaseArticlesBulkRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteKnowledgebaseArticlesBulkRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainSystemProfileRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainSystemProfileRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_MaintainSystemProfileRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaintainSystemProfileRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UserProfileSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserProfileSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_UserProfileSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserProfileSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_NameValueListSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:NameValueListSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_NameValueListSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NameValueListSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseActivationRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseActivationRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_LicenseActivationRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseActivationRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdminService">
+    <wsdl:operation name="GetAllConfiguredEnvironments">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetAllConfiguredEnvironments" message="tns:IAdminService_GetAllConfiguredEnvironments_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetAllConfiguredEnvironmentsResponse" message="tns:IAdminService_GetAllConfiguredEnvironments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEnvironment">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddEnvironment" message="tns:IAdminService_AddEnvironment_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddEnvironmentResponse" message="tns:IAdminService_AddEnvironment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEnvironment">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEnvironment" message="tns:IAdminService_UpdateEnvironment_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEnvironmentResponse" message="tns:IAdminService_UpdateEnvironment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvironment">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteEnvironment" message="tns:IAdminService_DeleteEnvironment_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteEnvironmentResponse" message="tns:IAdminService_DeleteEnvironment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableEnvironment">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DisableEnvironment" message="tns:IAdminService_DisableEnvironment_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DisableEnvironmentResponse" message="tns:IAdminService_DisableEnvironment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEnvironmentConnection">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/TestEnvironmentConnection" message="tns:IAdminService_TestEnvironmentConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/TestEnvironmentConnectionResponse" message="tns:IAdminService_TestEnvironmentConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitoringPlugins">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringPlugins" message="tns:IAdminService_GetMonitoringPlugins_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringPluginsResponse" message="tns:IAdminService_GetMonitoringPlugins_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPurgingPolicy">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SetPurgingPolicy" message="tns:IAdminService_SetPurgingPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SetPurgingPolicyResponse" message="tns:IAdminService_SetPurgingPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurgingPolicy">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetPurgingPolicy" message="tns:IAdminService_GetPurgingPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetPurgingPolicyResponse" message="tns:IAdminService_GetPurgingPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalk360Info">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetBizTalk360Info" message="tns:IAdminService_GetBizTalk360Info_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetBizTalk360InfoResponse" message="tns:IAdminService_GetBizTalk360Info_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalk360ToDoList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetBizTalk360ToDoList" message="tns:IAdminService_GetBizTalk360ToDoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetBizTalk360ToDoListResponse" message="tns:IAdminService_GetBizTalk360ToDoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateLicenseRequest">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GenerateLicenseRequest" message="tns:IAdminService_GenerateLicenseRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GenerateLicenseRequestResponse" message="tns:IAdminService_GenerateLicenseRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDbCompatibilityInfo">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetDbCompatibilityInfo" message="tns:IAdminService_GetDbCompatibilityInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetDbCompatibilityInfoResponse" message="tns:IAdminService_GetDbCompatibilityInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeZonesAndDateTimeFormats">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetTimeZonesAndDateTimeFormats" message="tns:IAdminService_GetTimeZonesAndDateTimeFormats_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetTimeZonesAndDateTimeFormatsResponse" message="tns:IAdminService_GetTimeZonesAndDateTimeFormats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguredSystemRegionalSetting">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetConfiguredSystemRegionalSetting" message="tns:IAdminService_GetConfiguredSystemRegionalSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetConfiguredSystemRegionalSettingResponse" message="tns:IAdminService_GetConfiguredSystemRegionalSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemGlobalProperties">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSystemGlobalProperties" message="tns:IAdminService_GetSystemGlobalProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSystemGlobalPropertiesResponse" message="tns:IAdminService_GetSystemGlobalProperties_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageGlobalProperties">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageGlobalProperties" message="tns:IAdminService_ManageGlobalProperties_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageGlobalPropertiesResponse" message="tns:IAdminService_ManageGlobalProperties_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InitialOnboarding">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/InitialOnboarding" message="tns:IAdminService_InitialOnboarding_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/InitialOnboardingResponse" message="tns:IAdminService_InitialOnboarding_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApiAuthDocumentation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetApiAuthDocumentation" message="tns:IAdminService_GetApiAuthDocumentation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetApiAuthDocumentationResponse" message="tns:IAdminService_GetApiAuthDocumentation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEsbExceptionDbConfig">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEsbExceptionDbConfig" message="tns:IAdminService_UpdateEsbExceptionDbConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEsbExceptionDbConfigResponse" message="tns:IAdminService_UpdateEsbExceptionDbConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEsbExceptionDbConfig">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetEsbExceptionDbConfig" message="tns:IAdminService_GetEsbExceptionDbConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetEsbExceptionDbConfigResponse" message="tns:IAdminService_GetEsbExceptionDbConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEsbPortalSetting">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ValidateEsbPortalSetting" message="tns:IAdminService_ValidateEsbPortalSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ValidateEsbPortalSettingResponse" message="tns:IAdminService_ValidateEsbPortalSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetProfile" message="tns:IAdminService_GetProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetProfileResponse" message="tns:IAdminService_GetProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetUserProfile" message="tns:IAdminService_GetUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetUserProfileResponse" message="tns:IAdminService_GetUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateUserProfile" message="tns:IAdminService_UpdateUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateUserProfileResponse" message="tns:IAdminService_UpdateUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemProfile">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSystemProfile" message="tns:IAdminService_GetSystemProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSystemProfileResponse" message="tns:IAdminService_GetSystemProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainSystemProfile">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainSystemProfile" message="tns:IAdminService_MaintainSystemProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainSystemProfileResponse" message="tns:IAdminService_MaintainSystemProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetUserList" message="tns:IAdminService_GetUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetUserListResponse" message="tns:IAdminService_GetUserList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSuperUserList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSuperUserList" message="tns:IAdminService_GetSuperUserList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetSuperUserListResponse" message="tns:IAdminService_GetSuperUserList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsSuperUser">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/IsSuperUser" message="tns:IAdminService_IsSuperUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/IsSuperUserResponse" message="tns:IAdminService_IsSuperUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUser">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetCurrentUser" message="tns:IAdminService_GetCurrentUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetCurrentUserResponse" message="tns:IAdminService_GetCurrentUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultUserAccessPolicy">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetDefaultUserAccessPolicy" message="tns:IAdminService_GetDefaultUserAccessPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetDefaultUserAccessPolicyResponse" message="tns:IAdminService_GetDefaultUserAccessPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainUserAccessPolicy">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainUserAccessPolicy" message="tns:IAdminService_MaintainUserAccessPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainUserAccessPolicyResponse" message="tns:IAdminService_MaintainUserAccessPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainAdminUser">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainAdminUser" message="tns:IAdminService_MaintainAdminUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainAdminUserResponse" message="tns:IAdminService_MaintainAdminUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDefaultUserAccessPolicy">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateDefaultUserAccessPolicy" message="tns:IAdminService_UpdateDefaultUserAccessPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateDefaultUserAccessPolicyResponse" message="tns:IAdminService_UpdateDefaultUserAccessPolicy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStoredUserAccessPolicies">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetStoredUserAccessPolicies" message="tns:IAdminService_GetStoredUserAccessPolicies_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetStoredUserAccessPoliciesResponse" message="tns:IAdminService_GetStoredUserAccessPolicies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMBVSchedule">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMBVSchedule" message="tns:IAdminService_GetMBVSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMBVScheduleResponse" message="tns:IAdminService_GetMBVSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMBVSchedule">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateMBVSchedule" message="tns:IAdminService_UpdateMBVSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateMBVScheduleResponse" message="tns:IAdminService_UpdateMBVSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitoringServices">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringServices" message="tns:IAdminService_GetMonitoringServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringServicesResponse" message="tns:IAdminService_GetMonitoringServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageMonitoringServices">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageMonitoringServices" message="tns:IAdminService_ManageMonitoringServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageMonitoringServicesResponse" message="tns:IAdminService_ManageMonitoringServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonitoringServers">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringServers" message="tns:IAdminService_GetMonitoringServers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetMonitoringServersResponse" message="tns:IAdminService_GetMonitoringServers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BringMonitoringServerActive">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/BringMonitoringServerActive" message="tns:IAdminService_BringMonitoringServerActive_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/BringMonitoringServerActiveResponse" message="tns:IAdminService_BringMonitoringServerActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainServiceBusRegistration">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainServiceBusRegistration" message="tns:IAdminService_MaintainServiceBusRegistration_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainServiceBusRegistrationResponse" message="tns:IAdminService_MaintainServiceBusRegistration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceBusRegistration">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetServiceBusRegistration" message="tns:IAdminService_GetServiceBusRegistration_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetServiceBusRegistrationResponse" message="tns:IAdminService_GetServiceBusRegistration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceBusListeners">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetServiceBusListeners" message="tns:IAdminService_GetServiceBusListeners_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetServiceBusListenersResponse" message="tns:IAdminService_GetServiceBusListeners_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLicenseActivations">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetLicenseActivations" message="tns:IAdminService_GetLicenseActivations_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetLicenseActivationsResponse" message="tns:IAdminService_GetLicenseActivations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LicenseActivation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseActivation" message="tns:IAdminService_LicenseActivation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseActivationResponse" message="tns:IAdminService_LicenseActivation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LicenseDeactivation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseDeactivation" message="tns:IAdminService_LicenseDeactivation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseDeactivationResponse" message="tns:IAdminService_LicenseDeactivation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLicenseActivation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/RemoveLicenseActivation" message="tns:IAdminService_RemoveLicenseActivation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/RemoveLicenseActivationResponse" message="tns:IAdminService_RemoveLicenseActivation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitManualLicenseActivation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SubmitManualLicenseActivation" message="tns:IAdminService_SubmitManualLicenseActivation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SubmitManualLicenseActivationResponse" message="tns:IAdminService_SubmitManualLicenseActivation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalIntegrationWidgetList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidgetList" message="tns:IAdminService_GetExternalIntegrationWidgetList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidgetListResponse" message="tns:IAdminService_GetExternalIntegrationWidgetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalIntegrationWidget">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidget" message="tns:IAdminService_GetExternalIntegrationWidget_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidgetResponse" message="tns:IAdminService_GetExternalIntegrationWidget_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalIntegrationWidgetScript">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidgetScript" message="tns:IAdminService_GetExternalIntegrationWidgetScript_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationWidgetScriptResponse" message="tns:IAdminService_GetExternalIntegrationWidgetScript_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateExternalIntegrationWidget">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/CreateExternalIntegrationWidget" message="tns:IAdminService_CreateExternalIntegrationWidget_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/CreateExternalIntegrationWidgetResponse" message="tns:IAdminService_CreateExternalIntegrationWidget_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExternalIntegrationWidget">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateExternalIntegrationWidget" message="tns:IAdminService_UpdateExternalIntegrationWidget_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateExternalIntegrationWidgetResponse" message="tns:IAdminService_UpdateExternalIntegrationWidget_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExternalIntegrationWidget">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteExternalIntegrationWidget" message="tns:IAdminService_DeleteExternalIntegrationWidget_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteExternalIntegrationWidgetResponse" message="tns:IAdminService_DeleteExternalIntegrationWidget_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalIntegrationPlaceHolderList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationPlaceHolderList" message="tns:IAdminService_GetExternalIntegrationPlaceHolderList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetExternalIntegrationPlaceHolderListResponse" message="tns:IAdminService_GetExternalIntegrationPlaceHolderList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequiredExternalIntegrationPlaceHolderList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetRequiredExternalIntegrationPlaceHolderList" message="tns:IAdminService_GetRequiredExternalIntegrationPlaceHolderList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GetRequiredExternalIntegrationPlaceHolderListResponse" message="tns:IAdminService_GetRequiredExternalIntegrationPlaceHolderList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateExternalIntegrationPlaceHolder">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/CreateExternalIntegrationPlaceHolder" message="tns:IAdminService_CreateExternalIntegrationPlaceHolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/CreateExternalIntegrationPlaceHolderResponse" message="tns:IAdminService_CreateExternalIntegrationPlaceHolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExternalIntegrationPlaceHolder">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateExternalIntegrationPlaceHolder" message="tns:IAdminService_UpdateExternalIntegrationPlaceHolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateExternalIntegrationPlaceHolderResponse" message="tns:IAdminService_UpdateExternalIntegrationPlaceHolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExternalIntegrationPlaceHolder">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteExternalIntegrationPlaceHolder" message="tns:IAdminService_DeleteExternalIntegrationPlaceHolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteExternalIntegrationPlaceHolderResponse" message="tns:IAdminService_DeleteExternalIntegrationPlaceHolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEnvironmentRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddEnvironmentRequestSample" message="tns:IAdminService_AddEnvironmentRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddEnvironmentRequestSampleResponse" message="tns:IAdminService_AddEnvironmentRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEnvironmentConnectionRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/TestEnvironmentConnectionRequestSample" message="tns:IAdminService_TestEnvironmentConnectionRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/TestEnvironmentConnectionRequestSampleResponse" message="tns:IAdminService_TestEnvironmentConnectionRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEnvironmentRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEnvironmentRequestSample" message="tns:IAdminService_UpdateEnvironmentRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEnvironmentRequestSampleResponse" message="tns:IAdminService_UpdateEnvironmentRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnvironmentRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteEnvironmentRequestSample" message="tns:IAdminService_DeleteEnvironmentRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteEnvironmentRequestSampleResponse" message="tns:IAdminService_DeleteEnvironmentRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPurgingPolicyRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SetPurgingPolicyRequestSample" message="tns:IAdminService_SetPurgingPolicyRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SetPurgingPolicyRequestSampleResponse" message="tns:IAdminService_SetPurgingPolicyRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainUserAccessPolicyRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainUserAccessPolicyRequestSample" message="tns:IAdminService_MaintainUserAccessPolicyRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainUserAccessPolicyRequestSampleResponse" message="tns:IAdminService_MaintainUserAccessPolicyRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainAdminUserRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainAdminUserRequestSample" message="tns:IAdminService_MaintainAdminUserRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainAdminUserRequestSampleResponse" message="tns:IAdminService_MaintainAdminUserRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDefaultUserAccessPolicyRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateDefaultUserAccessPolicyRequestSample" message="tns:IAdminService_UpdateDefaultUserAccessPolicyRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateDefaultUserAccessPolicyRequestSampleResponse" message="tns:IAdminService_UpdateDefaultUserAccessPolicyRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCentralKnowledgebaseArticleRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateCentralKnowledgebaseArticleRequestSample" message="tns:IAdminService_UpdateCentralKnowledgebaseArticleRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateCentralKnowledgebaseArticleRequestSampleResponse" message="tns:IAdminService_UpdateCentralKnowledgebaseArticleRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMBVScheduleRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateMBVScheduleRequestSample" message="tns:IAdminService_UpdateMBVScheduleRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateMBVScheduleRequestSampleResponse" message="tns:IAdminService_UpdateMBVScheduleRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageMonitoringServicesRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageMonitoringServicesRequestSample" message="tns:IAdminService_ManageMonitoringServicesRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/ManageMonitoringServicesRequestSampleResponse" message="tns:IAdminService_ManageMonitoringServicesRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BringMonitoringServerActiveRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/BringMonitoringServerActiveRequestSample" message="tns:IAdminService_BringMonitoringServerActiveRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/BringMonitoringServerActiveRequestSampleResponse" message="tns:IAdminService_BringMonitoringServerActiveRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEsbExceptionDbConfigRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEsbExceptionDbConfigRequestSample" message="tns:IAdminService_UpdateEsbExceptionDbConfigRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UpdateEsbExceptionDbConfigRequestSampleResponse" message="tns:IAdminService_UpdateEsbExceptionDbConfigRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveQueryRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SaveQueryRequestSample" message="tns:IAdminService_SaveQueryRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/SaveQueryRequestSampleResponse" message="tns:IAdminService_SaveQueryRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSavedQueryRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteSavedQueryRequestSample" message="tns:IAdminService_DeleteSavedQueryRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteSavedQueryRequestSampleResponse" message="tns:IAdminService_DeleteSavedQueryRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainServiceBusRegistrationRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainServiceBusRegistrationRequestSample" message="tns:IAdminService_MaintainServiceBusRegistrationRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainServiceBusRegistrationRequestSampleResponse" message="tns:IAdminService_MaintainServiceBusRegistrationRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateLicenseRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GenerateLicenseRequestSample" message="tns:IAdminService_GenerateLicenseRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/GenerateLicenseRequestSampleResponse" message="tns:IAdminService_GenerateLicenseRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddKnowledgebaseArticleRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddKnowledgebaseArticleRequestSample" message="tns:IAdminService_AddKnowledgebaseArticleRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/AddKnowledgebaseArticleRequestSampleResponse" message="tns:IAdminService_AddKnowledgebaseArticleRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditKnowledgebaseArticleRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/EditKnowledgebaseArticleRequestSample" message="tns:IAdminService_EditKnowledgebaseArticleRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/EditKnowledgebaseArticleRequestSampleResponse" message="tns:IAdminService_EditKnowledgebaseArticleRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKnowledgebaseArticlesBulkRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteKnowledgebaseArticlesBulkRequestSample" message="tns:IAdminService_DeleteKnowledgebaseArticlesBulkRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/DeleteKnowledgebaseArticlesBulkRequestSampleResponse" message="tns:IAdminService_DeleteKnowledgebaseArticlesBulkRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaintainSystemProfileRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainSystemProfileRequestSample" message="tns:IAdminService_MaintainSystemProfileRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/MaintainSystemProfileRequestSampleResponse" message="tns:IAdminService_MaintainSystemProfileRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserProfileSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UserProfileSample" message="tns:IAdminService_UserProfileSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/UserProfileSampleResponse" message="tns:IAdminService_UserProfileSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NameValueListSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/NameValueListSample" message="tns:IAdminService_NameValueListSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/NameValueListSampleResponse" message="tns:IAdminService_NameValueListSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LicenseActivationRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseActivationRequestSample" message="tns:IAdminService_LicenseActivationRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IAdminService/LicenseActivationRequestSampleResponse" message="tns:IAdminService_LicenseActivationRequestSample_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="AdminService" />
+</wsdl:definitions>

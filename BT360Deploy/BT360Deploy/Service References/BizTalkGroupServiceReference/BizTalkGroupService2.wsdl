@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.kovai.co.uk/biztalk360/services/1.0" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BizTalkGroupService" targetNamespace="http://www.kovai.co.uk/biztalk360/services/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.kovai.co.uk/biztalk360/services/1.0/Imports">
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd0" namespace="http://www.kovai.co.uk/biztalk360/services/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd2" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkGroup/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd5" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkApplication/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd6" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd7" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/rulesEngine/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd8" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/biztalkQuery/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd9" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/query/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd10" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/querybasetypes/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd11" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/biztalkGroup/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd12" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/platform/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd13" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/admin/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd14" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/admin/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd15" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/environmentMgmt/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd16" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd17" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/esbManagementService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd18" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd19" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/advancedEventViewer/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd21" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd22" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/ediManagementService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd23" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/ediManagement/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd24" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd25" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/alert/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd26" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/applicationMonitoring/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd27" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd28" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/graphData/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd29" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/graphData/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd30" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/schedulerService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd31" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/rulesEngineService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd32" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/analyticsService/1.0" />
+      <xsd:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd33" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkServerList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkServerList" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkServerList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkServerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkServer" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlJobs" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerPhysicalNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerPhysicalNames" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerPhysicalNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerPhysicalNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPhysicalSqlServers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhysicalSqlServers" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPhysicalSqlServers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhysicalSqlServersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPhysicalSqlServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhysicalSqlServer" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPhysicalSqlServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhysicalSqlServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerInstances_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerInstances" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerInstances_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerInstancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerInstance" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSqlServerInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSqlServerInstanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostsMinimal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostsMinimal" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostsMinimal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostsMinimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHosts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHosts" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHosts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHost" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostOperation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostOperation" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostOperation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostInstanceByFilter_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostInstanceByFilter" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostInstanceByFilter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostInstanceByFilterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperation" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulk_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationBulk" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulk_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationBulkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkAdapterSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkAdapterSettings" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkAdapterSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkAdapterSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkAdapterSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkAdapterSetting" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkAdapterSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkAdapterSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationNames" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplication" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsList" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsListForMonitoring_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsListForMonitoring" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsListForMonitoring_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsListForMonitoringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMessageBoxDatabases_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageBoxDatabases" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMessageBoxDatabases_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageBoxDatabasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPlatformSettingsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatformSettingsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetPlatformSettingsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatformSettingsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPorts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPorts" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPorts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPortsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceivePorts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceivePorts" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceivePorts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceivePortsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrations" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPortsBasic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPortsBasic" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPortsBasic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPortsBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceivePortsBasic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceivePortsBasic" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceivePortsBasic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceivePortsBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrationsBasic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrationsBasic" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrationsBasic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrationsBasicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetTopology_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopology" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetTopology_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopologyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkGroupStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkGroupStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkGroupStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkGroupStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkGeneral_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkGeneral" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkGeneral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkDatabases_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkDatabases" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkDatabases_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkDatabasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetUserNTGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserNTGroups" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetUserNTGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserNTGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSuspendedInstancesCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuspendedInstancesCount" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSuspendedInstancesCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuspendedInstancesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetHostInstanceAuditData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHostInstanceAuditData" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetHostInstanceAuditData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHostInstanceAuditDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetApplicationAuditData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationAuditData" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetApplicationAuditData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationAuditDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetGovernanceAuditActivityHistoryData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGovernanceAuditActivityHistoryData" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetGovernanceAuditActivityHistoryData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGovernanceAuditActivityHistoryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetAuditArtifactsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAuditArtifactsCount" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetAuditArtifactsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAuditArtifactsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVReport" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVReportList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVReportList" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVReportList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVReportListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVLastReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVLastReport" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetMBVLastReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMBVLastReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_RunMBVNOW_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunMBVNOW" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_RunMBVNOW_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunMBVNOWResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetCustomSQLQueryNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomSQLQueryNames" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetCustomSQLQueryNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomSQLQueryNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteCustomSQLQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomSQLQuery" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteCustomSQLQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomSQLQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ManageCustomSQLQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageCustomSQLQuery" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ManageCustomSQLQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageCustomSQLQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetConfiguredStandbySQLInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredStandbySQLInstance" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetConfiguredStandbySQLInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguredStandbySQLInstanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetLiveBackupHealthDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveBackupHealthDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetLiveBackupHealthDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveBackupHealthDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetStandByBackupHealthDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStandByBackupHealthDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetStandByBackupHealthDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStandByBackupHealthDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBackupJobConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBackupJobConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBackupJobConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBackupJobConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateConfiguredStandbySQLInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfiguredStandbySQLInstance" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateConfiguredStandbySQLInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfiguredStandbySQLInstanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateBackupJobConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBackupJobConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateBackupJobConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBackupJobConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostOperationRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostOperationRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostOperationRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostOperationRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulkRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationBulkRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulkRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBizTalkHostInstanceOperationBulkRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetHostInstanceAuditDataRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHostInstanceAuditDataRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetHostInstanceAuditDataRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHostInstanceAuditDataRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetApplicationAuditDataRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationAuditDataRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetApplicationAuditDataRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApplicationAuditDataRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteCustomSQLQueryRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomSQLQueryRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ExecuteCustomSQLQueryRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomSQLQueryRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ManageCustomSQLQueryRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManageCustomSQLQueryRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_ManageCustomSQLQueryRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManageCustomSQLQueryRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateConfiguredStandbySQLInstanceRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfiguredStandbySQLInstanceRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateConfiguredStandbySQLInstanceRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfiguredStandbySQLInstanceRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateBackupJobConfigurationRequestSample_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBackupJobConfigurationRequestSample" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_UpdateBackupJobConfigurationRequestSample_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBackupJobConfigurationRequestSampleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPortsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPortsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetSendPortsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSendPortsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceiveLocationsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceiveLocationsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetReceiveLocationsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceiveLocationsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrationsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrationsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetOrchestrationsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrchestrationsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkApplicationsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkApplicationsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostsStatistics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostsStatistics" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetBizTalkHostsStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBizTalkHostsStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetDocSpecPropertyNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocSpecPropertyNames" />
+  </wsdl:message>
+  <wsdl:message name="IBizTalkGroupService_GetDocSpecPropertyNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocSpecPropertyNamesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBizTalkGroupService">
+    <wsdl:operation name="GetBizTalkServerList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkServerList" message="tns:IBizTalkGroupService_GetBizTalkServerList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkServerListResponse" message="tns:IBizTalkGroupService_GetBizTalkServerList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkServer">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkServer" message="tns:IBizTalkGroupService_GetBizTalkServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkServerResponse" message="tns:IBizTalkGroupService_GetBizTalkServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlJobs">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlJobs" message="tns:IBizTalkGroupService_GetSqlJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlJobsResponse" message="tns:IBizTalkGroupService_GetSqlJobs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerPhysicalNames">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerPhysicalNames" message="tns:IBizTalkGroupService_GetSqlServerPhysicalNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerPhysicalNamesResponse" message="tns:IBizTalkGroupService_GetSqlServerPhysicalNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhysicalSqlServers">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPhysicalSqlServers" message="tns:IBizTalkGroupService_GetPhysicalSqlServers_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPhysicalSqlServersResponse" message="tns:IBizTalkGroupService_GetPhysicalSqlServers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhysicalSqlServer">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPhysicalSqlServer" message="tns:IBizTalkGroupService_GetPhysicalSqlServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPhysicalSqlServerResponse" message="tns:IBizTalkGroupService_GetPhysicalSqlServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerInstances">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerInstances" message="tns:IBizTalkGroupService_GetSqlServerInstances_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerInstancesResponse" message="tns:IBizTalkGroupService_GetSqlServerInstances_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSqlServerInstance">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerInstance" message="tns:IBizTalkGroupService_GetSqlServerInstance_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSqlServerInstanceResponse" message="tns:IBizTalkGroupService_GetSqlServerInstance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkHostsMinimal">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostsMinimal" message="tns:IBizTalkGroupService_GetBizTalkHostsMinimal_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostsMinimalResponse" message="tns:IBizTalkGroupService_GetBizTalkHostsMinimal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkHosts">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHosts" message="tns:IBizTalkGroupService_GetBizTalkHosts_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostsResponse" message="tns:IBizTalkGroupService_GetBizTalkHosts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkHost">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHost" message="tns:IBizTalkGroupService_GetBizTalkHost_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostResponse" message="tns:IBizTalkGroupService_GetBizTalkHost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostOperation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostOperation" message="tns:IBizTalkGroupService_ExecuteBizTalkHostOperation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostOperationResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostOperation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkHostInstanceByFilter">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostInstanceByFilter" message="tns:IBizTalkGroupService_GetBizTalkHostInstanceByFilter_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostInstanceByFilterResponse" message="tns:IBizTalkGroupService_GetBizTalkHostInstanceByFilter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostInstanceOperation">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperation" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperation_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostInstanceOperationBulk">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationBulk" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulk_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationBulkResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulk_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkAdapterSettings">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkAdapterSettings" message="tns:IBizTalkGroupService_GetBizTalkAdapterSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkAdapterSettingsResponse" message="tns:IBizTalkGroupService_GetBizTalkAdapterSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkAdapterSetting">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkAdapterSetting" message="tns:IBizTalkGroupService_GetBizTalkAdapterSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkAdapterSettingResponse" message="tns:IBizTalkGroupService_GetBizTalkAdapterSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkApplicationNames">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationNames" message="tns:IBizTalkGroupService_GetBizTalkApplicationNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationNamesResponse" message="tns:IBizTalkGroupService_GetBizTalkApplicationNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkApplication">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplication" message="tns:IBizTalkGroupService_GetBizTalkApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationResponse" message="tns:IBizTalkGroupService_GetBizTalkApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkApplicationsList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsList" message="tns:IBizTalkGroupService_GetBizTalkApplicationsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsListResponse" message="tns:IBizTalkGroupService_GetBizTalkApplicationsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkApplicationsListForMonitoring">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsListForMonitoring" message="tns:IBizTalkGroupService_GetBizTalkApplicationsListForMonitoring_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsListForMonitoringResponse" message="tns:IBizTalkGroupService_GetBizTalkApplicationsListForMonitoring_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageBoxDatabases">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMessageBoxDatabases" message="tns:IBizTalkGroupService_GetMessageBoxDatabases_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMessageBoxDatabasesResponse" message="tns:IBizTalkGroupService_GetMessageBoxDatabases_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatformSettingsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPlatformSettingsStatistics" message="tns:IBizTalkGroupService_GetPlatformSettingsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetPlatformSettingsStatisticsResponse" message="tns:IBizTalkGroupService_GetPlatformSettingsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSendPorts">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPorts" message="tns:IBizTalkGroupService_GetSendPorts_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPortsResponse" message="tns:IBizTalkGroupService_GetSendPorts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceivePorts">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceivePorts" message="tns:IBizTalkGroupService_GetReceivePorts_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceivePortsResponse" message="tns:IBizTalkGroupService_GetReceivePorts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrchestrations">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrations" message="tns:IBizTalkGroupService_GetOrchestrations_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrationsResponse" message="tns:IBizTalkGroupService_GetOrchestrations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSendPortsBasic">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPortsBasic" message="tns:IBizTalkGroupService_GetSendPortsBasic_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPortsBasicResponse" message="tns:IBizTalkGroupService_GetSendPortsBasic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceivePortsBasic">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceivePortsBasic" message="tns:IBizTalkGroupService_GetReceivePortsBasic_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceivePortsBasicResponse" message="tns:IBizTalkGroupService_GetReceivePortsBasic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrchestrationsBasic">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrationsBasic" message="tns:IBizTalkGroupService_GetOrchestrationsBasic_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrationsBasicResponse" message="tns:IBizTalkGroupService_GetOrchestrationsBasic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopology">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetTopology" message="tns:IBizTalkGroupService_GetTopology_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetTopologyResponse" message="tns:IBizTalkGroupService_GetTopology_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkGroupStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkGroupStatistics" message="tns:IBizTalkGroupService_GetBizTalkGroupStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkGroupStatisticsResponse" message="tns:IBizTalkGroupService_GetBizTalkGroupStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkGeneral">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkGeneral" message="tns:IBizTalkGroupService_GetBizTalkGeneral_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkGeneralResponse" message="tns:IBizTalkGroupService_GetBizTalkGeneral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkDatabases">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkDatabases" message="tns:IBizTalkGroupService_GetBizTalkDatabases_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkDatabasesResponse" message="tns:IBizTalkGroupService_GetBizTalkDatabases_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserNTGroups">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetUserNTGroups" message="tns:IBizTalkGroupService_GetUserNTGroups_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetUserNTGroupsResponse" message="tns:IBizTalkGroupService_GetUserNTGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSuspendedInstancesCount">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSuspendedInstancesCount" message="tns:IBizTalkGroupService_GetSuspendedInstancesCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSuspendedInstancesCountResponse" message="tns:IBizTalkGroupService_GetSuspendedInstancesCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHostInstanceAuditData">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetHostInstanceAuditData" message="tns:IBizTalkGroupService_GetHostInstanceAuditData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetHostInstanceAuditDataResponse" message="tns:IBizTalkGroupService_GetHostInstanceAuditData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationAuditData">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetApplicationAuditData" message="tns:IBizTalkGroupService_GetApplicationAuditData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetApplicationAuditDataResponse" message="tns:IBizTalkGroupService_GetApplicationAuditData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGovernanceAuditActivityHistoryData">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetGovernanceAuditActivityHistoryData" message="tns:IBizTalkGroupService_GetGovernanceAuditActivityHistoryData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetGovernanceAuditActivityHistoryDataResponse" message="tns:IBizTalkGroupService_GetGovernanceAuditActivityHistoryData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditArtifactsCount">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetAuditArtifactsCount" message="tns:IBizTalkGroupService_GetAuditArtifactsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetAuditArtifactsCountResponse" message="tns:IBizTalkGroupService_GetAuditArtifactsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMBVReport">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVReport" message="tns:IBizTalkGroupService_GetMBVReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVReportResponse" message="tns:IBizTalkGroupService_GetMBVReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMBVReportList">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVReportList" message="tns:IBizTalkGroupService_GetMBVReportList_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVReportListResponse" message="tns:IBizTalkGroupService_GetMBVReportList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMBVLastReport">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVLastReport" message="tns:IBizTalkGroupService_GetMBVLastReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetMBVLastReportResponse" message="tns:IBizTalkGroupService_GetMBVLastReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunMBVNOW">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/RunMBVNOW" message="tns:IBizTalkGroupService_RunMBVNOW_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/RunMBVNOWResponse" message="tns:IBizTalkGroupService_RunMBVNOW_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSQLQueryNames">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetCustomSQLQueryNames" message="tns:IBizTalkGroupService_GetCustomSQLQueryNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetCustomSQLQueryNamesResponse" message="tns:IBizTalkGroupService_GetCustomSQLQueryNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomSQLQuery">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteCustomSQLQuery" message="tns:IBizTalkGroupService_ExecuteCustomSQLQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteCustomSQLQueryResponse" message="tns:IBizTalkGroupService_ExecuteCustomSQLQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageCustomSQLQuery">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ManageCustomSQLQuery" message="tns:IBizTalkGroupService_ManageCustomSQLQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ManageCustomSQLQueryResponse" message="tns:IBizTalkGroupService_ManageCustomSQLQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguredStandbySQLInstance">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetConfiguredStandbySQLInstance" message="tns:IBizTalkGroupService_GetConfiguredStandbySQLInstance_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetConfiguredStandbySQLInstanceResponse" message="tns:IBizTalkGroupService_GetConfiguredStandbySQLInstance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveBackupHealthDetails">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetLiveBackupHealthDetails" message="tns:IBizTalkGroupService_GetLiveBackupHealthDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetLiveBackupHealthDetailsResponse" message="tns:IBizTalkGroupService_GetLiveBackupHealthDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStandByBackupHealthDetails">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetStandByBackupHealthDetails" message="tns:IBizTalkGroupService_GetStandByBackupHealthDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetStandByBackupHealthDetailsResponse" message="tns:IBizTalkGroupService_GetStandByBackupHealthDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBackupJobConfiguration">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBackupJobConfiguration" message="tns:IBizTalkGroupService_GetBackupJobConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBackupJobConfigurationResponse" message="tns:IBizTalkGroupService_GetBackupJobConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateConfiguredStandbySQLInstance">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateConfiguredStandbySQLInstance" message="tns:IBizTalkGroupService_UpdateConfiguredStandbySQLInstance_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateConfiguredStandbySQLInstanceResponse" message="tns:IBizTalkGroupService_UpdateConfiguredStandbySQLInstance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBackupJobConfiguration">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateBackupJobConfiguration" message="tns:IBizTalkGroupService_UpdateBackupJobConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateBackupJobConfigurationResponse" message="tns:IBizTalkGroupService_UpdateBackupJobConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostOperationRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostOperationRequestSample" message="tns:IBizTalkGroupService_ExecuteBizTalkHostOperationRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostOperationRequestSampleResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostOperationRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostInstanceOperationRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationRequestSample" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationRequestSampleResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBizTalkHostInstanceOperationBulkRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationBulkRequestSample" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulkRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteBizTalkHostInstanceOperationBulkRequestSampleResponse" message="tns:IBizTalkGroupService_ExecuteBizTalkHostInstanceOperationBulkRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHostInstanceAuditDataRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetHostInstanceAuditDataRequestSample" message="tns:IBizTalkGroupService_GetHostInstanceAuditDataRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetHostInstanceAuditDataRequestSampleResponse" message="tns:IBizTalkGroupService_GetHostInstanceAuditDataRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApplicationAuditDataRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetApplicationAuditDataRequestSample" message="tns:IBizTalkGroupService_GetApplicationAuditDataRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetApplicationAuditDataRequestSampleResponse" message="tns:IBizTalkGroupService_GetApplicationAuditDataRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomSQLQueryRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteCustomSQLQueryRequestSample" message="tns:IBizTalkGroupService_ExecuteCustomSQLQueryRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ExecuteCustomSQLQueryRequestSampleResponse" message="tns:IBizTalkGroupService_ExecuteCustomSQLQueryRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageCustomSQLQueryRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ManageCustomSQLQueryRequestSample" message="tns:IBizTalkGroupService_ManageCustomSQLQueryRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/ManageCustomSQLQueryRequestSampleResponse" message="tns:IBizTalkGroupService_ManageCustomSQLQueryRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateConfiguredStandbySQLInstanceRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateConfiguredStandbySQLInstanceRequestSample" message="tns:IBizTalkGroupService_UpdateConfiguredStandbySQLInstanceRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateConfiguredStandbySQLInstanceRequestSampleResponse" message="tns:IBizTalkGroupService_UpdateConfiguredStandbySQLInstanceRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBackupJobConfigurationRequestSample">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateBackupJobConfigurationRequestSample" message="tns:IBizTalkGroupService_UpdateBackupJobConfigurationRequestSample_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/UpdateBackupJobConfigurationRequestSampleResponse" message="tns:IBizTalkGroupService_UpdateBackupJobConfigurationRequestSample_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSendPortsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPortsStatistics" message="tns:IBizTalkGroupService_GetSendPortsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetSendPortsStatisticsResponse" message="tns:IBizTalkGroupService_GetSendPortsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiveLocationsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceiveLocationsStatistics" message="tns:IBizTalkGroupService_GetReceiveLocationsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetReceiveLocationsStatisticsResponse" message="tns:IBizTalkGroupService_GetReceiveLocationsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrchestrationsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrationsStatistics" message="tns:IBizTalkGroupService_GetOrchestrationsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetOrchestrationsStatisticsResponse" message="tns:IBizTalkGroupService_GetOrchestrationsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkApplicationsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsStatistics" message="tns:IBizTalkGroupService_GetBizTalkApplicationsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkApplicationsStatisticsResponse" message="tns:IBizTalkGroupService_GetBizTalkApplicationsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBizTalkHostsStatistics">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostsStatistics" message="tns:IBizTalkGroupService_GetBizTalkHostsStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetBizTalkHostsStatisticsResponse" message="tns:IBizTalkGroupService_GetBizTalkHostsStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocSpecPropertyNames">
+      <wsdl:input wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetDocSpecPropertyNames" message="tns:IBizTalkGroupService_GetDocSpecPropertyNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.kovai.co.uk/biztalk360/services/1.0/IBizTalkGroupService/GetDocSpecPropertyNamesResponse" message="tns:IBizTalkGroupService_GetDocSpecPropertyNames_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="BizTalkGroupService" />
+</wsdl:definitions>

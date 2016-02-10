@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/scheduler/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="ProcessMonitorScheduleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="processMonitorSchedule" nillable="true" type="tns:ProcessMonitorSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorScheduleList" nillable="true" type="tns:ProcessMonitorScheduleList" />
+  <xs:complexType name="ProcessMonitorSchedule">
+    <xs:sequence>
+      <xs:element name="alarmName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schedule" nillable="true" type="tns:Schedule">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="task" nillable="true" type="tns:ProcessMonitorTask">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorSchedule" nillable="true" type="tns:ProcessMonitorSchedule" />
+  <xs:complexType name="Schedule">
+    <xs:sequence>
+      <xs:element name="scheduleId" type="xs:int" />
+      <xs:element name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="scheduleType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="setOnce" nillable="true" type="tns:DaySpecificFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="setDailyInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="setWeekly" nillable="true" type="tns:WeeklyFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="setMonthly" nillable="true" type="tns:MonthlyFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="setSubday" nillable="true" type="tns:SubDayFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="setDuration" nillable="true" type="tns:ActivePeriod">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="summary" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Schedule" nillable="true" type="tns:Schedule" />
+  <xs:complexType name="DaySpecificFrequency">
+    <xs:sequence>
+      <xs:element name="startDate" type="xs:int" />
+      <xs:element name="startTime" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DaySpecificFrequency" nillable="true" type="tns:DaySpecificFrequency" />
+  <xs:complexType name="WeeklyFrequency">
+    <xs:sequence>
+      <xs:element name="interval" type="xs:int" />
+      <xs:element name="dayNames" nillable="true" type="tns:DayNames">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeeklyFrequency" nillable="true" type="tns:WeeklyFrequency" />
+  <xs:complexType name="DayNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dayName" type="tns:DayName" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DayNames" nillable="true" type="tns:DayNames" />
+  <xs:simpleType name="DayName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sun" />
+      <xs:enumeration value="Mon" />
+      <xs:enumeration value="Tue" />
+      <xs:enumeration value="Wed" />
+      <xs:enumeration value="Thu" />
+      <xs:enumeration value="Fri" />
+      <xs:enumeration value="Sat" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DayName" nillable="true" type="tns:DayName" />
+  <xs:complexType name="MonthlyFrequency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="specific" nillable="true" type="tns:MonthlySpecificFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="relative" nillable="true" type="tns:MonthlyRelativeFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MonthlyFrequency" nillable="true" type="tns:MonthlyFrequency" />
+  <xs:complexType name="MonthlySpecificFrequency">
+    <xs:sequence>
+      <xs:element name="day" type="xs:int" />
+      <xs:element name="month" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MonthlySpecificFrequency" nillable="true" type="tns:MonthlySpecificFrequency" />
+  <xs:complexType name="MonthlyRelativeFrequency">
+    <xs:sequence>
+      <xs:element name="nthDayOfWeek" type="tns:MonthlyRelativeWeek" />
+      <xs:element name="dayName" type="tns:DayName" />
+      <xs:element name="interval" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MonthlyRelativeFrequency" nillable="true" type="tns:MonthlyRelativeFrequency" />
+  <xs:simpleType name="MonthlyRelativeWeek">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="First" />
+      <xs:enumeration value="Second" />
+      <xs:enumeration value="Third" />
+      <xs:enumeration value="Fourth" />
+      <xs:enumeration value="Last" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MonthlyRelativeWeek" nillable="true" type="tns:MonthlyRelativeWeek" />
+  <xs:complexType name="SubDayFrequency">
+    <xs:sequence>
+      <xs:element name="isRecurring" type="xs:boolean" />
+      <xs:element name="occursOnce" type="xs:int" />
+      <xs:element name="occursEvery" nillable="true" type="tns:TimeFrequency">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubDayFrequency" nillable="true" type="tns:SubDayFrequency" />
+  <xs:complexType name="TimeFrequency">
+    <xs:sequence>
+      <xs:element name="unit" type="tns:TimeFrequencyUnit" />
+      <xs:element name="interval" type="xs:int" />
+      <xs:element name="startTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeFrequency" nillable="true" type="tns:TimeFrequency" />
+  <xs:simpleType name="TimeFrequencyUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HH" />
+      <xs:enumeration value="MM" />
+      <xs:enumeration value="SS" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TimeFrequencyUnit" nillable="true" type="tns:TimeFrequencyUnit" />
+  <xs:complexType name="ActivePeriod">
+    <xs:sequence>
+      <xs:element name="startDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="isAllDay" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivePeriod" nillable="true" type="tns:ActivePeriod" />
+  <xs:complexType name="ProcessMonitorTask">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageCount" type="xs:int" />
+      <xs:element name="messageOperator" type="tns:MinMessagesOperator" />
+      <xs:element name="monitoringPorts" nillable="true" type="tns:ProcessMonitorPorts">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorTask" nillable="true" type="tns:ProcessMonitorTask" />
+  <xs:simpleType name="MinMessagesOperator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LessThan" />
+      <xs:enumeration value="Equal" />
+      <xs:enumeration value="GreaterThan" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MinMessagesOperator" nillable="true" type="tns:MinMessagesOperator" />
+  <xs:complexType name="ProcessMonitorPorts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="port" nillable="true" type="tns:ProcessMonitorPort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorPorts" nillable="true" type="tns:ProcessMonitorPorts" />
+  <xs:complexType name="ProcessMonitorPort">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element name="taskId" type="xs:int" />
+      <xs:element minOccurs="0" name="portName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="portType" type="tns:ProcessMonitorPortType" />
+      <xs:element minOccurs="0" name="portUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="isSendPortDynamic" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorPort" nillable="true" type="tns:ProcessMonitorPort" />
+  <xs:simpleType name="ProcessMonitorPortType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Receive" />
+      <xs:enumeration value="Send" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProcessMonitorPortType" nillable="true" type="tns:ProcessMonitorPortType" />
+  <xs:complexType name="DataMonitorScheduleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dataMonitorSchedule" nillable="true" type="tns:DataMonitorSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorScheduleList" nillable="true" type="tns:DataMonitorScheduleList" />
+  <xs:complexType name="DataMonitorSchedule">
+    <xs:sequence>
+      <xs:element name="alarmName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schedule" nillable="true" type="tns:Schedule">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="task" nillable="true" type="tns:DataMonitorTask">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorSchedule" nillable="true" type="tns:DataMonitorSchedule" />
+  <xs:complexType name="DataMonitorTask">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageWarningCount" type="xs:int" />
+      <xs:element name="messageWarningOperator" type="tns:MinMessagesOperator" />
+      <xs:element name="messageErrorCount" type="xs:int" />
+      <xs:element name="messageErrorOperator" type="tns:MinMessagesOperator" />
+      <xs:element name="queryType" type="tns:DataMonitorQueryType" />
+      <xs:element name="querySubType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dateRangeColumnName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="compositeFilter" nillable="true" type="q1:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sendDetailInNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isActionRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="actionWhen" type="tns:DataMonitorActionWhen" />
+      <xs:element minOccurs="0" name="actionCommand" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="actionCommandArguments" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="archiveBeforeTerminate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sendPayloadInNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="restrictNumberOfRetries" type="xs:int" />
+      <xs:element minOccurs="0" name="commaSeperatedContextProperties" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorTask" nillable="true" type="tns:DataMonitorTask" />
+  <xs:simpleType name="DataMonitorQueryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MessageBoxQuery" />
+      <xs:enumeration value="TrackingDataQuery" />
+      <xs:enumeration value="BAMQuery" />
+      <xs:enumeration value="ESBQuery" />
+      <xs:enumeration value="EDIQuery" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataMonitorQueryType" nillable="true" type="tns:DataMonitorQueryType" />
+  <xs:simpleType name="DataMonitorActionWhen">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EveryTime" />
+      <xs:enumeration value="OnErrorCondition" />
+      <xs:enumeration value="OnWarningCondition" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataMonitorActionWhen" nillable="true" type="tns:DataMonitorActionWhen" />
+  <xs:complexType name="ScheduleBasicInfoList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="taskSchedule" nillable="true" type="tns:ScheduleBasicInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleBasicInfoList" nillable="true" type="tns:ScheduleBasicInfoList" />
+  <xs:complexType name="ScheduleBasicInfo">
+    <xs:sequence>
+      <xs:element name="scheduleId" type="xs:int" />
+      <xs:element name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="alarmName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="scheduleSummary" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nextRunDateTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleBasicInfo" nillable="true" type="tns:ScheduleBasicInfo" />
+  <xs:complexType name="ProcessMonitorStatuses">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="status" nillable="true" type="tns:ProcessMonitorStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorStatuses" nillable="true" type="tns:ProcessMonitorStatuses" />
+  <xs:complexType name="ProcessMonitorStatus">
+    <xs:sequence>
+      <xs:element name="monitorStatus" type="tns:ProcessMonitoringStatus" />
+      <xs:element name="activityDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorStatus" nillable="true" type="tns:ProcessMonitorStatus" />
+  <xs:simpleType name="ProcessMonitoringStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Failure" />
+      <xs:enumeration value="Exception" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Success" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProcessMonitoringStatus" nillable="true" type="tns:ProcessMonitoringStatus" />
+  <xs:complexType name="DataMonitorStatuses">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="status" nillable="true" type="tns:DataMonitorStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorStatuses" nillable="true" type="tns:DataMonitorStatuses" />
+  <xs:complexType name="DataMonitorStatus">
+    <xs:sequence>
+      <xs:element name="monitorStatus" type="tns:DataMonitoringStatus" />
+      <xs:element name="activityDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorStatus" nillable="true" type="tns:DataMonitorStatus" />
+  <xs:simpleType name="DataMonitoringStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Failure" />
+      <xs:enumeration value="Exception" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Warning" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataMonitoringStatus" nillable="true" type="tns:DataMonitoringStatus" />
+  <xs:complexType name="ProcessMonitorStatusesByDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="status" nillable="true" type="tns:ProcessMonitorStatusByDay" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorStatusesByDay" nillable="true" type="tns:ProcessMonitorStatusesByDay" />
+  <xs:complexType name="ProcessMonitorStatusByDay">
+    <xs:sequence>
+      <xs:element name="scheduleId" type="xs:int" />
+      <xs:element name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="alarmName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="activityId" type="xs:int" />
+      <xs:element name="fromTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ToTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="monitorStatus" type="tns:ProcessMonitoringStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorStatusByDay" nillable="true" type="tns:ProcessMonitorStatusByDay" />
+  <xs:complexType name="ProcessMonitorResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="result" nillable="true" type="tns:ProcessMonitorResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorResults" nillable="true" type="tns:ProcessMonitorResults" />
+  <xs:complexType name="ProcessMonitorResult">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element name="environmentId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="scheduleActivityId" type="xs:int" />
+      <xs:element minOccurs="0" name="portId" type="xs:int" />
+      <xs:element minOccurs="0" name="scheduleId" type="xs:int" />
+      <xs:element minOccurs="0" name="monitorResult" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="condition" type="tns:MinMessagesOperator" />
+      <xs:element minOccurs="0" name="expectedCount" type="xs:int" />
+      <xs:element minOccurs="0" name="actualCount" type="xs:int" />
+      <xs:element minOccurs="0" name="portName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="portUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="portType" type="tns:ProcessMonitorPortType" />
+      <xs:element minOccurs="0" name="monitorStatus" type="tns:ProcessMonitoringStatus" />
+      <xs:element minOccurs="0" name="exception" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMonitorResult" nillable="true" type="tns:ProcessMonitorResult" />
+  <xs:complexType name="DataMonitorStatusesByDay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="status" nillable="true" type="tns:DataMonitorStatusByDay" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorStatusesByDay" nillable="true" type="tns:DataMonitorStatusesByDay" />
+  <xs:complexType name="DataMonitorStatusByDay">
+    <xs:sequence>
+      <xs:element name="scheduleId" type="xs:int" />
+      <xs:element name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="alarmName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="activityId" type="xs:int" />
+      <xs:element name="fromTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ToTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="queryType" type="tns:DataMonitorQueryType" />
+      <xs:element name="monitorStatus" type="tns:DataMonitoringStatus" />
+      <xs:element minOccurs="0" name="isTaskActionTaken" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorStatusByDay" nillable="true" type="tns:DataMonitorStatusByDay" />
+  <xs:complexType name="DataMonitoringStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="processCount" type="xs:long" />
+      <xs:element minOccurs="0" name="messageBoxDataCount" type="xs:long" />
+      <xs:element minOccurs="0" name="trackingDataCount" type="xs:long" />
+      <xs:element minOccurs="0" name="bamCount" type="xs:long" />
+      <xs:element minOccurs="0" name="ediCount" type="xs:long" />
+      <xs:element minOccurs="0" name="esbCount" type="xs:long" />
+      <xs:element minOccurs="0" name="total" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitoringStatistics" nillable="true" type="tns:DataMonitoringStatistics" />
+  <xs:complexType name="DataMonitorResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="result" nillable="true" type="tns:DataMonitorResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorResults" nillable="true" type="tns:DataMonitorResults" />
+  <xs:complexType name="DataMonitorResult">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element name="environmentId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="scheduleId" type="xs:int" />
+      <xs:element name="scheduleActivityId" type="xs:int" />
+      <xs:element minOccurs="0" name="dataMonitorTaskId" type="xs:int" />
+      <xs:element minOccurs="0" name="scheduleName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toDate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageWarningCount" type="xs:int" />
+      <xs:element name="messageWarningOperator" type="tns:MinMessagesOperator" />
+      <xs:element name="messageErrorCount" type="xs:int" />
+      <xs:element name="messageErrorOperator" type="tns:MinMessagesOperator" />
+      <xs:element minOccurs="0" name="actualCount" type="xs:int" />
+      <xs:element name="queryType" type="tns:DataMonitorQueryType" />
+      <xs:element name="querySubType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dateRangeColumnName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="compositeFilter" nillable="true" type="q2:CompositeFilter">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="monitorStatus" type="tns:DataMonitoringStatus" />
+      <xs:element minOccurs="0" name="monitorResult" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="exception" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sendDetailInNotification" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isTaskActionTaken" type="xs:boolean" />
+      <xs:element minOccurs="0" name="taskResultActions" nillable="true" type="tns:DataMonitorTaskResultActions">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorResult" nillable="true" type="tns:DataMonitorResult" />
+  <xs:complexType name="DataMonitorTaskResultActions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="result" nillable="true" type="tns:DataMonitorTaskResultAction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorTaskResultActions" nillable="true" type="tns:DataMonitorTaskResultActions" />
+  <xs:complexType name="DataMonitorTaskResultAction">
+    <xs:sequence>
+      <xs:element name="taskActionId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="activityId" type="xs:int" />
+      <xs:element minOccurs="0" name="dataMonitorTaskId" type="xs:int" />
+      <xs:element minOccurs="0" name="instanceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="instanceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="instanceDetail" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="actionWhen" type="tns:DataMonitorActionWhen" />
+      <xs:element minOccurs="0" name="actionCommand" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="actionCommandArguments" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="actionOutcome" type="tns:DataMonitorActionOutcome" />
+      <xs:element minOccurs="0" name="exception" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dateCreated" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="isArchivePresent" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataMonitorTaskResultAction" nillable="true" type="tns:DataMonitorTaskResultAction" />
+  <xs:simpleType name="DataMonitorActionOutcome">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Failure" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataMonitorActionOutcome" nillable="true" type="tns:DataMonitorActionOutcome" />
+  <xs:simpleType name="ScheduleOperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Add" />
+      <xs:enumeration value="Edit" />
+      <xs:enumeration value="Delete" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ScheduleOperation" nillable="true" type="tns:ScheduleOperation" />
+</xs:schema>

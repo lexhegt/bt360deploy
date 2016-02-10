@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3CD1A50-5BF4-4C2C-B10B-EC7A6DAA13ED}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AxonOlympus.BT360Deploy</RootNamespace>
+    <AssemblyName>BT360Deploy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AdminServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BizTalkGroupServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\AdminServiceReference\AdminService.wsdl" />
+    <None Include="Service References\AdminServiceReference\AdminService.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService1.wsdl" />
+    <None Include="Service References\AdminServiceReference\AdminService1.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService10.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService11.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService12.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService13.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService14.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService15.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService16.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService17.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService18.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService19.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService2.wsdl" />
+    <None Include="Service References\AdminServiceReference\AdminService2.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService20.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService21.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService22.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService23.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService24.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService25.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService26.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService27.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService28.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService29.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService3.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService30.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService31.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService32.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService33.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService34.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService4.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService5.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService6.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService7.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService8.xsd" />
+    <None Include="Service References\AdminServiceReference\AdminService9.xsd" />
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.AddKnowledgebaseArticleRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.AdminServiceRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.AdminServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.BringMonitoringServerActiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.CreateExternalIntegrationPlaceHolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.CreateExternalIntegrationWidgetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.DeleteExternalIntegrationPlaceHolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.DeleteExternalIntegrationWidgetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.DeleteKnowledgebaseArticlesBulkRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.DeleteSavedQueryRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.EditKnowledgebaseArticleRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GenerateLicenseRequestRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GenerateLicenseRequestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetAllConfiguredEnvironmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetApiAuthDocumentationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetBizTalk360InfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetBizTalk360ToDoListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetConfiguredSystemRegionalSettingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetCurrentUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetDbCompatibilityInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetDefaultUserAccessPolicyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetEsbExceptionDbConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetExternalIntegrationPlaceHolderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetExternalIntegrationWidgetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetExternalIntegrationWidgetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetExternalIntegrationWidgetScriptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetLicenseActivationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetMBVScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetMonitoringPluginsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetMonitoringServersHAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetMonitoringServicesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetPurgingPolicyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetRequiredExternalIntegrationPlaceHolderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetServiceBusListenersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetServiceBusRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetStoredUserAccessPoliciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetSystemGlobalPropertiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetSystemProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetTimeZonesAndDateTimeFormatsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetUserListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.GetUserProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.InitialOnboardingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.IsSuperUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.LicenseActivationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.LicenseActivationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.LicenseDeactivationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MaintainAdminUserRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MaintainServiceBusRegistrationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MaintainSystemProfileRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MaintainSystemProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MaintainUserAccessPolicyRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.ManageGlobalPropertiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.ManageMonitoringServicesRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.ManageMonitoringServicesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.MonitoringServer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.NameValueList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.PurgePolicies.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.RemoveLicenseActivationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.SaveQueryRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.SubmitManualLicenseActivationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateEsbExceptionDbConfigRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateExternalIntegrationPlaceHolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateExternalIntegrationWidgetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateKnowledgebaseArticleRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateMBVScheduleRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UpdateUserProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UserAccessPolicy.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.UserProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminServiceReference\AxonOlympus.BT360Deploy.AdminServiceReference.ValidateEsbPortalSettingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.BizTalkGroupServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostInstanceOperationBulkRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostInstanceOperationBulkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostInstanceOperationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostInstanceOperationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostOperationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteBizTalkHostOperationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteCustomSQLQueryRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ExecuteCustomSQLQueryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetApplicationAuditDataRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetApplicationAuditDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetAuditArtifactsCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBackupJobConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkAdapterSettingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkAdapterSettingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkApplicationNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkApplicationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkApplicationsListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkApplicationsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkGroupDatabasesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkGroupGeneralResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkGroupStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkHostInstancesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkHostResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkHostsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkHostsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkServerListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetBizTalkServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetConfiguredStandbySQLInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetCustomSQLQueryNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetDocSpecPropertyNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetGovernanceAuditActivityHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetHostInstanceAuditDataRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetHostInstanceAuditDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetLiveBackupHealthDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetMBVLastReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetMBVReportListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetMBVReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetMessageBoxDatabasesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetOrchestrationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetOrchestrationsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetPhysicalSqlServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetPhysicalSqlServersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetPlatformSettingsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetReceiveLocationsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetReceivePortsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSendPortsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSendPortsStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSqlJobsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSqlServerInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSqlServerInstancesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSqlServerPhysicalNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetStandByBackupHealthDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetSuspendedInstancesCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetTopologyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.GetUserNTGroupsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ManageCustomSQLQueryRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.ManageCustomSQLQueryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.UpdateBackupJobConfigurationRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.UpdateBackupJobConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.UpdateConfiguredStandbySQLInstanceRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService.wsdl" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService1.wsdl" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService1.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService10.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService11.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService12.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService13.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService14.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService15.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService16.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService17.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService18.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService19.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService2.wsdl" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService2.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService20.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService21.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService22.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService23.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService24.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService25.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService26.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService27.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService28.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService29.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService3.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService30.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService31.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService32.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService33.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService4.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService5.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService6.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService7.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService8.xsd" />
+    <None Include="Service References\BizTalkGroupServiceReference\BizTalkGroupService9.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminServiceReference\" />
+    <WCFMetadataStorage Include="Service References\BizTalkGroupServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BizTalkGroupServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BizTalkGroupServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BizTalkGroupServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

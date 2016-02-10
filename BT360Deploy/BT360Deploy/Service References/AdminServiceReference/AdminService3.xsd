@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/activityMonitoring/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BamViewAccounts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bamViewAccount" nillable="true" type="tns:BamViewAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamViewAccounts" nillable="true" type="tns:BamViewAccounts" />
+  <xs:complexType name="BamViewAccount">
+    <xs:sequence>
+      <xs:element name="userName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isNTGroup" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamViewAccount" nillable="true" type="tns:BamViewAccount" />
+  <xs:complexType name="ActivityColumnInfoCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="activityColumnInfo" nillable="true" type="tns:ActivityColumnInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityColumnInfoCollection" nillable="true" type="tns:ActivityColumnInfoCollection" />
+  <xs:complexType name="ActivityColumnInfo">
+    <xs:sequence>
+      <xs:element name="columnName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="columnAlias" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="columnType" type="tns:BamColumnType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityColumnInfo" nillable="true" type="tns:ActivityColumnInfo" />
+  <xs:simpleType name="BamColumnType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Integer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BamColumnType" nillable="true" type="tns:BamColumnType" />
+  <xs:complexType name="BamActivityTimeWindows">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bamActivityTimeWindow" nillable="true" type="tns:BamActivityTimeWindow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamActivityTimeWindows" nillable="true" type="tns:BamActivityTimeWindows" />
+  <xs:complexType name="BamActivityTimeWindow">
+    <xs:sequence>
+      <xs:element name="activityName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="onlineWindowTimeLength" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="onlineWindowTimeUnit" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamActivityTimeWindow" nillable="true" type="tns:BamActivityTimeWindow" />
+  <xs:complexType name="BamActivityNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bamActivityName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamActivityNames" nillable="true" type="tns:BamActivityNames" />
+  <xs:complexType name="BamViewNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bamViewName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamViewNames" nillable="true" type="tns:BamViewNames" />
+  <xs:complexType name="BamActivitySearchSelectedColumns">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="column" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamActivitySearchSelectedColumns" nillable="true" type="tns:BamActivitySearchSelectedColumns" />
+  <xs:complexType name="BamActivitySearchOrderbyColumns">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="column" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BamActivitySearchOrderbyColumns" nillable="true" type="tns:BamActivitySearchOrderbyColumns" />
+</xs:schema>

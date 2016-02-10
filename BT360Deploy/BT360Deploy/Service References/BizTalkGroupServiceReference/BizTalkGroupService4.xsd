@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/esbManagementService/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/esbManagementService/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd18" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:complexType name="GetESBFaultMessageContextPropertiesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="contextProperties" nillable="true" type="q2:ESBFaultMessageContextProperties">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultMessageContextPropertiesResponse" nillable="true" type="tns:GetESBFaultMessageContextPropertiesResponse" />
+  <xs:complexType name="GetESBFaultMessageContentResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="messagePart" nillable="true" type="q4:ESBFaultMessagePart">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultMessageContentResponse" nillable="true" type="tns:GetESBFaultMessageContentResponse" />
+  <xs:complexType name="GetESBFaultMessageInstancesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="messageInstances" nillable="true" type="q6:ESBFaultMessageInstances">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultMessageInstancesResponse" nillable="true" type="tns:GetESBFaultMessageInstancesResponse" />
+  <xs:complexType name="GetESBFaultExceptionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="esbFaultException" nillable="true" type="q8:ESBFaultException">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultExceptionResponse" nillable="true" type="tns:GetESBFaultExceptionResponse" />
+  <xs:complexType name="GetESBFaultFilterColumnValuesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="esbFaultFilterColumnValues" nillable="true" type="q10:ESBFaultFilterColumnValues">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultFilterColumnValuesResponse" nillable="true" type="tns:GetESBFaultFilterColumnValuesResponse" />
+  <xs:complexType name="ResubmitSingleMessageResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="resubmitStatus" nillable="true" type="q12:ResubmitStatus">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResubmitSingleMessageResponse" nillable="true" type="tns:ResubmitSingleMessageResponse" />
+  <xs:complexType name="DownloadESBMessageResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadESBMessageResponse" nillable="true" type="tns:DownloadESBMessageResponse" />
+  <xs:complexType name="DownloadESBMessagesInFaultResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q14:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadESBMessagesInFaultResponse" nillable="true" type="tns:DownloadESBMessagesInFaultResponse" />
+  <xs:complexType name="ResubmitMultipleMessagesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q15:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="resubmitStatusList" nillable="true" type="q16:ResubmitStatusList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResubmitMultipleMessagesResponse" nillable="true" type="tns:ResubmitMultipleMessagesResponse" />
+  <xs:complexType name="GetESBAuditDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q17:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="auditLogList" nillable="true" type="q18:ESBAuditLogList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBAuditDataResponse" nillable="true" type="tns:GetESBAuditDataResponse" />
+  <xs:complexType name="GetESBFaultsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q19:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" minOccurs="0" name="faults" nillable="true" type="q20:ESBFaults">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="downloadLink" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultsResponse" nillable="true" type="tns:GetESBFaultsResponse" />
+  <xs:complexType name="ESBManagementServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q21:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ESBManagementServiceResponse" nillable="true" type="tns:ESBManagementServiceResponse" />
+  <xs:complexType name="ESBManagementServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q22:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ESBManagementServiceRequest" nillable="true" type="tns:ESBManagementServiceRequest" />
+  <xs:complexType name="GetESBAuditDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q23:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q24:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="rowPerPage" type="xs:int" />
+          <xs:element name="pageNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBAuditDataRequest" nillable="true" type="tns:GetESBAuditDataRequest" />
+  <xs:complexType name="DownloadESBMessagesInFaultRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q25:BaseRequest">
+        <xs:sequence>
+          <xs:element name="sendEmail" type="xs:boolean" />
+          <xs:element xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="emailAddresses" nillable="true" type="q26:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="faultIds" nillable="true" type="q27:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DownloadESBMessagesInFaultRequest" nillable="true" type="tns:DownloadESBMessagesInFaultRequest" />
+  <xs:complexType name="GetESBFaultsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q28:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q29:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetESBFaultsRequest" nillable="true" type="tns:GetESBFaultsRequest" />
+  <xs:complexType name="ResubmitSingleMessageRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q30:BaseRequest">
+        <xs:sequence>
+          <xs:element name="messageId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="message" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" name="contentOrigin" type="q31:ESBContentOrigin" />
+          <xs:element name="contentType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" name="resubmitType" type="q32:ESBResubmitType" />
+          <xs:element name="resubmitUrl" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResubmitSingleMessageRequest" nillable="true" type="tns:ResubmitSingleMessageRequest" />
+  <xs:complexType name="ResubmitMultipleMessagesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q33:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="messageIds" nillable="true" type="q34:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/entity/esbManagement/1.0" name="resubmitType" type="q35:ESBResubmitType" />
+          <xs:element name="resubmitUrl" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResubmitMultipleMessagesRequest" nillable="true" type="tns:ResubmitMultipleMessagesRequest" />
+</xs:schema>

@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/analytics/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd6" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" />
+  <xs:complexType name="ThrottlingEnvironmentMatrix">
+    <xs:sequence>
+      <xs:element name="hosts" nillable="true" type="tns:ThrottlingHosts">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servers" nillable="true" type="tns:ThrottlingServers">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hostInstanceDataMatrix" nillable="true" type="tns:ThrottlingHostInstanceDataPoints">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingEnvironmentMatrix" nillable="true" type="tns:ThrottlingEnvironmentMatrix" />
+  <xs:complexType name="ThrottlingHosts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="hosts" nillable="true" type="tns:ThrottlingHost" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingHosts" nillable="true" type="tns:ThrottlingHosts" />
+  <xs:complexType name="ThrottlingHost">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isThrottlingDataAvailable" type="xs:boolean" />
+      <xs:element xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="biztalkServers" nillable="true" type="q1:StringList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingHost" nillable="true" type="tns:ThrottlingHost" />
+  <xs:complexType name="ThrottlingServers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="servers" nillable="true" type="tns:ThrottlingServer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingServers" nillable="true" type="tns:ThrottlingServers" />
+  <xs:complexType name="ThrottlingServer">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isThrottlingDataAvailable" type="xs:boolean" />
+      <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="biztalkHosts" nillable="true" type="q2:StringList">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingServer" nillable="true" type="tns:ThrottlingServer" />
+  <xs:complexType name="ThrottlingHostInstanceDataPoints">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="servers" nillable="true" type="tns:ThrottlingHostInstanceDataPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingHostInstanceDataPoints" nillable="true" type="tns:ThrottlingHostInstanceDataPoints" />
+  <xs:complexType name="ThrottlingHostInstanceDataPoint">
+    <xs:sequence>
+      <xs:element name="hostName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instanceDataPointStatus" type="tns:ThrottlingHostInstanceDataPointStatus" />
+      <xs:element minOccurs="0" name="errors" nillable="true" type="tns:ThrottlingErrors">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingHostInstanceDataPoint" nillable="true" type="tns:ThrottlingHostInstanceDataPoint" />
+  <xs:simpleType name="ThrottlingHostInstanceDataPointStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DataAvailable" />
+      <xs:enumeration value="DataNotAvailable" />
+      <xs:enumeration value="HostInstanceNotPresent" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ThrottlingHostInstanceDataPointStatus" nillable="true" type="tns:ThrottlingHostInstanceDataPointStatus" />
+  <xs:complexType name="ThrottlingErrors">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="error" nillable="true" type="tns:ThrottlingError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingErrors" nillable="true" type="tns:ThrottlingErrors" />
+  <xs:complexType name="ThrottlingError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="throttlingId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hostName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="throttlingType" type="tns:ThrottlingType" />
+      <xs:element name="errorText" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="errorCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="category" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="counter" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingError" nillable="true" type="tns:ThrottlingError" />
+  <xs:simpleType name="ThrottlingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="NotPresent" />
+      <xs:enumeration value="Publishing" />
+      <xs:enumeration value="Delivery" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ThrottlingType" nillable="true" type="tns:ThrottlingType" />
+  <xs:complexType name="UnprocessedMessageThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="inprocessMessageCount" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inprocessMessageCountThreshold" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnprocessedMessageThrottling" nillable="true" type="tns:UnprocessedMessageThrottling" />
+  <xs:complexType name="ThrottlingCollectionErrors">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="error" nillable="true" type="tns:ThrottlingCollectionError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingCollectionErrors" nillable="true" type="tns:ThrottlingCollectionErrors" />
+  <xs:complexType name="ThrottlingCollectionError">
+    <xs:sequence>
+      <xs:element name="error" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThrottlingCollectionError" nillable="true" type="tns:ThrottlingCollectionError" />
+  <xs:complexType name="GraphPoints">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dataPoint" nillable="true" type="tns:GraphPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GraphPoints" nillable="true" type="tns:GraphPoints" />
+  <xs:complexType name="GraphPoint">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double" />
+      <xs:element name="y" type="xs:int" />
+      <xs:element minOccurs="0" name="i" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GraphPoint" nillable="true" type="tns:GraphPoint" />
+  <xs:complexType name="UploadedFile">
+    <xs:sequence>
+      <xs:element name="filePath" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileLength" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UploadedFile" nillable="true" type="tns:UploadedFile" />
+  <xs:complexType name="AnalyticsServices">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="analyticsServices" nillable="true" type="tns:AnalyticsService" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsServices" nillable="true" type="tns:AnalyticsServices" />
+  <xs:complexType name="AnalyticsService">
+    <xs:sequence>
+      <xs:element name="serviceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serviceFriendlyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="isRunning" type="q3:ChoiceYesNoUnknown" />
+      <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="isPaused" type="q4:ChoiceYesNoUnknown" />
+      <xs:element minOccurs="0" name="pollingInterval" type="xs:int" />
+      <xs:element xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="isLastExecutionSuccessful" type="q5:ChoiceYesNoUnknown" />
+      <xs:element minOccurs="0" name="lastException" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="startedDateTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="stoppedDateTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="lastExecutiongDateTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsService" nillable="true" type="tns:AnalyticsService" />
+  <xs:complexType name="AnalyticsServiceHealth">
+    <xs:sequence>
+      <xs:element name="isAnalyticsServiceRunning" type="xs:boolean" />
+      <xs:element name="isLastExecutionOver5Minutes" type="xs:boolean" />
+      <xs:element name="lastExecutionTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsServiceHealth" nillable="true" type="tns:AnalyticsServiceHealth" />
+  <xs:complexType name="MetricItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="metricItems" nillable="true" type="tns:MetricItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetricItems" nillable="true" type="tns:MetricItems" />
+  <xs:complexType name="MetricItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="metricItems" nillable="true" type="tns:MetricItems">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetricItem" nillable="true" type="tns:MetricItem" />
+  <xs:complexType name="RateThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="incomingRate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="outgoingRate" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="rateOverdrive" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RateThrottling" nillable="true" type="tns:RateThrottling" />
+  <xs:complexType name="DatabaseSizeThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="spoolSize" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trackingDataSize" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hostQueueLength" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hostQueueSuspendedMessagesLength" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="databaseSize" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatabaseSizeThrottling" nillable="true" type="tns:DatabaseSizeThrottling" />
+  <xs:complexType name="ThreadCountThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="threadCount" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="threadCountThreshold" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ThreadCountThrottling" nillable="true" type="tns:ThreadCountThrottling" />
+  <xs:complexType name="DatabaseSessionThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="databaseSession" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatabaseSessionThrottling" nillable="true" type="tns:DatabaseSessionThrottling" />
+  <xs:complexType name="ProcessMemoryThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="processMemoryUsageInMB" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="processMemoryThresholdInMB" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessMemoryThrottling" nillable="true" type="tns:ProcessMemoryThrottling" />
+  <xs:complexType name="SystemMemoryThrottling">
+    <xs:sequence>
+      <xs:element name="title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="xs:double" />
+      <xs:element name="physicalMemoryUsageInMB" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="physicalMemoryThresholdInMB" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timestamp" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SystemMemoryThrottling" nillable="true" type="tns:SystemMemoryThrottling" />
+  <xs:complexType name="MetricDataPointsList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="metricDataPointsList" nillable="true" type="tns:MetricDataPoints" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetricDataPointsList" nillable="true" type="tns:MetricDataPointsList" />
+  <xs:complexType name="MetricDataPoints">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Metric">
+        <xs:sequence>
+          <xs:element name="dataPoints" nillable="true" type="tns:AverageDataPoints">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetricDataPoints" nillable="true" type="tns:MetricDataPoints" />
+  <xs:complexType name="Metric">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="legendEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="customText" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="category" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="counter" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="instance" nillable="true" type="tns:MetricItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="chartType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="unit" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="compareWithPrevious" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Metric" nillable="true" type="tns:Metric" />
+  <xs:complexType name="AverageDataPoints">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="averageDataPoints" nillable="true" type="tns:AverageDataPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AverageDataPoints" nillable="true" type="tns:AverageDataPoints" />
+  <xs:complexType name="AverageDataPoint">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double" />
+      <xs:element name="y" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AverageDataPoint" nillable="true" type="tns:AverageDataPoint" />
+  <xs:complexType name="FailureRateBySchemaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="failureRateBySchemaList" nillable="true" type="tns:FailureRateBySchema" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FailureRateBySchemaList" nillable="true" type="tns:FailureRateBySchemaList" />
+  <xs:complexType name="FailureRateBySchema">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataPoints" nillable="true" type="tns:AverageDataPoints">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FailureRateBySchema" nillable="true" type="tns:FailureRateBySchema" />
+  <xs:complexType name="MessagePerformanceList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="messagePerformanceList" nillable="true" type="tns:MessagePerformance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagePerformanceList" nillable="true" type="tns:MessagePerformanceList" />
+  <xs:complexType name="MessagePerformance">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataPoints" nillable="true" type="tns:AverageDataPoints">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagePerformance" nillable="true" type="tns:MessagePerformance" />
+  <xs:complexType name="MoniteredServersList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="moniteredServersList" nillable="true" type="tns:MoniteredServer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MoniteredServersList" nillable="true" type="tns:MoniteredServersList" />
+  <xs:complexType name="MoniteredServer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="environmentId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MoniteredServer" nillable="true" type="tns:MoniteredServer" />
+  <xs:complexType name="AnalyticsServers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="analyticsServers" nillable="true" type="tns:AnalyticsServer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsServers" nillable="true" type="tns:AnalyticsServers" />
+  <xs:complexType name="AnalyticsServer">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="currentlyActive" type="xs:boolean" />
+      <xs:element name="lastLiveTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="registeredServerName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsServer" nillable="true" type="tns:AnalyticsServer" />
+  <xs:complexType name="FlowLinkList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="flowLinkList" nillable="true" type="tns:AnalyticsData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FlowLinkList" nillable="true" type="tns:FlowLinkList" />
+  <xs:complexType name="AnalyticsData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="flowUid" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromUidServiceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromAppName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromServiceType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromServiceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="fromPortName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toUidServiceId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toAppName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toServiceType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toServiceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="toPortName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnalyticsData" nillable="true" type="tns:AnalyticsData" />
+  <xs:complexType name="FlowList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="flowList" nillable="true" type="tns:AnalyticsData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FlowList" nillable="true" type="tns:FlowList" />
+  <xs:complexType name="FailureRateByPortList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="failureRateByPortList" nillable="true" type="tns:FailureRateByPort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FailureRateByPortList" nillable="true" type="tns:FailureRateByPortList" />
+  <xs:complexType name="FailureRateByPort">
+    <xs:sequence>
+      <xs:element name="name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataPoints" nillable="true" type="tns:AverageDataPoints">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FailureRateByPort" nillable="true" type="tns:FailureRateByPort" />
+  <xs:complexType name="MessageVolumeList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="messageVolumeList" nillable="true" type="tns:MessageVolume" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageVolumeList" nillable="true" type="tns:MessageVolumeList" />
+  <xs:complexType name="MessageVolume">
+    <xs:sequence>
+      <xs:element name="schemaName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageVolume" nillable="true" type="tns:MessageVolume" />
+  <xs:complexType name="FlowNodeList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="flowNodeList" nillable="true" type="tns:FlowNodesData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FlowNodeList" nillable="true" type="tns:FlowNodeList" />
+  <xs:complexType name="FlowNodesData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="flowUid" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="appName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serviceType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="portName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="associatedTo" type="xs:int" />
+      <xs:element name="success" type="xs:boolean" />
+      <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="orchestrations" nillable="true" type="q6:BizTalkOrchestration">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="receivePorts" nillable="true" type="q7:ReceivePort">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/application/1.0" minOccurs="0" name="sendPorts" nillable="true" type="q8:SendPort">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FlowNodesData" nillable="true" type="tns:FlowNodesData" />
+</xs:schema>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CompositeFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="compositeFilterCollection" nillable="true" type="tns:CompositeFilterCollection">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="filterDescriptorCollection" nillable="true" type="tns:FilterDescriptorCollection">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="compositFilterLogicalOperator" type="tns:CompositFilterLogicalOperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeFilter" nillable="true" type="tns:CompositeFilter" />
+  <xs:complexType name="CompositeFilterCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="compositeFilter" nillable="true" type="tns:CompositeFilter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeFilterCollection" nillable="true" type="tns:CompositeFilterCollection" />
+  <xs:complexType name="FilterDescriptorCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="filterDescriptor" nillable="true" type="tns:FilterDescriptor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FilterDescriptorCollection" nillable="true" type="tns:FilterDescriptorCollection" />
+  <xs:complexType name="FilterDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="member" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="memberType" type="tns:FilterMemberType" />
+      <xs:element minOccurs="0" name="filterOperator" type="tns:FilterOperator" />
+      <xs:element minOccurs="0" name="value" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FilterDescriptor" nillable="true" type="tns:FilterDescriptor" />
+  <xs:simpleType name="FilterMemberType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Int" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FilterMemberType" nillable="true" type="tns:FilterMemberType" />
+  <xs:simpleType name="FilterOperator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IsLessThan" />
+      <xs:enumeration value="IsLessThanOrEqualTo" />
+      <xs:enumeration value="IsEqualTo" />
+      <xs:enumeration value="IsNotEqualTo" />
+      <xs:enumeration value="IsGreaterThanOrEqualTo" />
+      <xs:enumeration value="IsGreaterThan" />
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="EndsWith" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="DoesNotContain" />
+      <xs:enumeration value="IsContainedIn" />
+      <xs:enumeration value="IsNull" />
+      <xs:enumeration value="IsNotNull" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FilterOperator" nillable="true" type="tns:FilterOperator" />
+  <xs:simpleType name="CompositFilterLogicalOperator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="And" />
+      <xs:enumeration value="Or" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CompositFilterLogicalOperator" nillable="true" type="tns:CompositFilterLogicalOperator" />
+</xs:schema>

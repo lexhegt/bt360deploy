@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/entity/graphData/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/entity/graphData/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DataPoints">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dataPoint" nillable="true" type="tns:DataPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataPoints" nillable="true" type="tns:DataPoints" />
+  <xs:complexType name="DataPoint">
+    <xs:sequence>
+      <xs:element name="x" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="y" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataPoint" nillable="true" type="tns:DataPoint" />
+</xs:schema>

@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/alert/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/alert/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd16" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/AdminService.svc?xsd=xsd20" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" />
+  <xs:complexType name="GetUserAlarmResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="userAlarm" nillable="true" type="q2:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserAlarmResponse" nillable="true" type="tns:GetUserAlarmResponse" />
+  <xs:complexType name="GetUserAlarmsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="userAlarms" nillable="true" type="q4:UserAlarms">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserAlarmsResponse" nillable="true" type="tns:GetUserAlarmsResponse" />
+  <xs:complexType name="GetUserAlarmMappingsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="alarmMappings" nillable="true" type="q6:AlarmMappings">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserAlarmMappingsResponse" nillable="true" type="tns:GetUserAlarmMappingsResponse" />
+  <xs:complexType name="GetAlertMaintenanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="alertMaintenance" nillable="true" type="q8:AlertMaintenance">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="isAlertMaintenanceExists" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertMaintenanceResponse" nillable="true" type="tns:GetAlertMaintenanceResponse" />
+  <xs:complexType name="SetAlertMaintenanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="alertMaintenance" nillable="true" type="q10:AlertMaintenance">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetAlertMaintenanceResponse" nillable="true" type="tns:SetAlertMaintenanceResponse" />
+  <xs:complexType name="GetGatewaySettingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="gatewaySetting" nillable="true" type="q12:GatewaySetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetGatewaySettingResponse" nillable="true" type="tns:GetGatewaySettingResponse" />
+  <xs:complexType name="GetSMTPSettingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="smtpSetting" nillable="true" type="q14:SMTPSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSMTPSettingResponse" nillable="true" type="tns:GetSMTPSettingResponse" />
+  <xs:complexType name="AlertServiceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q15:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AlertServiceResponse" nillable="true" type="tns:AlertServiceResponse" />
+  <xs:complexType name="GetApplicationsAlarmMappingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="applicationNames" nillable="true" type="q17:ApplicationNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="threshold" nillable="true" type="q18:ApplicationThreshold">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetApplicationsAlarmMappingResponse" nillable="true" type="tns:GetApplicationsAlarmMappingResponse" />
+  <xs:complexType name="GetAlertHistoryByNCResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q19:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="ncHistoryCollection" nillable="true" type="q20:AlertHistoryByNCCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryByNCResponse" nillable="true" type="tns:GetAlertHistoryByNCResponse" />
+  <xs:complexType name="GetAlertMonitorConfigResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q21:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="serializedMonitorConfig" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="monitorStatus" type="q22:MonitorStatus" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertMonitorConfigResponse" nillable="true" type="tns:GetAlertMonitorConfigResponse" />
+  <xs:complexType name="GetAlertHistoryBySMSResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q23:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="smsHistoryCollection" nillable="true" type="q24:AlertHistoryBySMSCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryBySMSResponse" nillable="true" type="tns:GetAlertHistoryBySMSResponse" />
+  <xs:complexType name="GetMBVThresholdResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q25:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="threshold" nillable="true" type="q26:MBVThreshold">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetMBVThresholdResponse" nillable="true" type="tns:GetMBVThresholdResponse" />
+  <xs:complexType name="GetAlertHistoryByEmailResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q27:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="emailHistoryCollection" nillable="true" type="q28:AlertHistoryByEmailCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryByEmailResponse" nillable="true" type="tns:GetAlertHistoryByEmailResponse" />
+  <xs:complexType name="GetEmailFormatResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q29:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="emailFormat" nillable="true" type="q30:EmailFormat">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEmailFormatResponse" nillable="true" type="tns:GetEmailFormatResponse" />
+  <xs:complexType name="ManageAlertMonitorConfigResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q31:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="serializedMonitorConfig" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="monitorStatus" type="q32:MonitorStatus" />
+          <xs:element xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="operation" type="q33:ManageOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageAlertMonitorConfigResponse" nillable="true" type="tns:ManageAlertMonitorConfigResponse" />
+  <xs:complexType name="GetApplicationNamesInEnvironmentResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q34:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="applicationNames" nillable="true" type="q35:ApplicationNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetApplicationNamesInEnvironmentResponse" nillable="true" type="tns:GetApplicationNamesInEnvironmentResponse" />
+  <xs:complexType name="GetAllErrorsAndWarningsForAlarmsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q36:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="alarmIssues" nillable="true" type="q37:AlarmIssues">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAllErrorsAndWarningsForAlarmsResponse" nillable="true" type="tns:GetAllErrorsAndWarningsForAlarmsResponse" />
+  <xs:complexType name="GetUserAlarmApplicationNamesMappingsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q38:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="mappings" nillable="true" type="q39:UserAlarmApplicationNamesMappings">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserAlarmApplicationNamesMappingsResponse" nillable="true" type="tns:GetUserAlarmApplicationNamesMappingsResponse" />
+  <xs:complexType name="GetLatestMonitoringDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q40:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="monitoringDataList" nillable="true" type="q41:MonitoringDataList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q42="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="monitoringServiceHealth" nillable="true" type="q42:MonitoringServiceHealth">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLatestMonitoringDataResponse" nillable="true" type="tns:GetLatestMonitoringDataResponse" />
+  <xs:complexType name="ValidateNotificationChannelResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q43="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q43:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q44="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="notificationChannel" nillable="true" type="q44:NotificationChannel">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidateNotificationChannelResponse" nillable="true" type="tns:ValidateNotificationChannelResponse" />
+  <xs:complexType name="GetNotificationChannelsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q45="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q45:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q46="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="channels" nillable="true" type="q46:NotificationChannelList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetNotificationChannelsResponse" nillable="true" type="tns:GetNotificationChannelsResponse" />
+  <xs:complexType name="GetHPOMSettingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q47="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q47:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q48="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="hpomSetting" nillable="true" type="q48:HPOMSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetHPOMSettingResponse" nillable="true" type="tns:GetHPOMSettingResponse" />
+  <xs:complexType name="VerifyHPOMSettingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q49:BaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="incidentID" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q50="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="hpomSetting" nillable="true" type="q50:HPOMSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VerifyHPOMSettingResponse" nillable="true" type="tns:VerifyHPOMSettingResponse" />
+  <xs:complexType name="GetConfiguredSQLServerNamesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q51="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q51:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q52="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="serverNames" nillable="true" type="q52:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetConfiguredSQLServerNamesResponse" nillable="true" type="tns:GetConfiguredSQLServerNamesResponse" />
+  <xs:complexType name="UpdateConfiguredSQLServerNamesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q53="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q53:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateConfiguredSQLServerNamesResponse" nillable="true" type="tns:UpdateConfiguredSQLServerNamesResponse" />
+  <xs:complexType name="UpdateHPOMSettingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q54:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q55="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="hpomSetting" nillable="true" type="q55:HPOMSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateHPOMSettingResponse" nillable="true" type="tns:UpdateHPOMSettingResponse" />
+  <xs:complexType name="AlertServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q56="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q56:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AlertServiceRequest" nillable="true" type="tns:AlertServiceRequest" />
+  <xs:complexType name="UpdateSMTPSettingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q57="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q57:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q58="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="smtpSetting" nillable="true" type="q58:SMTPSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateSMTPSettingRequest" nillable="true" type="tns:UpdateSMTPSettingRequest" />
+  <xs:complexType name="UpdateGatewaySettingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q59="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q59:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q60="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="gatewaySetting" nillable="true" type="q60:GatewaySetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateGatewaySettingRequest" nillable="true" type="tns:UpdateGatewaySettingRequest" />
+  <xs:complexType name="ManageAlertMonitorConfigRestRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q61="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q61:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorGroupType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="monitorGroupName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="serializedJsonMonitorConfig" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q62="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="operation" type="q62:ManageOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageAlertMonitorConfigRestRequest" nillable="true" type="tns:ManageAlertMonitorConfigRestRequest" />
+  <xs:complexType name="GetAlertMonitorConfigRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q63="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q63:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q64="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="userAlarm" nillable="true" type="q64:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorGroupType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="monitorGroupName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertMonitorConfigRequest" nillable="true" type="tns:GetAlertMonitorConfigRequest" />
+  <xs:complexType name="GetLatestMonitoringDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q65="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q65:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q66="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="alarm" nillable="true" type="q66:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLatestMonitoringDataRequest" nillable="true" type="tns:GetLatestMonitoringDataRequest" />
+  <xs:complexType name="GetAlertHistoryBySMSRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q67="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q67:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q68="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q68:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryBySMSRequest" nillable="true" type="tns:GetAlertHistoryBySMSRequest" />
+  <xs:complexType name="GetAlertHistoryByNCRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q69="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q69:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q70="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q70:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryByNCRequest" nillable="true" type="tns:GetAlertHistoryByNCRequest" />
+  <xs:complexType name="ManageAlertMonitorConfigRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q71="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q71:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q72="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="userAlarm" nillable="true" type="q72:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorGroupType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="monitorGroupName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="monitorName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="serializedMonitorConfig" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q73="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="operation" type="q73:ManageOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ManageAlertMonitorConfigRequest" nillable="true" type="tns:ManageAlertMonitorConfigRequest" />
+  <xs:complexType name="RemoveOrphanedApplicationRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q74="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q74:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q75="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="applicationNames" nillable="true" type="q75:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveOrphanedApplicationRequest" nillable="true" type="tns:RemoveOrphanedApplicationRequest" />
+  <xs:complexType name="GetAllErrorsAndWarningsForAlarmsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q76="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q76:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q77="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" name="alarmNames" nillable="true" type="q77:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAllErrorsAndWarningsForAlarmsRequest" nillable="true" type="tns:GetAllErrorsAndWarningsForAlarmsRequest" />
+  <xs:complexType name="UpdateHPOMSettingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q78="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q78:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q79="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="hpomSetting" nillable="true" type="q79:HPOMSetting">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateHPOMSettingRequest" nillable="true" type="tns:UpdateHPOMSettingRequest" />
+  <xs:complexType name="UpdateConfiguredSQLServerNamesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q80="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q80:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q81="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="serverNames" nillable="true" type="q81:StringList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateConfiguredSQLServerNamesRequest" nillable="true" type="tns:UpdateConfiguredSQLServerNamesRequest" />
+  <xs:complexType name="GetAlertHistoryByEmailRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q82="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q82:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q83="http://www.kovai.co.uk/biztalk360/schemas/entity/compositefilter/1.0" name="filter" nillable="true" type="q83:CompositeFilter">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxMatches" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetAlertHistoryByEmailRequest" nillable="true" type="tns:GetAlertHistoryByEmailRequest" />
+  <xs:complexType name="ReseteUserAlarmRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q84="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q84:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReseteUserAlarmRequest" nillable="true" type="tns:ReseteUserAlarmRequest" />
+  <xs:complexType name="GetUserAlarmMappingsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q85="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q85:BaseRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserAlarmMappingsRequest" nillable="true" type="tns:GetUserAlarmMappingsRequest" />
+  <xs:complexType name="SetAlertMaintenanceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q86="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q86:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q87="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" minOccurs="0" name="alertMaintenance" nillable="true" type="q87:AlertMaintenance">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetAlertMaintenanceRequest" nillable="true" type="tns:SetAlertMaintenanceRequest" />
+  <xs:complexType name="CreateUserAlarmRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q88="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q88:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q89="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="alarm" nillable="true" type="q89:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateUserAlarmRequest" nillable="true" type="tns:CreateUserAlarmRequest" />
+  <xs:complexType name="UpdateUserAlarmRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q90="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q90:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q91="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="alarm" nillable="true" type="q91:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserAlarmRequest" nillable="true" type="tns:UpdateUserAlarmRequest" />
+  <xs:complexType name="DeleteUserAlarmRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q92="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q92:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteUserAlarmRequest" nillable="true" type="tns:DeleteUserAlarmRequest" />
+  <xs:complexType name="CreateApplicationsAlarmMappingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q93="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q93:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q94="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="userAlarm" nillable="true" type="q94:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q95="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="applicationNames" nillable="true" type="q95:ApplicationNames">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q96="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="threshold" nillable="true" type="q96:ApplicationThreshold">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateApplicationsAlarmMappingRequest" nillable="true" type="tns:CreateApplicationsAlarmMappingRequest" />
+  <xs:complexType name="RemoveAllApplicationsAlarmMappingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q97="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q97:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveAllApplicationsAlarmMappingRequest" nillable="true" type="tns:RemoveAllApplicationsAlarmMappingRequest" />
+  <xs:complexType name="UpdateMBVThresholdRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q98="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q98:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q99="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="mbvThreshold" nillable="true" type="q99:MBVThreshold">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateMBVThresholdRequest" nillable="true" type="tns:UpdateMBVThresholdRequest" />
+  <xs:complexType name="DeleteMBVThresholdRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q100="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q100:BaseRequest">
+        <xs:sequence>
+          <xs:element name="alarmName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteMBVThresholdRequest" nillable="true" type="tns:DeleteMBVThresholdRequest" />
+  <xs:complexType name="DeleteUserAlarmApplicationNamesMappingsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q101="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q101:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q102="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="mapping" nillable="true" type="q102:UserAlarmApplicationNamesMapping">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteUserAlarmApplicationNamesMappingsRequest" nillable="true" type="tns:DeleteUserAlarmApplicationNamesMappingsRequest" />
+  <xs:complexType name="GetApplicationsAlarmMappingRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q103="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q103:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q104="http://www.kovai.co.uk/biztalk360/schemas/entity/alert/1.0" name="userAlarm" nillable="true" type="q104:UserAlarm">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetApplicationsAlarmMappingRequest" nillable="true" type="tns:GetApplicationsAlarmMappingRequest" />
+</xs:schema>

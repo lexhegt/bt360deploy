@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.kovai.co.uk/biztalk360/schemas/service/environmentMgmt/1.0" elementFormDefault="qualified" targetNamespace="http://www.kovai.co.uk/biztalk360/schemas/service/environmentMgmt/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd3" namespace="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd21" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" />
+  <xs:import schemaLocation="http://bts2013r2lab01/BizTalk360/Services.REST/BizTalkGroupService.svc?xsd=xsd4" namespace="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" />
+  <xs:complexType name="SaveQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q1:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveQueryResponse" nillable="true" type="tns:SaveQueryResponse" />
+  <xs:complexType name="EnvironmentMgmtResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q2:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnvironmentMgmtResponse" nillable="true" type="tns:EnvironmentMgmtResponse" />
+  <xs:complexType name="GetKnowledgebaseListForEventLogResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q3:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="eventLogKBs" nillable="true" type="q4:KBEventLogTagTypeCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseListForEventLogResponse" nillable="true" type="tns:GetKnowledgebaseListForEventLogResponse" />
+  <xs:complexType name="GetKnowledgebaseListForThrottlingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q5:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="throttlingKBs" nillable="true" type="q6:KBThrottlingTagTypeCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseListForThrottlingResponse" nillable="true" type="tns:GetKnowledgebaseListForThrottlingResponse" />
+  <xs:complexType name="GetKnowledgebaseListForServiceInstanceResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q7:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="serviceInstanceKBs" nillable="true" type="q8:KBServiceInstanceTagTypeCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseListForServiceInstanceResponse" nillable="true" type="tns:GetKnowledgebaseListForServiceInstanceResponse" />
+  <xs:complexType name="GetKnowledgebaseSourceIdsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q9:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="knowledgebaseSourceIds" nillable="true" type="q10:KnowledgebaseSourceIds">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseSourceIdsResponse" nillable="true" type="tns:GetKnowledgebaseSourceIdsResponse" />
+  <xs:complexType name="GetKnowledgebaseListForESBFaultResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q11:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="esbFaultKBs" nillable="true" type="q12:KBESBPortalTagTypeCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseListForESBFaultResponse" nillable="true" type="tns:GetKnowledgebaseListForESBFaultResponse" />
+  <xs:complexType name="GetKnowledgebaseArticleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q13:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="article" nillable="true" type="q14:KnowledgebaseArticle">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q15="http://www.kovai.co.uk/biztalk360/schemas/entity/common/1.0" minOccurs="0" name="tagValues" nillable="true" type="q15:NameValueList">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetKnowledgebaseArticleResponse" nillable="true" type="tns:GetKnowledgebaseArticleResponse" />
+  <xs:complexType name="ExportEnvironmentDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q16:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="exportData" nillable="true" type="q17:ExportData">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="exportDataUrl" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExportEnvironmentDataResponse" nillable="true" type="tns:ExportEnvironmentDataResponse" />
+  <xs:complexType name="ImportEnvironmentDataResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q18:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q19="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="result" nillable="true" type="q19:ImportDataResult">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ImportEnvironmentDataResponse" nillable="true" type="tns:ImportEnvironmentDataResponse" />
+  <xs:complexType name="DeleteSavedQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q20:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteSavedQueryResponse" nillable="true" type="tns:DeleteSavedQueryResponse" />
+  <xs:complexType name="GetSavedQueryListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q21:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="queries" nillable="true" type="q22:SavedQueryListCollection">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSavedQueryListResponse" nillable="true" type="tns:GetSavedQueryListResponse" />
+  <xs:complexType name="GetSavedQueryResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q23:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="query" nillable="true" type="q24:SaveQuery">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSavedQueryResponse" nillable="true" type="tns:GetSavedQueryResponse" />
+  <xs:complexType name="GetEnvironmentMetaDataForImportResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q25:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="environmentMetaData" nillable="true" type="q26:EnvironmentMetaData">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEnvironmentMetaDataForImportResponse" nillable="true" type="tns:GetEnvironmentMetaDataForImportResponse" />
+  <xs:complexType name="CreateDashboardResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q27:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="dashboard" nillable="true" type="q28:Dashboard">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateDashboardResponse" nillable="true" type="tns:CreateDashboardResponse" />
+  <xs:complexType name="DeleteDashboardResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q29:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteDashboardResponse" nillable="true" type="tns:DeleteDashboardResponse" />
+  <xs:complexType name="UpdateDashboardResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q30:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="dashboard" nillable="true" type="q31:Dashboard">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateDashboardResponse" nillable="true" type="tns:UpdateDashboardResponse" />
+  <xs:complexType name="GetDashboardsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q32:BaseResponse">
+        <xs:sequence>
+          <xs:element name="environmentId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q33="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="dashboards" nillable="true" type="q33:Dashboards">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDashboardsResponse" nillable="true" type="tns:GetDashboardsResponse" />
+  <xs:complexType name="GetDashboardResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q34:BaseResponse">
+        <xs:sequence>
+          <xs:element xmlns:q35="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" minOccurs="0" name="dashboard" nillable="true" type="q35:Dashboard">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDashboardResponse" nillable="true" type="tns:GetDashboardResponse" />
+  <xs:complexType name="ImportEnvironmentDataRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q36:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q37="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" name="environmentDataMapping" nillable="true" type="q37:EnvironmentDataMapping">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q38="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" name="exportData" nillable="true" type="q38:ExportData">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ImportEnvironmentDataRequest" nillable="true" type="tns:ImportEnvironmentDataRequest" />
+  <xs:complexType name="GetSavedQueryListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q39:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q40="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" name="queryType" type="q40:SaveQueryType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSavedQueryListRequest" nillable="true" type="tns:GetSavedQueryListRequest" />
+  <xs:complexType name="GetSavedQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q41:BaseRequest">
+        <xs:sequence>
+          <xs:element name="id" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSavedQueryRequest" nillable="true" type="tns:GetSavedQueryRequest" />
+  <xs:complexType name="DeleteSavedQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q42:BaseRequest">
+        <xs:sequence>
+          <xs:element name="queryId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteSavedQueryRequest" nillable="true" type="tns:DeleteSavedQueryRequest" />
+  <xs:complexType name="SaveQueryRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q43="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q43:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q44="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" name="query" nillable="true" type="q44:SaveQuery">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveQueryRequest" nillable="true" type="tns:SaveQueryRequest" />
+  <xs:complexType name="EnvironmentMgmtServiceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q45="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q45:BaseRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnvironmentMgmtServiceRequest" nillable="true" type="tns:EnvironmentMgmtServiceRequest" />
+  <xs:complexType name="DashboardRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://www.kovai.co.uk/biztalk360/schemas/service/basedatatypes/1.0" base="q46:BaseRequest">
+        <xs:sequence>
+          <xs:element xmlns:q47="http://www.kovai.co.uk/biztalk360/schemas/entity/environmentMgmt/1.0" name="dashboard" nillable="true" type="q47:Dashboard">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DashboardRequest" nillable="true" type="tns:DashboardRequest" />
+</xs:schema>
