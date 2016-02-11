@@ -84,8 +84,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertMappingRequest.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="DaysOfWeek.cs" />
+    <Compile Include="DeleteUserAlertRequest.cs" />
+    <Compile Include="EnvironmentSettings.cs" />
+    <Compile Include="Errors.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="Service References\AdminServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +105,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TimeOfDays.cs" />
+    <Compile Include="UserAlertRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

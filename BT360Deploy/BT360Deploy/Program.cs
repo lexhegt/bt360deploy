@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using AxonOlympus.BT360Deploy.BizTalkGroupServiceReference;
 using Newtonsoft.Json;
-using CommandLine;
 
 namespace AxonOlympus.BT360Deploy
 {
@@ -47,7 +46,7 @@ namespace AxonOlympus.BT360Deploy
         static void Main(string[] args)
         {
 
-            Console.WriteLine("\r\nBT360Deploy v{0}.{1} - Creation of BizTalk360 Alerts\r\n", Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor);
+            Console.WriteLine("{0}BT360Deploy v{1}.{2} - Creation of BizTalk360 Alerts{0}", Environment.NewLine, Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor);
 
             // Get command line parameters
             Console.WriteLine("Get parameters");
@@ -56,7 +55,7 @@ namespace AxonOlympus.BT360Deploy
             // Exit in case no parameters were passed
             if (string.IsNullOrEmpty(options.BizTalkApplication) || (string.IsNullOrEmpty(options.SettingsFile)))
             {
-                Console.WriteLine("Pass parameters:\r\n -a <Name of BizTalk Application>\r\n -s <Name and location of BTDF Settings file>");
+                Console.WriteLine("Pass parameters:{0} -a <Name of BizTalk Application>{0} -s <Name and location of BTDF Settings file>", Environment.NewLine);
                 return;
             }
 
@@ -71,12 +70,12 @@ namespace AxonOlympus.BT360Deploy
                 if (!success) return;
 
                 Console.WriteLine("- BizTalk360 URL: {0}", baseUrl);
-                Console.WriteLine("- BizTalk360 User: {0}\r\n", BizTalk360User);
+                Console.WriteLine("- BizTalk360 User: {0}{1}", BizTalk360User, Environment.NewLine);
 
                 // Check BizTalk360 url
                 CheckBizTalk360URL();
 
-                // todo: Check credentials
+                // Check credentials
                 CheckUserProfile();
 
                 // Get information about the BizTalk Application
@@ -94,11 +93,11 @@ namespace AxonOlympus.BT360Deploy
             }
             catch (Exception ex)
             {
-                Console.WriteLine("\r\nException: {0}", ex.Message);
+                Console.WriteLine("{0}Exception: {1}", Environment.NewLine, ex.Message);
                 return;
             }
             
-            Console.WriteLine("\r\nFinished creating alert '{0}'", options.BizTalkApplication);
+            Console.WriteLine("{0}Finished creating alert '{1}'", Environment.NewLine, options.BizTalkApplication);
         }
 
         /// <summary>
@@ -159,7 +158,7 @@ namespace AxonOlympus.BT360Deploy
         /// </summary>
         static private void CheckUserProfile()
         {
-            Console.Write("\r\nCheck BizTalk360 User Profile: ");
+            Console.Write("{0}Check BizTalk360 User Profile: ", Environment.NewLine);
 
             HttpClientHandler handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true;
@@ -635,7 +634,7 @@ namespace AxonOlympus.BT360Deploy
             try
             {
                 // Create User Alert
-                Console.Write("\r\nCreating alert '{0}': ", options.BizTalkApplication);
+                Console.Write("{0}Creating alert '{1}': ", Environment.NewLine, options.BizTalkApplication);
 
                 string userAlertRequest = CreateCreateUserAlertRequest();
                 success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/CreateUserAlarm", baseUrl), "POST", userAlertRequest);
@@ -691,7 +690,7 @@ namespace AxonOlympus.BT360Deploy
                 if (userAlarms.Exists(x => x.name == alertName))
                 {
                     // Delete existing alert
-                    Console.Write("\r\nDeleting existing alert '{0}': ", alertName);
+                    Console.Write("{0}Deleting existing alert '{1}': ", Environment.NewLine, alertName);
 
                     string deleteUserAlertRequest = CreateDeleteUserAlertRequest(alertName);
                     success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/DeleteUserAlarm", baseUrl), "POST", deleteUserAlertRequest);
@@ -1036,7 +1035,18 @@ namespace AxonOlympus.BT360Deploy
                 return null;
             }
         }
+        static private string GetSetting(string setting)
+        {
+            XmlNode xmlNode = xmlDocument.SelectSingleNode(String.Format("/settings/property[@name='{0}']", setting));
 
+            if (xmlNode == null)
+            {
+                throw new Exception(String.Format("Setting '{0}' not found.", setting));
+            }
+
+            return (xmlNode.InnerText);
+
+        }
         /// <summary>
         /// Retrieves all BizTalk360 Alerts from the given BizTalk360 environment
         /// </summary>
@@ -1092,24 +1102,20 @@ namespace AxonOlympus.BT360Deploy
         {
             try
             {
-                Console.Write("\r\nLoad settings file: ");
+                Console.Write("{0}Load settings file: ", Environment.NewLine);
                 xmlDocument.Load(settingsFile);
 
-                environmentId = xmlDocument.SelectSingleNode("/settings/property[@name='BizTalk360_environmentId']").InnerText;
-                baseUrl = xmlDocument.SelectSingleNode("/settings/property[@name='BizTalk360_url']").InnerText;
-                BizTalk360User = xmlDocument.SelectSingleNode("/settings/property[@name='BizTalk360_user']").InnerText;
-                BizTalk360UserPassword = xmlDocument.SelectSingleNode("/settings/property[@name='BizTalk360_userPassword']").InnerText;
+                environmentId = GetSetting("BizTalk360_environmentId");
+                baseUrl = GetSetting("BizTalk360_url");
+                BizTalk360User = GetSetting("'BizTalk360_user");
+                BizTalk360UserPassword = GetSetting("BizTalk360_userPassword");
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAILED\r\n");
+                Console.WriteLine("FAILED{0}", Environment.NewLine);
                 Console.WriteLine(ex.Message);
-                Console.WriteLine("\r\nPlease provide a correct settings file. The settings file should at least contain the following parameters:");
-                Console.WriteLine("- BizTalk360_environmentId");
-                Console.WriteLine("- BizTalk360_url");
-                Console.WriteLine("- BizTalk360_user");
-                Console.WriteLine("- BizTalk360_userPassword");
+                Console.WriteLine("{0}Please provide a correct settings file.", Environment.NewLine);
 
                 return false;
             }
@@ -1128,7 +1134,7 @@ namespace AxonOlympus.BT360Deploy
             string request = "";
             Boolean success = false;
 
-            Console.WriteLine("\r\nAdd mappings to alert '{0}'", options.BizTalkApplication);
+            Console.WriteLine("{0}Add mappings to alert '{1}'", Environment.NewLine, options.BizTalkApplication);
 
             try
             {
@@ -1294,7 +1300,7 @@ namespace AxonOlympus.BT360Deploy
         static public Boolean RetrieveBizTalkApplication()
         {
 
-            Console.WriteLine("\r\nRetrieve information about the BizTalk Application");
+            Console.WriteLine("{0}Retrieve information about the BizTalk Application", Environment.NewLine);
 
             try
             {
@@ -1323,7 +1329,7 @@ namespace AxonOlympus.BT360Deploy
                 // If the BizTalk Application contains no Receive Ports, Orchestrations or Send Ports, move on to the next BizTalk Application
                 if (receivePorts.Count == 0 && orchestrations.Count == 0 && sendPorts.Count == 0)
                 {
-                    throw new Exception((String.Format("No Receive/Send Ports and Orchestrations found => no alert created\r\n\r\n")));
+                    throw new Exception((String.Format("No Receive/Send Ports and Orchestrations found => no alert created{0}{0}", Environment.NewLine)));
                     //return false;
                 }
             }
@@ -1333,239 +1339,5 @@ namespace AxonOlympus.BT360Deploy
             }
             return true;
         }
-    }
-    /// <summary>
-    /// Class which contains the fields of BizTalk360 Alerts
-    /// </summary>
-    public class UserAlertRequest
-    {
-        public string name { get; set; }
-        public string commaSeparatedEmails { get; set; }
-        public string commaSeparatedSMSNumbers { get; set; }
-        public bool isTestMode { get; set; }
-        public bool isAlertASAP { get; set; }
-        public int alertASAPWaitDurationInMinutes { get; set; }
-        public int alertASAPErrorDetectionCount { get; set; }
-        public bool isContinuousErrorRestricted { get; set; }
-        public int continuousErrorMaxCount { get; set; }
-        public bool isAlertOnCorrection { get; set; }
-        public DaysOfWeek daysOfWeek { get; set; }
-        public TimeOfDays timeOfDays { get; set; }
-        public bool isAlertProcessMonitoring { get; set; }
-        public bool isAlertProcessMonitoringOnSuccess { get; set; }
-        public bool isAlertHealthMonitoring { get; set; }
-        public bool isAlertHPOMEnabled { get; set; }
-        public bool isAlertRestEndpointEnabled { get; set; }
-        public bool isAlertEventVwrEnabled { get; set; }
-        public string eventId { get; set; }
-        public bool isAlertDisabled { get; set; }
-        public string createdBy { get; set; }
-        public string description { get; set; }
-        public bool isThresholdRestricted { get; set; }
-        public string thresholdRestrictStartTime { get; set; }
-        public string thresholdRestrictEndTime { get; set; }
-        public string daysValidation { get; set; }
-        public DaysOfWeek thresholdDaysOfWeek { get; set; }
-        public List<String> notificationChannels { get; set; }
-    }
-    /// <summary>
-    /// Class which contains the fields for all possible Alert mappings
-    /// </summary>
-    public class AlertMappingRequest
-    {
-        public Context context { get; set; }
-        public Int16 operation { get; set; }
-        public string monitorGroupName { get; set; }
-        public string monitorGroupType { get; set; }
-        public string monitorName { get; set; }
-        public string alarmName { get; set; }
-        public string serializedMonitorConfigforApplicationServiceInstance { get; set; }
-        public string serializedMonitorConfigforApplicationOrchestration { get; set; }
-        public string serializedMonitorConfigforApplicationReceiveLocation { get; set; }
-        public string serializedMonitorConfigforApplicationSendPorts { get; set; }
-        public string serializedMonitorConfigforBizTalkServerDisks { get; set; }
-        public string serializedMonitorConfigforBizTalkSystemResources { get; set; }
-        public string serializedMonitorConfigforBizTalkEventLogs { get; set; }
-        public string serializedMonitorConfigforBizTalkNTServices { get; set; }
-        public string serializedMonitorConfigforSQLServerDisks { get; set; }
-        public string serializedMonitorConfigforSQLSystemResources { get; set; }
-        public string serializedMonitorConfigforSQLEventLogs { get; set; }
-        public string serializedMonitorConfigforSQLNTServices { get; set; }
-        public string serializedMonitorConfigforSQLInstanceJobs { get; set; }
-        public string serializedMonitorConfigforHostInstances { get; set; }
-        public string serializedMonitorConfigforWebEndPoints { get; set; }
-        public string serializedMonitorConfigforDatabaseQuery { get; set; }
-        public string serializedMonitorConfigforMessageBoxViewer { get; set; }
-        public string serializedJsonMonitorConfig { get; set; }
-    }
-    /// <summary>
-    /// Class which contains fields which has to be provided with each call to the BizTalk360 API
-    /// </summary>
-    public class Context
-    {
-        public string callerReference { get; set; }
-        public EnvironmentSettings environmentSettings { get; set; }
-    }
-    /// <summary>
-    /// Class which contains all the days of the week
-    /// This must be provided while creating a BizTalk360 Alert
-    /// </summary>
-    public class DaysOfWeek
-    {
-        public DaysOfWeek(){}
-        public DaysOfWeek(string values)
-        {
-            // Fri = false, Mon = false, Sat = false, Sun = false, Thu = false, Tue = false, Wed = false
-            string[] days = values.Split(',');
-
-            foreach (string day in days)
-            {
-                switch (day.Trim().Substring(0,3).ToLower())
-                {
-                    case "sun": { Sun = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "mon": { Mon = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "tue": { Tue = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "wed": { Wed = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "thu": { Thu = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "fri": { Fri = Convert.ToBoolean(day.Substring(6)); break; }
-                    case "sat": { Sat = Convert.ToBoolean(day.Substring(6)); break; }
-                }
-            }
-        }
-        public override string ToString()
-        {
-            return (string.Format("Fri = {0}, Mon = {1}, Sat = {2}, Sun = {3}, Thu = {4}, Tue = {5}, Wed = {6}", Fri, Mon, Sat, Sun, Thu, Tue, Wed));
-        }
-        public bool Mon { get; set; }
-        public bool Tue { get; set; }
-        public bool Wed { get; set; }
-        public bool Thu { get; set; }
-        public bool Fri { get; set; }
-        public bool Sat { get; set; }
-        public bool Sun { get; set; }
-    }
-    /// <summary>
-    /// Class which contains the fields to be able to delete a BizTalk360 Alert
-    /// </summary>
-    public class DeleteUserAlertRequest
-    {
-        public Context context { get; set; }
-        public String alarmName { get; set; }
-    }
-    /// <summary>
-    /// Class which contains some fields which must be provided with each call to the BizTalk360 API
-    /// </summary>
-    public class EnvironmentSettings
-    {
-        public Guid id { get; set; }
-        public int licenseEdition { get; set; }
-    }
-    /// <summary>
-    /// Class which is part of the response of call to the BizTalk360 API
-    /// </summary>
-    public class Errors
-    {
-        public string stackTrace { get; set; }
-        public string description { get; set; }
-    }
-    /// <summary>
-    /// Class which contains the arguments which were supplied at the command line
-    /// </summary>
-    public class Options
-    {
-        [Option('a', "application", HelpText = "Name of the BizTalk Application for which an alert will be created")]
-        public string BizTalkApplication { get; set; }
-        [Option('s', "settingsfile", HelpText = "Deployment Framework file which contains the settings for the alert")]
-        public string SettingsFile { get; set; }
-    }
-    /// <summary>
-    /// Class which contains the fields to be able to create a BizTalk360 Alert
-    /// </summary>
-    public class Request
-    {
-        public Context context { get; set; }
-        public UserAlertRequest alarm { get; set; }
-    }
-    /// <summary>
-    /// Class which contains the fields from a response message of the BizTalk360 API
-    /// </summary>
-    public class Response
-    {
-        public Boolean success { get; set; }
-        public List<Errors> errors { get; set; }
-    }
-    /// <summary>
-    /// Class which contains all hours of the day
-    /// This must be provided while creating a BizTalk360 Alert
-    /// </summary>
-    public class TimeOfDays
-    {
-        public TimeOfDays() { }
-        public TimeOfDays(string values)
-        {
-            // Eight = true Eighteen = true, Eleven = false, Fifteen = false, Five = false, Four = false, Fourteen = false, Nine = false, Nineteen = false, One = false, Seven = false, Seventeen = false, Six = false, Sixteen = false, Ten = false, Thirteen = false, Three = false, Twelve = false, Twenty = false, TwentyOne = false, TwentyThree = false, TwentyTwo = false, Two = false, Zero = false
-            string[] timeOfDays = values.Split(',');
-
-            foreach (string timeOfDay in timeOfDays)
-            {
-                try
-                {
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "zero") { Zero = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "one") { One = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "two") { Two = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "three") { Three = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "five") { Five = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "ten") { Ten = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "eleven") { Eleven = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "twelve") { Twelve = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "thirteen") { Thirteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "fourteen") { Fourteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "four") { Four = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 7) == "fifteen") { Fifteen = Convert.ToBoolean(timeOfDay.Substring(10)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 7) == "sixteen") { Sixteen = Convert.ToBoolean(timeOfDay.Substring(10)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "six") { Six = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "seventeen") { Seventeen = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "seven") { Seven = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "eighteen") { Eighteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "eight") { Eight = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "nineteen") { Nineteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "nine") { Nine = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 11) == "twentythree") { TwentyThree = Convert.ToBoolean(timeOfDay.Substring(14)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "twentytwo") { TwentyTwo = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "twentyone") { TwentyOne = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "twenty") { Twenty = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
-                }
-                catch (Exception)
-                { continue; }
-            }
-        }
-        public override string ToString()
-        {
-            return (String.Format("Zero = {0}, One = {1}, Two = {2}, Three = {3}, Four = {4}, Five = {5}, Six = {6}, Seven = {7}, Eight = {8}, Nine = {9}, Ten = {10}, Eleven = {11}, Twelve = {12}, ThirTeen = {13}, FourTeen = {14}, FifTeen = {15}, SixTeen = {16}, SevenTeen = {17}, EighTeen = {18}, NineTeen = {19}, Twenty = {20}, TwentyOne = {21}, TwentyTwo = {22}, TwentyThree = {23}", Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven, Twelve, Thirteen, Fourteen, Fifteen, Sixteen, Seventeen, Eighteen, Nineteen, Twenty, TwentyOne, TwentyTwo, TwentyThree));
-        }
-        public bool Zero { get; set; }
-        public bool One { get; set; }
-        public bool Two { get; set; }
-        public bool Three { get; set; }
-        public bool Four { get; set; }
-        public bool Five { get; set; }
-        public bool Six { get; set; }
-        public bool Seven { get; set; }
-        public bool Eight { get; set; }
-        public bool Nine { get; set; }
-        public bool Ten { get; set; }
-        public bool Eleven { get; set; }
-        public bool Twelve { get; set; }
-        public bool Thirteen { get; set; }
-        public bool Fourteen { get; set; }
-        public bool Fifteen { get; set; }
-        public bool Sixteen { get; set; }
-        public bool Seventeen { get; set; }
-        public bool Eighteen { get; set; }
-        public bool Nineteen { get; set; }
-        public bool Twenty { get; set; }
-        public bool TwentyOne { get; set; }
-        public bool TwentyTwo { get; set; }
-        public bool TwentyThree { get; set; }
     }
 }
