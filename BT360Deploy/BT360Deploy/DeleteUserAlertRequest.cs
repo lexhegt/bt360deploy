@@ -1,4 +1,7 @@
-﻿using System;
+﻿// (c) Copyright 2016 Axon Olympus 
+// This source is subject to the Microsoft Public License
+// See https://opensource.org/licenses/ms-pl. 
+// All other rights reserved.
 namespace AxonOlympus.BT360Deploy
 {
     /// <summary>
@@ -7,6 +10,6 @@ namespace AxonOlympus.BT360Deploy
     public class DeleteUserAlertRequest
     {
         public Context context { get; set; }
-        public String alarmName { get; set; }
+        public string alarmName { get; set; }
     }
 }

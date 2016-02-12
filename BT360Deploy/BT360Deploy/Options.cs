@@ -1,4 +1,8 @@
-﻿using CommandLine;
+﻿// (c) Copyright 2016 Axon Olympus 
+// This source is subject to the Microsoft Public License
+// See https://opensource.org/licenses/ms-pl. 
+// All other rights reserved.
+using CommandLine;
 
 namespace AxonOlympus.BT360Deploy
 {

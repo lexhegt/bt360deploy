@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// (c) Copyright 2016 Axon Olympus 
+// This source is subject to the Microsoft Public License
+// See https://opensource.org/licenses/ms-pl. 
+// All other rights reserved.
+using System;
 
 namespace AxonOlympus.BT360Deploy
 {
