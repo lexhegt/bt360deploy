@@ -21,7 +21,6 @@ namespace AxonOlympus.BT360Deploy
     /// </summary>
     class Program
     {
-        static private BizTalkApplication bizTalkapplication;
         static private ReceivePortCollection receivePorts;
         static private OrchestrationCollection orchestrations;
         static private SendPortCollection sendPorts;
@@ -130,35 +129,43 @@ namespace AxonOlympus.BT360Deploy
 
                 string urlParameters = string.Format("?environmentId={0}", environmentId);
 
-                // List data response.
-                HttpResponseMessage response = httpClient.GetAsync(urlParameters).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    // Get the response object
-                    var getBizTalk360InfoResponse = response.Content.ReadAsAsync<GetBizTalk360InfoResponse>().Result;
-                    if (getBizTalk360InfoResponse.success && getBizTalk360InfoResponse.errors == null)
+                    // Perform the request
+                    HttpResponseMessage response = httpClient.GetAsync(urlParameters).Result;
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Retrieve BizTalk360Info
-                        BizTalk360Info bizTalk360Info = getBizTalk360InfoResponse.bizTalk360Info;
+                        // Get the response object
+                        var getBizTalk360InfoResponse = response.Content.ReadAsAsync<GetBizTalk360InfoResponse>().Result;
 
-                        Console.WriteLine("SUCCESS");
-                        Console.WriteLine("- BizTalk360 Version: {0}", bizTalk360Info.biztalk360Version);
-                        Console.WriteLine("- BizTalk360 Edition: {0}", bizTalk360Info.biztalk360Edition);
-                        Console.WriteLine("- Application Server: {0}", bizTalk360Info.deployedAppServer);
-                        Console.WriteLine("- Database server   : {0}", bizTalk360Info.deployedDBServer);
-                        return;
+                        // Check for success and no errors
+                        if (getBizTalk360InfoResponse.success && getBizTalk360InfoResponse.errors == null)
+                        {
+                            // Retrieve BizTalk360Info
+                            BizTalk360Info bizTalk360Info = getBizTalk360InfoResponse.bizTalk360Info;
+
+                            Console.WriteLine("SUCCESS");
+                            Console.WriteLine("- BizTalk360 Version: {0}", bizTalk360Info.biztalk360Version);
+                            Console.WriteLine("- BizTalk360 Edition: {0}", bizTalk360Info.biztalk360Edition);
+                            Console.WriteLine("- Application Server: {0}", bizTalk360Info.deployedAppServer);
+                            Console.WriteLine("- Database server   : {0}", bizTalk360Info.deployedDBServer);
+                            return;
+                        }
+                        else
+                        {
+                            throw new Exception(String.Format("{0} ({1})", getBizTalk360InfoResponse.errors[0].errorCode, getBizTalk360InfoResponse.errors[0].description));
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("{0} ({1})", getBizTalk360InfoResponse.errors[0].errorCode, getBizTalk360InfoResponse.errors[0].description);
+                        throw new Exception(String.Format("{0}", response.ReasonPhrase));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
                     Console.WriteLine("FAILED");
-                    throw new Exception(String.Format("{0}", response.ReasonPhrase));
+                    throw ex;
                 }
-                return;
             }
         }
         /// <summary>
@@ -190,31 +197,43 @@ namespace AxonOlympus.BT360Deploy
                 string urlParameters = string.Format("?environmentId={0}", environmentId);
 
                 // List data response.
-                HttpResponseMessage response = httpClient.GetAsync(urlParameters).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    // Get the response object
-                    var getUserProfileResponse = response.Content.ReadAsAsync<GetUserProfileResponse>().Result;
-                    if (getUserProfileResponse.success && getUserProfileResponse.errors == null)
+                    // Perform the request
+                    HttpResponseMessage response = httpClient.GetAsync(urlParameters).Result;
+                
+                    if (response.IsSuccessStatusCode)
                     {
-                        UserProfile userProfile = getUserProfileResponse.userProfile;
-                        Console.WriteLine("SUCCESS");
-                        Console.WriteLine("- Domain\\User Name: {0}\\{1}", userProfile.domainName, userProfile.userName);
-                        Console.WriteLine("- Time Zone       : {0} ({1})", userProfile.timeZoneId, userProfile.utcOffset);
-                        Console.WriteLine("- Date Time format: {0}", userProfile.dateTimeFormat);
-                        return;
+                        // Get the response object
+                        var getUserProfileResponse = response.Content.ReadAsAsync<GetUserProfileResponse>().Result;
+
+                        // Check for success and no errors
+                        if (getUserProfileResponse.success && getUserProfileResponse.errors == null)
+                        {
+                            // Retrieve UserProfile
+                            UserProfile userProfile = getUserProfileResponse.userProfile;
+
+                            Console.WriteLine("SUCCESS");
+                            Console.WriteLine("- Domain\\User Name: {0}\\{1}", userProfile.domainName, userProfile.userName);
+                            Console.WriteLine("- Time Zone       : {0} ({1})", userProfile.timeZoneId, userProfile.utcOffset);
+                            Console.WriteLine("- Date Time format: {0}", userProfile.dateTimeFormat);
+                            return;
+                        }
+                        else
+                        {
+                            throw new Exception(String.Format("{0} ({1})", getUserProfileResponse.errors[0].errorCode, getUserProfileResponse.errors[0].description));
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("{0} ({1})", getUserProfileResponse.errors[0].errorCode, getUserProfileResponse.errors[0].description);
+                        throw new Exception(String.Format("{0}", response.ReasonPhrase));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
                     Console.WriteLine("FAILED");
-                    throw new Exception(String.Format("{0}", response.ReasonPhrase));
+                    throw ex;
                 }
-                return;
             }
         }
         /// <summary>
@@ -239,7 +258,7 @@ namespace AxonOlympus.BT360Deploy
                     case 0:
                         {
                             serviceInstanceDescription = "Suspended (Resumable)";
-                            enableMonitoring = GetProperty("BizTalk360_monitorSuspendedResumable", false);
+                            enableMonitoring = GetProperty("BizTalk360_monitorSuspendedResumable", true);
                             WarningLevel = GetProperty("BizTalk360_suspendedResumableWarningLevel", 10);
                             ErrorLevel = GetProperty("BizTalk360_suspendedResumableErrorLevel", 20);
                             break;
@@ -247,7 +266,7 @@ namespace AxonOlympus.BT360Deploy
                     case 1:
                         {
                             serviceInstanceDescription = "Suspended (Not-Resumable)";
-                            enableMonitoring = GetProperty("BizTalk360_monitorSuspendedNotResumable", false);
+                            enableMonitoring = GetProperty("BizTalk360_monitorSuspendedNotResumable", true);
                             WarningLevel = GetProperty("BizTalk360_suspendedNotResumableWarningLevel", 10);
                             ErrorLevel = GetProperty("BizTalk360_suspendedNotResumableErrorLevel", 20);
                             break;
@@ -758,7 +777,7 @@ namespace AxonOlympus.BT360Deploy
         /// </summary>
         /// <param name="biztalkApplication">The BizTalk Application for which the Orchestrations have to be retrieved</param>
         /// <returns>The collection of Orchestrations for the given BizTalk Application</returns>
-        static private OrchestrationCollection GetOrchestrations(BizTalkApplication biztalkApplication)
+        static private OrchestrationCollection GetOrchestrations()
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true;
@@ -780,21 +799,29 @@ namespace AxonOlympus.BT360Deploy
 
                 string urlParameters = string.Format("?environmentId={0}", environmentId);
 
-                // List data response.
-                HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, biztalkApplication.name)).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    // Get the response object
-                    var getOrchestrationsResponse = response.Content.ReadAsAsync<GetOrchestrationsResponse>().Result;
-                    if (getOrchestrationsResponse.success)
+                    // Perform the request
+                    HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, options.BizTalkApplication)).Result;
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Return the result.
-                        return getOrchestrationsResponse.orchestrations;
+                        // Get the response object
+                        var getOrchestrationsResponse = response.Content.ReadAsAsync<GetOrchestrationsResponse>().Result;
+                        if (getOrchestrationsResponse.success)
+                        {
+                            // Return the result.
+                            return getOrchestrationsResponse.orchestrations;
+                        }
+                    }
+                    else
+                    {
+                        //Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                        throw new Exception(String.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                    throw ex;
                 }
                 return null;
             }
@@ -932,7 +959,7 @@ namespace AxonOlympus.BT360Deploy
         /// </summary>
         /// <param name="biztalkApplication">The BizTalk Application for which the Receive Ports have to be retrieved</param>
         /// <returns>The collection of Receive Ports for the given BizTalk Application</returns>
-        static private ReceivePortCollection GetReceivePorts(BizTalkApplication biztalkApplication)
+        static private ReceivePortCollection GetReceivePorts()
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true;
@@ -954,21 +981,28 @@ namespace AxonOlympus.BT360Deploy
 
                 string urlParameters = string.Format("?environmentId={0}", environmentId);
 
-                // List data response.
-                HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, biztalkApplication.name)).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    // Get the response object
-                    var getReceivePortsResponse = response.Content.ReadAsAsync<GetReceivePortsResponse>().Result;
-                    if (getReceivePortsResponse.success)
+                    // Perform the request
+                    HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, options.BizTalkApplication)).Result;
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Return the result.
-                        return getReceivePortsResponse.receivePorts;
+                        // Get the response object
+                        var getReceivePortsResponse = response.Content.ReadAsAsync<GetReceivePortsResponse>().Result;
+                        if (getReceivePortsResponse.success)
+                        {
+                            // Return the result.
+                            return getReceivePortsResponse.receivePorts;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception(String.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                    throw ex;
                 }
                 return null;
             }
@@ -978,7 +1012,7 @@ namespace AxonOlympus.BT360Deploy
         /// </summary>
         /// <param name="biztalkApplication">The BizTalk Application for which the Send Ports have to be retrieved</param>
         /// <returns>The collection of Send Ports for the given BizTalk Application</returns>
-        static private SendPortCollection GetSendPorts(BizTalkApplication biztalkApplication)
+        static private SendPortCollection GetSendPorts()
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true;
@@ -1000,21 +1034,29 @@ namespace AxonOlympus.BT360Deploy
 
                 string urlParameters = string.Format("?environmentId={0}", environmentId);
 
-                // List data response.
-                HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, biztalkApplication.name)).Result;
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    // Get the response object
-                    var getSendPortsResponse = response.Content.ReadAsAsync<GetSendPortsResponse>().Result;
-                    if (getSendPortsResponse.success)
+                    // Perform the request
+                    HttpResponseMessage response = httpClient.GetAsync(string.Format("{0}&applicationName={1}", urlParameters, options.BizTalkApplication)).Result;
+                    if (response.IsSuccessStatusCode)
                     {
-                        // Return the result.
-                        return getSendPortsResponse.sendPorts;
+                        // Get the response object
+                        var getSendPortsResponse = response.Content.ReadAsAsync<GetSendPortsResponse>().Result;
+                        if (getSendPortsResponse.success)
+                        {
+                            // Return the result.
+                            return getSendPortsResponse.sendPorts;
+                        }
+                    }
+                    else
+                    {
+                        //Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                        throw new Exception(String.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+                    throw ex;
                 }
                 return null;
             }
@@ -1119,7 +1161,7 @@ namespace AxonOlympus.BT360Deploy
                 // If the BizTalk Application contains Receive Ports, create Alert Mappings
                 if (receivePorts.Count > 0)
                 {
-                    switch (GetProperty("BizTalk360_expectedStateReceiveLocations", "Do not monitor"))
+                    switch (GetProperty("BizTalk360_expectedStateReceiveLocations", "Enabled"))
                     {
                         case "Enabled": { expectedState = 0; break; }
                         case "Disabled": { expectedState = 1; break; }
@@ -1142,7 +1184,7 @@ namespace AxonOlympus.BT360Deploy
                 // If the BizTalk Application contains Orchestrations, create Alert Mappings
                 if (orchestrations.Count > 0)
                 {
-                    switch (GetProperty("BizTalk360_expectedStateOrchestrations", "Do not monitor"))
+                    switch (GetProperty("BizTalk360_expectedStateOrchestrations", "Started"))
                     {
                         case "Unbound": { expectedState = 1; break; }
                         case "Started": { expectedState = 2; break; }
@@ -1168,7 +1210,7 @@ namespace AxonOlympus.BT360Deploy
                 if (sendPorts.Count > 0)
                 {
 
-                    switch (GetProperty("BizTalk360_expectedStateSendPorts", "Do not monitor"))
+                    switch (GetProperty("BizTalk360_expectedStateSendPorts", "Started"))
                     {
                         case "Started": { expectedState = 2; break; }
                         case "Stopped": { expectedState = 3; break; }
@@ -1280,27 +1322,17 @@ namespace AxonOlympus.BT360Deploy
 
             try
             {
-                // Get the BizTalk Application
-                Console.WriteLine("- BizTalk Application");
-                bizTalkapplication = GetBizTalkApplication(options.BizTalkApplication);
-
-                if (bizTalkapplication == null)
-                { 
-                    // BizTalk Application not found
-                    throw new Exception(String.Format("BizTalk Application '{0}' not found!", options.BizTalkApplication));
-                }
-                
                 // Get all Receive Ports
                 Console.WriteLine("- Receive Ports");
-                receivePorts = GetReceivePorts(bizTalkapplication);
+                receivePorts = GetReceivePorts();
 
                 // Get all Orchestrations
                 Console.WriteLine("- Orchestrations");
-                orchestrations = GetOrchestrations(bizTalkapplication);
+                orchestrations = GetOrchestrations();
 
                 // Get all Send Ports
                 Console.WriteLine("- Send Ports");
-                sendPorts = GetSendPorts(bizTalkapplication);
+                sendPorts = GetSendPorts();
 
                 // If the BizTalk Application contains no Receive Ports, Orchestrations or Send Ports, move on to the next BizTalk Application
                 if (receivePorts.Count == 0 && orchestrations.Count == 0 && sendPorts.Count == 0)
