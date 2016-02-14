@@ -123,7 +123,7 @@ namespace AxonOlympus.BT360Deploy
                 if (string.IsNullOrEmpty(environmentId))
                 {
                     // Unable to retrieve the current environment
-                    Console.WriteLine("FAILED");
+                    Console.WriteLine(Constants.FAILED);
                     throw new Exception("EnvironmentID invalid or not found.");
                 }
 
@@ -144,7 +144,7 @@ namespace AxonOlympus.BT360Deploy
                             // Retrieve BizTalk360Info
                             BizTalk360Info bizTalk360Info = getBizTalk360InfoResponse.bizTalk360Info;
 
-                            Console.WriteLine("SUCCESS");
+                            Console.WriteLine(Constants.SUCCESS);
                             Console.WriteLine("- BizTalk360 Version: {0}", bizTalk360Info.biztalk360Version);
                             Console.WriteLine("- BizTalk360 Edition: {0}", bizTalk360Info.biztalk360Edition);
                             Console.WriteLine("- Application Server: {0}", bizTalk360Info.deployedAppServer);
@@ -163,7 +163,7 @@ namespace AxonOlympus.BT360Deploy
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("FAILED");
+                    Console.WriteLine(Constants.FAILED);
                     throw ex;
                 }
             }
@@ -190,7 +190,7 @@ namespace AxonOlympus.BT360Deploy
                 if (string.IsNullOrEmpty(environmentId))
                 {
                     // Unable to retrieve the current environment
-                    Console.WriteLine("FAILED");
+                    Console.WriteLine(Constants.FAILED);
                     throw new Exception("EnvironmentID invalid or not found.");
                 }
 
@@ -213,7 +213,7 @@ namespace AxonOlympus.BT360Deploy
                             // Retrieve UserProfile
                             UserProfile userProfile = getUserProfileResponse.userProfile;
 
-                            Console.WriteLine("SUCCESS");
+                            Console.WriteLine(Constants.SUCCESS);
                             Console.WriteLine("- Domain\\User Name: {0}\\{1}", userProfile.domainName, userProfile.userName);
                             Console.WriteLine("- Time Zone       : {0} ({1})", userProfile.timeZoneId, userProfile.utcOffset);
                             Console.WriteLine("- Date Time format: {0}", userProfile.dateTimeFormat);
@@ -231,7 +231,7 @@ namespace AxonOlympus.BT360Deploy
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("FAILED");
+                    Console.WriteLine(Constants.FAILED);
                     throw ex;
                 }
             }
@@ -657,11 +657,11 @@ namespace AxonOlympus.BT360Deploy
                 string userAlertRequest = CreateCreateUserAlertRequest();
                 success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/CreateUserAlarm", baseUrl), "POST", userAlertRequest);
 
-                Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAILED");
+                Console.WriteLine(Constants.FAILED);
                 throw ex;
             }
 
@@ -711,13 +711,13 @@ namespace AxonOlympus.BT360Deploy
                     string deleteUserAlertRequest = CreateDeleteUserAlertRequest(alertName);
                     success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/DeleteUserAlarm", baseUrl), "POST", deleteUserAlertRequest);
 
-                    Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                    Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
                     return (success);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAILED");
+                Console.WriteLine(Constants.FAILED);
                 throw ex;
             }
             return (true);
@@ -765,7 +765,6 @@ namespace AxonOlympus.BT360Deploy
                     }
                     else
                     {
-                        //Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
                         throw new Exception(String.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase));
                     }
                 }
@@ -1090,11 +1089,11 @@ namespace AxonOlympus.BT360Deploy
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAILED");
+                Console.WriteLine(Constants.FAILED);
                 throw ex;
             }
 
-            Console.WriteLine("SUCCESS");
+            Console.WriteLine(Constants.SUCCESS);
             return true;
         }
         /// <summary>
@@ -1132,8 +1131,8 @@ namespace AxonOlympus.BT360Deploy
 
                         request = CreateReceivePortsMappings(receivePorts, expectedStateReceiveLocations);
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
-
-                        Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                        
+                        Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
 
                         if (!success) { return false; }
                     }
@@ -1165,7 +1164,7 @@ namespace AxonOlympus.BT360Deploy
                         request = CreateOrchestrationMappings(orchestrations, expectedStateOrchestrations);
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
-                        Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                        Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
 
                         if (!success) { return false; }
                     }
@@ -1197,7 +1196,7 @@ namespace AxonOlympus.BT360Deploy
                         request = CreateSendPortMappings(sendPorts, expectedStateSendPorts);
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
-                        Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                        Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
 
                         if (!success) { return false; }
                     }
@@ -1216,7 +1215,7 @@ namespace AxonOlympus.BT360Deploy
                     request = CreateServiceInstanceMappings();
                     success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
-                    Console.WriteLine("{0}", success == true ? "SUCCESS" : "FAILED");
+                    Console.WriteLine("{0}", success == true ? Constants.SUCCESS : Constants.FAILED);
 
                     if (!success) { return false; }
                 }
@@ -1227,7 +1226,7 @@ namespace AxonOlympus.BT360Deploy
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAILED");
+                Console.WriteLine(Constants.FAILED);
                 throw ex;
             }
 

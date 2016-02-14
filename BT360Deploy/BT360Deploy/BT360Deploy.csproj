@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertMappingRequest.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="DaysOfWeek.cs" />
     <Compile Include="DeleteUserAlertRequest.cs" />
