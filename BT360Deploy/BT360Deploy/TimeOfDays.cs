@@ -14,41 +14,42 @@ namespace AxonOlympus.BT360Deploy
         public TimeOfDays() { }
         public TimeOfDays(string values)
         {
-            // Eight = true Eighteen = true, Eleven = false, Fifteen = false, Five = false, Four = false, Fourteen = false, Nine = false, Nineteen = false, One = false, Seven = false, Seventeen = false, Six = false, Sixteen = false, Ten = false, Thirteen = false, Three = false, Twelve = false, Twenty = false, TwentyOne = false, TwentyThree = false, TwentyTwo = false, Two = false, Zero = false
             string[] timeOfDays = values.Split(',');
 
+            // Eight = true, Eighteen = true, Eleven = false, Fifteen = false, Five = false, Four = false, Fourteen = false, Nine = false, Nineteen = false, One = false, Seven = false, Seventeen = false, Six = false, Sixteen = false, Ten = false, Thirteen = false, Three = false, Twelve = false, Twenty = false, TwentyOne = false, TwentyThree = false, TwentyTwo = false, Two = false, Zero = false
             foreach (string timeOfDay in timeOfDays)
             {
+                string[] timeOfDaysParts = values.Split('=');
                 try
                 {
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "zero") { Zero = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "one") { One = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "two") { Two = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "three") { Three = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "five") { Five = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "ten") { Ten = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "eleven") { Eleven = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "twelve") { Twelve = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "thirteen") { Thirteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "fourteen") { Fourteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "four") { Four = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 7) == "fifteen") { Fifteen = Convert.ToBoolean(timeOfDay.Substring(10)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 7) == "sixteen") { Sixteen = Convert.ToBoolean(timeOfDay.Substring(10)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 3) == "six") { Six = Convert.ToBoolean(timeOfDay.Substring(6)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "seventeen") { Seventeen = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "seven") { Seven = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "eighteen") { Eighteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 5) == "eight") { Eight = Convert.ToBoolean(timeOfDay.Substring(8)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 8) == "nineteen") { Nineteen = Convert.ToBoolean(timeOfDay.Substring(11)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 4) == "nine") { Nine = Convert.ToBoolean(timeOfDay.Substring(7)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 11) == "twentythree") { TwentyThree = Convert.ToBoolean(timeOfDay.Substring(14)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "twentytwo") { TwentyTwo = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 9) == "twentyone") { TwentyOne = Convert.ToBoolean(timeOfDay.Substring(12)); continue; };
-                    if (timeOfDay.ToLower().Trim().Substring(0, 6) == "twenty") { Twenty = Convert.ToBoolean(timeOfDay.Substring(9)); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "zero") { Zero = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "one") { One = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "three") { Three = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "five") { Five = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "ten") { Ten = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "eleven") { Eleven = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "twelve") { Twelve = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "thirteen") { Thirteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "fourteen") { Fourteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "four") { Four = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "fifteen") { Fifteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "sixteen") { Sixteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "six") { Six = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "seventeen") { Seventeen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "seven") { Seven = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "eighteen") { Eighteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "eight") { Eight = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "nineteen") { Nineteen = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "nine") { Nine = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "twentythree") { TwentyThree = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "twentytwo") { TwentyTwo = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "twentyone") { TwentyOne = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
+                    if (timeOfDaysParts[0].ToLower().Trim() == "twenty") { Twenty = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
                 }
                 catch (Exception)
                 { continue; }
             }
+
         }
         public override string ToString()
         {

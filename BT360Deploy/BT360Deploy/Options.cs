@@ -15,5 +15,7 @@ namespace AxonOlympus.BT360Deploy
         public string BizTalkApplication { get; set; }
         [Option('s', "settingsfile", HelpText = "Deployment Framework file which contains the settings for the alert")]
         public string SettingsFile { get; set; }
+        [Option('u', "undeploy", HelpText = "Delete the alert")]
+        public bool Undeploy { get; set;}
     }
 }
