@@ -19,7 +19,7 @@ namespace AxonOlympus.BT360Deploy
             // Eight = true, Eighteen = true, Eleven = false, Fifteen = false, Five = false, Four = false, Fourteen = false, Nine = false, Nineteen = false, One = false, Seven = false, Seventeen = false, Six = false, Sixteen = false, Ten = false, Thirteen = false, Three = false, Twelve = false, Twenty = false, TwentyOne = false, TwentyThree = false, TwentyTwo = false, Two = false, Zero = false
             foreach (string timeOfDay in timeOfDays)
             {
-                string[] timeOfDaysParts = values.Split('=');
+                string[] timeOfDaysParts = timeOfDay.Split('=');
                 try
                 {
                     if (timeOfDaysParts[0].ToLower().Trim() == "zero") { Zero = Convert.ToBoolean(timeOfDaysParts[1].Trim()); continue; };
