@@ -17,19 +17,14 @@ namespace AxonOlympus.BT360Deploy
         const int ERROR_BAD_SETTINGSFILE = 2;
         const int ERROR_BAD_BIZTALK360_URL = 3;
         const int ERROR_BAD_USER = 4;
-        const int ERROR_RETRIEVE_BIZTALK_APPLICATION = 5;
-        const int ERROR_DELETE_ALERT = 6;
-        const int ERROR_CREATE_ALERT = 7;
-        const int ERROR_ENVIRONMENT_INVALID_OR_NOT_FOUND = 8;
-        const int ERROR_WEB_SERVICE_RESPONSE = 9;
-        const int ERROR_GET_RECEIVE_LOCATIONS = 10;
-        const int ERROR_GET_ORCHESTRATIONS = 11;
-        const int ERROR_GET_SEND_PORTS = 12;
-        const int ERROR_MAPPING_ALERT = 13;
-        const int ERROR_MAP_RECEIVE_LOCATIONS = 14;
-        const int ERROR_MAP_ORCHESTRATONS = 15;
-        const int ERROR_MAP_SEND_PORTS = 16;
-        const int ERROR_MAP_INSTANCES = 17;
+        const int ERROR_DELETE_ALERT = 5;
+        const int ERROR_CREATE_ALERT = 6;
+        const int ERROR_ENVIRONMENT_INVALID_OR_NOT_FOUND = 7;
+        const int ERROR_WEB_SERVICE_RESPONSE = 8;
+        const int ERROR_GET_RECEIVE_LOCATIONS = 9;
+        const int ERROR_GET_ORCHESTRATIONS = 10;
+        const int ERROR_GET_SEND_PORTS = 11;
+        const int ERROR_MAPPING_ALERT = 12;
 
         const string RECEIVE_LOCATION_ENABLED = "Enabled";
         const string RECEIVE_LOCATION_DISABLED = "Disabled";
