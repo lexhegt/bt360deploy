@@ -126,8 +126,8 @@ namespace AxonOlympus.BT360Deploy
                 if (string.IsNullOrEmpty(environmentId))
                 {
                     // Unable to retrieve the current environment
-                    Console.WriteLine("{0} (Error: {1})", FAILED, ERROR_BAD_BIZTALK360_URL);
-                    Environment.ExitCode = ERROR_BAD_BIZTALK360_URL;
+                    Console.WriteLine("{0} (Error: {1})", FAILED, ERROR_ENVIRONMENT_INVALID_OR_NOT_FOUND);
+                    Environment.ExitCode = ERROR_ENVIRONMENT_INVALID_OR_NOT_FOUND;
                     throw new Exception("EnvironmentID invalid or not found.");
                 }
 
