@@ -48,7 +48,7 @@ namespace AxonOlympus.BT360Deploy
         static void Main(string[] args)
         {
 
-            Console.WriteLine("{0}BT360Deploy v{1}.{2} - Creation of BizTalk360 Alerts{0}", Environment.NewLine, Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor);
+            Console.WriteLine("{0}BT360Deploy v{1}.{2}.{3} - Creation of BizTalk360 Alerts{0}(c) 2016 Axon Olympus, Netherlands{0}", Environment.NewLine, Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor, Assembly.GetEntryAssembly().GetName().Version.Build);
 
             // Get command line parameters
             Console.WriteLine("Get parameters");
@@ -736,8 +736,8 @@ namespace AxonOlympus.BT360Deploy
         /// </summary>
         static void GetCredentials()
         {
-            string tmpBizTalk360User = GetSetting("BizTalk360_user");
-            string tmpBizTalk360UserPassword = GetSetting("BizTalk360_userPassword");
+            string tmpBizTalk360User = GetProperty("BizTalk360_user", "");
+            string tmpBizTalk360UserPassword = GetProperty("BizTalk360_userPassword", "");
 
             // If no credentials were supplied in the Settings file, use the credentials of the current user
             if (string.IsNullOrEmpty(tmpBizTalk360User) || string.IsNullOrEmpty(tmpBizTalk360UserPassword))
@@ -784,11 +784,14 @@ namespace AxonOlympus.BT360Deploy
                     {
                         // Get the response object
                         var getOrchestrationsResponse = response.Content.ReadAsAsync<GetOrchestrationsResponse>().Result;
-                        if (getOrchestrationsResponse.success)
+
+                        if (!getOrchestrationsResponse.success || getOrchestrationsResponse.errors != null)
                         {
-                            // Return the result.
-                            return getOrchestrationsResponse.orchestrations;
+                            throw new Exception(String.Format("{0} (Error: {1})", getOrchestrationsResponse.errors[0].errorCode, getOrchestrationsResponse.errors[0].description));
                         }
+
+                        // Return the result
+                        return getOrchestrationsResponse.orchestrations;
                     }
                     else
                     {
@@ -969,11 +972,14 @@ namespace AxonOlympus.BT360Deploy
                     {
                         // Get the response object
                         var getReceivePortsResponse = response.Content.ReadAsAsync<GetReceivePortsResponse>().Result;
-                        if (getReceivePortsResponse.success)
+
+                        if (!getReceivePortsResponse.success || getReceivePortsResponse.errors != null)
                         {
-                            // Return the result.
-                            return getReceivePortsResponse.receivePorts;
+                            throw new Exception(String.Format("{0} (Error: {1})", getReceivePortsResponse.errors[0].errorCode, getReceivePortsResponse.errors[0].description));
                         }
+
+                        // Return the result.
+                        return getReceivePortsResponse.receivePorts;
                     }
                     else
                     {
@@ -1023,11 +1029,14 @@ namespace AxonOlympus.BT360Deploy
                     {
                         // Get the response object
                         var getSendPortsResponse = response.Content.ReadAsAsync<GetSendPortsResponse>().Result;
-                        if (getSendPortsResponse.success)
+
+                        if (!getSendPortsResponse.success || getSendPortsResponse.errors != null)
                         {
-                            // Return the result.
-                            return getSendPortsResponse.sendPorts;
+                            throw new Exception(String.Format("{0} (Error: {1})", getSendPortsResponse.errors[0].errorCode, getSendPortsResponse.errors[0].description));
                         }
+
+                        // Return the result.
+                        return getSendPortsResponse.sendPorts;
                     }
                     else
                     {
