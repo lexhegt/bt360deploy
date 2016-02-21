@@ -21,6 +21,7 @@ namespace AxonOlympus.BT360Deploy
     /// </summary>
     partial class Program
     {
+        static private NetworkCredential networkCredential = null;
         static private ReceivePortCollection receivePorts;
         static private OrchestrationCollection orchestrations;
         static private SendPortCollection sendPorts;
@@ -29,8 +30,6 @@ namespace AxonOlympus.BT360Deploy
 
         static private string baseUrl = "";
         static private string environmentId = "";
-        static private string BizTalk360User = "";
-        static private string BizTalk360UserPassword = "";
 
         /// <summary>
         /// Main method, becomes called on start up.
@@ -73,7 +72,7 @@ namespace AxonOlympus.BT360Deploy
                 LoadSettingsFile(options.SettingsFile);
 
                 Console.WriteLine("- BizTalk360 URL : {0}", baseUrl);
-                Console.WriteLine("- BizTalk360 User: {0}{1}", BizTalk360User, Environment.NewLine);
+                Console.WriteLine("- BizTalk360 User: {0}{1}", networkCredential.UserName, Environment.NewLine);
 
                 // Check BizTalk360 url
                 CheckBizTalk360URL();
@@ -112,7 +111,7 @@ namespace AxonOlympus.BT360Deploy
             Console.Write("Check BizTalk360 URL: ");
 
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials = networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -180,7 +179,7 @@ namespace AxonOlympus.BT360Deploy
             Console.Write("{0}Check BizTalk360 User Profile: ", Environment.NewLine);
 
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials = networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -495,7 +494,7 @@ namespace AxonOlympus.BT360Deploy
                 eventId = GetProperty(BIZTALK360_EVENT_ID, ""),
                 isTestMode = GetProperty(BIZTALK360_IS_TEST_MODE, false),
                 notificationChannels = new List<string>(),
-                createdBy = BizTalk360User
+                createdBy = networkCredential.UserName
             };
 
             // Create the Request
@@ -732,6 +731,25 @@ namespace AxonOlympus.BT360Deploy
             return (true);
         }
         /// <summary>
+        /// Retrieve the credentials from the setting file and store them in a NetworkCredential
+        /// If no credentials are supplied, the credentials of the current user are used
+        /// </summary>
+        static void GetCredentials()
+        {
+            string tmpBizTalk360User = GetSetting("BizTalk360_user");
+            string tmpBizTalk360UserPassword = GetSetting("BizTalk360_userPassword");
+
+            // If no credentials were supplied in the Settings file, use the credentials of the current user
+            if (string.IsNullOrEmpty(tmpBizTalk360User) || string.IsNullOrEmpty(tmpBizTalk360UserPassword))
+            {
+                networkCredential = CredentialCache.DefaultNetworkCredentials;
+            }
+            else
+            {
+                networkCredential = new NetworkCredential(tmpBizTalk360User, tmpBizTalk360UserPassword);
+            }
+        }
+        /// <summary>
         /// Retrieves a collection containing the Orchestrations of a given BizTalk Application
         /// </summary>
         /// <param name="biztalkApplication">The BizTalk Application for which the Orchestrations have to be retrieved</param>
@@ -739,7 +757,7 @@ namespace AxonOlympus.BT360Deploy
         static private OrchestrationCollection GetOrchestrations()
         {
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials= networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -924,7 +942,7 @@ namespace AxonOlympus.BT360Deploy
         static private ReceivePortCollection GetReceivePorts()
         {
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials = networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -978,7 +996,7 @@ namespace AxonOlympus.BT360Deploy
         static private SendPortCollection GetSendPorts()
         {
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials= networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -1043,7 +1061,7 @@ namespace AxonOlympus.BT360Deploy
         static private UserAlarms GetUserAlarms()
         {
             HttpClientHandler handler = new HttpClientHandler();
-            handler.UseDefaultCredentials = true;
+            handler.Credentials= networkCredential;
 
             using (HttpClient httpClient = new HttpClient(handler))
             {
@@ -1093,10 +1111,11 @@ namespace AxonOlympus.BT360Deploy
                 Console.Write("{0}Load settings file: ", Environment.NewLine);
                 xmlDocument.Load(settingsFile);
 
-                environmentId = GetSetting("BizTalk360_environmentId");
                 baseUrl = GetSetting("BizTalk360_url");
-                BizTalk360User = GetSetting("BizTalk360_user");
-                BizTalk360UserPassword = GetSetting("BizTalk360_userPassword");
+                environmentId = GetSetting("BizTalk360_environmentId");
+
+                GetCredentials();
+
             }
             catch (Exception ex)
             {
@@ -1256,7 +1275,7 @@ namespace AxonOlympus.BT360Deploy
         {
             // Create WebRequest Object
             WebRequest webRequest = WebRequest.Create(url);
-            webRequest.Credentials = new NetworkCredential(BizTalk360User, BizTalk360UserPassword);
+            webRequest.Credentials = networkCredential;
             webRequest.Method = method;
             webRequest.ContentType = "application/json";
             webRequest.ContentLength = data.Length;
