@@ -27,9 +27,11 @@ namespace AxonOlympus.BT360Deploy
         static private SendPortCollection sendPorts;
         static private XmlDocument xmlDocument = new XmlDocument();
         static private Options options = new Options();
+        static private UserAlarm userAlarm = null;
 
         static private string baseUrl = "";
         static private string environmentId = "";
+        static private bool alarmExists = false;
 
         /// <summary>
         /// Main method, becomes called on start up.
@@ -57,13 +59,14 @@ namespace AxonOlympus.BT360Deploy
             // Exit in case no parameters were passed
             if (string.IsNullOrEmpty(options.BizTalkApplication) || (string.IsNullOrEmpty(options.SettingsFile)))
             {
-                Console.WriteLine("Pass parameters:{0} -a <Name of BizTalk Application>{0} -s <Name and location of BTDF Settings file>", Environment.NewLine);
+                Console.WriteLine("Pass parameters:{0} -a <Name of BizTalk Application>{0} -s <Name and location of BTDF Settings file>{0} -e Action on existing alarm: [overwrite]/[update]/[donothing]", Environment.NewLine);
                 Environment.ExitCode = ERROR_BAD_ARGUMENTS;
                 return;
             }
 
             Console.WriteLine("- Name BizTalk Application : {0}", options.BizTalkApplication);
             Console.WriteLine("- Environment Settings File: {0}", options.SettingsFile);
+            Console.WriteLine("- Action on Existing Alarm : {0}", options.Existing.ToUpper());
 
             try
             {
@@ -86,10 +89,14 @@ namespace AxonOlympus.BT360Deploy
                 // Delete existing Alert
                 DeleteUserAlert();
 
+                // If the undeploy parameter has been provide, we're finished
                 if (options.Undeploy) { return; }
 
                 // Create (new) User Alert
                 CreateUserAlert();
+
+                // If the BizTalk360 Alert already exists and the donothing parameter is provided, we're finished
+                if (alarmExists && options.Existing.ToUpper() == DO_NOTHING) { return; }
 
                 // Add Alert Mappings
                 ManageAlertMonitorConfig();
@@ -100,8 +107,8 @@ namespace AxonOlympus.BT360Deploy
                 Console.WriteLine("{0}Exception: {1}", Environment.NewLine, ex.Message);
                 return;
             }
-            
-            Console.WriteLine("{0}Finished creating alert '{1}'", Environment.NewLine, options.BizTalkApplication);
+        
+            Console.WriteLine("{0}Finished {1} alert for BizTalk application '{2}'", Environment.NewLine, alarmExists ? "updating" : "creating", options.BizTalkApplication);
         }
         /// <summary>
         /// Checks the availability of the BizTalk360 URL
@@ -323,7 +330,7 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="orchestrations">Collection of Orchestrations of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Orchestrations must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string ConstructSerializedConfig(OrchestrationCollection orchestrations, int expectedState)
+        static private string ConstructSerializedConfig(OrchestrationCollection orchestrations, string expectedState)
         {
             string OrchestrationTemplate = "\"expectedState\":{0},\"setToExpectedState\":{1},\"maxAutoCorrectRetry\":{2},\"currentAutoCorrectCount\":{3},\"name\":\"{4}\",\"status\":{5},\"applicationName\":\"{6}\",\"assemblyQualifiedName\":\"{7}\",\"description\":\"{8}\",\"hostName\":\"{9}\"";
 
@@ -335,6 +342,17 @@ namespace AxonOlympus.BT360Deploy
             for (int i = 0; i < nrOfOchestrations; i++)
             {
                 BizTalkOrchestration bizTalkOrchestration = orchestrations[i];
+
+                int expectedStateOrchestrations = 4;
+                switch (GetProperty("BizTalk360_exp_orch_" + bizTalkOrchestration.name, expectedState))
+                {
+                    case ORCHESTRATION_BOUND: { expectedStateOrchestrations = 1; break; }
+                    case ORCHESTRATION_STARTED: { expectedStateOrchestrations = 2; break; }
+                    case ORCHESTRATION_STOPPED: { expectedStateOrchestrations = 3; break; }
+                    case ORCHESTRATION_UNENLISTED: { expectedStateOrchestrations = 0; break; }
+                    case ORCHESTRATION_DO_NOT_MONITOR: { expectedStateOrchestrations = 4; break; }
+                    default: { expectedStateOrchestrations = 4; break; }
+                }
 
                 string status = "";
                 switch (bizTalkOrchestration.status)
@@ -361,7 +379,7 @@ namespace AxonOlympus.BT360Deploy
                         }
                 }
                 string host = (bizTalkOrchestration.host == null) ? "" : bizTalkOrchestration.host.name.ToString();
-                serializedConfigServiceLine = String.Format(OrchestrationTemplate, expectedState.ToString(), "false", "0", "0", bizTalkOrchestration.name, status, bizTalkOrchestration.applicationName, bizTalkOrchestration.assemblyQualifiedName, bizTalkOrchestration.description, host);
+                serializedConfigServiceLine = String.Format(OrchestrationTemplate, expectedStateOrchestrations, "false", "0", "0", bizTalkOrchestration.name, status, bizTalkOrchestration.applicationName, bizTalkOrchestration.assemblyQualifiedName, bizTalkOrchestration.description, host);
                 serializedConfigServiceLines += "{" + serializedConfigServiceLine + "},";
             }
 
@@ -373,7 +391,7 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="receiveports">Collection of Receive Ports of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Receive Ports must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string ConstructSerializedConfig(ReceivePortCollection receiveports, int expectedState)
+        static private string ConstructSerializedConfig(ReceivePortCollection receiveports, string expectedState)
         {
             string ReceiveLocationTemplate = "\"expectedState\":{0},\"setToExpectedState\":{1},\"maxAutoCorrectRetry\":{2},\"currentAutoCorrectCount\":{3},\"processMonitorConfigCollection\":null,\"name\":\"{4}\",\"receivePortName\":\"{5}\",\"address\":\"{6}\",\"isPrimary\":{7},\"isEnabled\":{8},\"isTwoWay\":{9}";
             string serializedConfigServiceLines = "";
@@ -390,7 +408,17 @@ namespace AxonOlympus.BT360Deploy
                 for (int j = 0; j < nrOfReceiveLocations; j++)
                 {
                     ReceiveLocation receivelocation = receiveports[i].receiveLocations[j];
-                    serializedConfigServiceLine = String.Format(ReceiveLocationTemplate, expectedState.ToString(), "false", "0", "0", receivelocation.name, receiveport.name, "", receivelocation.isPrimary.ToString().ToLower(), receivelocation.isEnabled.ToString().ToLower(), receivelocation.isTwoWay.ToString().ToLower());
+
+                    int expectedStateReceiveLocations = 2;
+                    switch (GetProperty("BizTalk360_exp_rl_" + receivelocation.name , expectedState))
+                    {
+                        case RECEIVE_LOCATION_ENABLED: { expectedStateReceiveLocations = 0; break; }
+                        case RECEIVE_LOCATION_DISABLED: { expectedStateReceiveLocations = 1; break; }
+                        case RECEIVE_LOCATION_DO_NOT_MONITOR: { expectedStateReceiveLocations = 2; break; }
+                        default: { expectedStateReceiveLocations = 2; break; }
+                    }
+
+                    serializedConfigServiceLine = string.Format(ReceiveLocationTemplate, expectedStateReceiveLocations, "false", "0", "0", receivelocation.name, receiveport.name, "", receivelocation.isPrimary.ToString().ToLower(), receivelocation.isEnabled.ToString().ToLower(), receivelocation.isTwoWay.ToString().ToLower());
                     serializedConfigServiceLines += "{" + serializedConfigServiceLine + "},";
                 }
             }
@@ -402,7 +430,7 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="sendports">Collection of Send Ports of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Send Ports must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string ConstructSerializedConfig(SendPortCollection sendports, int expectedState)
+        static private string ConstructSerializedConfig(SendPortCollection sendports, string expectedState)
         {
             string SendPortTemplate = "\"expectedState\":{0},\"setToExpectedState\":{1},\"maxAutoCorrectRetry\":{2},\"currentAutoCorrectCount\":{3},\"processMonitorConfigCollection\":null,\"name\":\"{4}\",\"status\":{5},\"isDynamic\":false,\"isTwoWay\":false,\"applicationName\":\"{6}\"";
             string serializedConfigServiceLines = "";
@@ -413,6 +441,16 @@ namespace AxonOlympus.BT360Deploy
             for (int i = 0; i < nrOfSendPorts; i++)
             {
                 SendPort sendport = sendports[i];
+
+                int expectedStateSendPorts = 4;
+                switch (GetProperty("BizTalk360_exp_sp_" + sendport.name, expectedState))
+                {
+                    case SEND_PORT_STARTED: { expectedStateSendPorts = 2; break; }
+                    case SEND_PORT_STOPPED: { expectedStateSendPorts = 3; break; }
+                    case SEND_PORT_BOUND: { expectedStateSendPorts = 0; break; }
+                    case SEND_PORT_DO_NOT_MONITOR: { expectedStateSendPorts = 4; break; }
+                    default: { expectedStateSendPorts = 4; break; }
+                }
 
                 string status = "";
                 switch (sendport.status)
@@ -433,7 +471,7 @@ namespace AxonOlympus.BT360Deploy
                             break;
                         }
                 }
-                serializedConfigServiceLine = String.Format(SendPortTemplate, expectedState.ToString(), "false", "0", "0", sendport.name, status, sendport.applicationName);
+                serializedConfigServiceLine = String.Format(SendPortTemplate, expectedStateSendPorts, "false", "0", "0", sendport.name, status, sendport.applicationName);
                 serializedConfigServiceLines += "{" + serializedConfigServiceLine + "},";
             }
 
@@ -530,8 +568,9 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="orchestrations">Collection of Orchestrations of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Orchestrations must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string CreateOrchestrationMappings(OrchestrationCollection orchestrations, int expectedState)
+        static private string CreateOrchestrationMappings(OrchestrationCollection orchestrations, string expectedState)
         {
+            string serializedMonitorConfig = ConstructSerializedConfig(orchestrations, expectedState);
 
             AlertMappingRequest alertMappingRequest = new AlertMappingRequest
             {
@@ -549,8 +588,8 @@ namespace AxonOlympus.BT360Deploy
                 monitorName = "Orchestrations",
                 operation = 0,
                 alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
-                serializedMonitorConfigforApplicationOrchestration = ConstructSerializedConfig(orchestrations, expectedState),
-                serializedJsonMonitorConfig = ConstructSerializedConfig(orchestrations, expectedState)
+                serializedMonitorConfigforApplicationOrchestration = serializedMonitorConfig,
+                serializedJsonMonitorConfig = serializedMonitorConfig
             };
 
             return JsonConvert.SerializeObject(alertMappingRequest);
@@ -561,8 +600,10 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="receivePorts">Collection of Receive Ports of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Receive Ports must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string CreateReceivePortsMappings(ReceivePortCollection receivePorts, int expectedState)
+        static private string CreateReceivePortsMappings(ReceivePortCollection receivePorts, string expectedState)
         {
+
+            string serializedMonitorConfig = ConstructSerializedConfig(receivePorts, expectedState);
 
             AlertMappingRequest alertMappingRequest = new AlertMappingRequest
             {
@@ -580,8 +621,8 @@ namespace AxonOlympus.BT360Deploy
                 monitorName = "ReceiveLocations",
                 operation = 0,
                 alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
-                serializedMonitorConfigforApplicationReceiveLocation = ConstructSerializedConfig(receivePorts, expectedState),
-                serializedJsonMonitorConfig = ConstructSerializedConfig(receivePorts, expectedState)
+                serializedMonitorConfigforApplicationReceiveLocation = serializedMonitorConfig,
+                serializedJsonMonitorConfig = serializedMonitorConfig
             };
 
             return JsonConvert.SerializeObject(alertMappingRequest);
@@ -592,8 +633,9 @@ namespace AxonOlympus.BT360Deploy
         /// <param name="sendPorts">Collection of Send Ports of the BizTalk Application which is deployed</param>
         /// <param name="expectedState">State in which the Send Ports must be for this alert</param>
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
-        static private string CreateSendPortMappings(SendPortCollection sendports, int expectedState)
+        static private string CreateSendPortMappings(SendPortCollection sendports, string expectedState)
         {
+            string serializedMonitorConfig = ConstructSerializedConfig(sendports, expectedState);
 
             AlertMappingRequest alertMappingRequest = new AlertMappingRequest
             {
@@ -611,8 +653,8 @@ namespace AxonOlympus.BT360Deploy
                 monitorName = "SendPorts",
                 operation = 0,
                 alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
-                serializedMonitorConfigforApplicationSendPorts = ConstructSerializedConfig(sendports, expectedState),
-                serializedJsonMonitorConfig = ConstructSerializedConfig(sendports, expectedState)
+                serializedMonitorConfigforApplicationSendPorts = serializedMonitorConfig,
+                serializedJsonMonitorConfig = serializedMonitorConfig
             };
 
             return JsonConvert.SerializeObject(alertMappingRequest);
@@ -623,6 +665,8 @@ namespace AxonOlympus.BT360Deploy
         /// <returns>JSON string to be used in the request message of AlertService.svc/ManageAlertMonitorConfig</returns>
         static private string CreateServiceInstanceMappings()
         {
+            string serializedMonitorConfig = ConstructSerializedConfig();
+
             AlertMappingRequest alertMappingRequest = new AlertMappingRequest
             {
                 context = new Context
@@ -639,11 +683,54 @@ namespace AxonOlympus.BT360Deploy
                 monitorName = "Service Instances",
                 operation = 0,
                 alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
-                serializedMonitorConfigforApplicationServiceInstance = ConstructSerializedConfig(),
-                serializedJsonMonitorConfig = ConstructSerializedConfig()
+                serializedMonitorConfigforApplicationServiceInstance = serializedMonitorConfig,
+                serializedJsonMonitorConfig = serializedMonitorConfig
             };
 
             return JsonConvert.SerializeObject(alertMappingRequest);
+        }
+        /// <summary>
+        /// Creates a JSON string which contains a request message and all metadata to update an existing BizTalk360 alert 
+        /// </summary>
+        /// <returns>A JSON string with the entire request message to update an existing BizTalk360 Alert</returns>
+        static private string CreateUpdateUserAlertRequest()
+        {
+            
+            // Create User Alarm objects
+            UserAlertRequest userAlertRequest = new UserAlertRequest
+            {
+                name = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
+                commaSeparatedEmails = GetProperty(BIZTALK360_COMMA_SEPARATED_EMAILS, userAlarm.commaSeparatedEmails),
+                description = GetProperty(BIZTALK360_DESCRIPTION, String.Format("Alert for BizTalk Application '{0}'", options.BizTalkApplication)),
+                isAlertDisabled = GetProperty(BIZTALK360_IS_ALERT_DISABLED, userAlarm.isAlertDisabled),
+                isThresholdRestricted = GetProperty(BIZTALK360_IS_THRESHOLD_RESTRICTED, userAlarm.isThresholdRestricted), // Threshold Alert - Set alerts on set day(s) and time(s) only  
+                alertASAPWaitDurationInMinutes = GetProperty(BIZTALK360_ALERT_ASAP_WAIT_DURATION_IN_MINUTES, userAlarm.alertASAPWaitDurationInMinutes),
+                isContinuousErrorRestricted = GetProperty(BIZTALK360_IS_CONTINUOUS_ERROR_RESTRICTED, userAlarm.isContinuousErrorRestricted),
+                continuousErrorMaxCount = GetProperty(BIZTALK360_CONTINUOUS_ERROR_MAX_COUNT, userAlarm.continuousErrorMaxCount),
+                isAlertOnCorrection = GetProperty(BIZTALK360_IS_ALERT_ON_CORRECTION, userAlarm.isAlertOnCorrection),
+                isAlertASAP = GetProperty(BIZTALK360_IS_ALERT_ASAP, userAlarm.isAlertASAP),
+                thresholdDaysOfWeek = GetProperty(BIZTALK360_THRESHOLD_DAYS_OF_WEEK, userAlarm.thresholdDaysOfWeek != null ? new DaysOfWeek(userAlarm.thresholdDaysOfWeek): new DaysOfWeek()),
+                thresholdRestrictStartTime = GetProperty(BIZTALK360_THRESHOLD_RESTRICTED_START_TIME, new TimeSpan(8, 0, 0)),
+                thresholdRestrictEndTime = GetProperty(BIZTALK360_THRESHOLD_RESTRICTED_END_TIME, new TimeSpan(18, 0, 0)),
+                isAlertHealthMonitoring = GetProperty(BIZTALK360_IS_ALERT_HEALTH_MONITORING, userAlarm.isAlertHealthMonitoring),
+                daysValidation = GetProperty(BIZTALK360_DAYS_VALIDATION, "day"),
+                daysOfWeek = GetProperty(BIZTALK360_DAYS_OF_WEEK, userAlarm.daysOfWeek != null ? new DaysOfWeek(userAlarm.daysOfWeek) : new DaysOfWeek()),
+                timeOfDays = GetProperty(BIZTALK360_TIME_OF_DAYS, new TimeOfDays { Eight = userAlarm.timeOfDays.Eight, Eighteen = userAlarm.timeOfDays.Eighteen, Eleven = userAlarm.timeOfDays.Eleven, Fifteen = userAlarm.timeOfDays.Fifteen, Five = userAlarm.timeOfDays.Five, Four = userAlarm.timeOfDays.Four, Fourteen = userAlarm.timeOfDays.Fourteen, Nine = userAlarm.timeOfDays.Nine, Nineteen = userAlarm.timeOfDays.Nineteen, One = userAlarm.timeOfDays.One, Seven = userAlarm.timeOfDays.Seven, Seventeen = userAlarm.timeOfDays.Seventeen, Six = userAlarm.timeOfDays.Six, Sixteen = userAlarm.timeOfDays.Sixteen, Ten = userAlarm.timeOfDays.Ten, Thirteen = userAlarm.timeOfDays.Thirteen, Three = userAlarm.timeOfDays.Three, Twelve = userAlarm.timeOfDays.Twelve, Twenty = userAlarm.timeOfDays.Twenty, TwentyOne = userAlarm.timeOfDays.TwentyOne, TwentyThree = userAlarm.timeOfDays.TwentyThree, TwentyTwo = userAlarm.timeOfDays.TwentyTwo, Two = userAlarm.timeOfDays.Two, Zero = userAlarm.timeOfDays.Zero }),
+                isAlertProcessMonitoring = GetProperty(BIZTALK360_IS_ALERT_PROCESS_MONITORING, userAlarm.isAlertProcessMonitoring),
+                isAlertProcessMonitoringOnSuccess = GetProperty(BIZTALK360_IS_ALERT_PROCESS_MONITORING_ON_SUCCESS, userAlarm.isAlertProcessMonitoringOnSuccess),
+                commaSeparatedSMSNumbers = GetProperty(BIZTALK360_COMMA_SEPARATED_SMS_NUMBERS, userAlarm.commaSeparatedSMSNumbers),
+                isAlertHPOMEnabled = GetProperty(BIZTALK360_IS_ALERT_HPOM_ENABLED, userAlarm.isAlertHPOMEnabled),
+                isAlertEventVwrEnabled = GetProperty(BIZTALK360_IS_ALERT_EVENT_VWR_ENABLED, userAlarm.isAlertEventVwrEnabled),
+                eventId = GetProperty(BIZTALK360_EVENT_ID, userAlarm.eventId),
+                isTestMode = GetProperty(BIZTALK360_IS_TEST_MODE, userAlarm.isTestMode),
+                notificationChannels = new List<string>(),
+                createdBy = networkCredential.UserName
+            };
+
+            // Create the Request
+            string request = CreateUserAlertRequest(userAlertRequest);
+
+            return request;
         }
         /// <summary>
         /// Creates a BizTalk360 Alert
@@ -657,13 +744,36 @@ namespace AxonOlympus.BT360Deploy
 
             try
             {
-                // Create User Alert
-                Console.Write("{0}Creating alert '{1}': ", Environment.NewLine, GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication));
+                // If the alarm already exists, then update the alarm or do nothing
+                if (alarmExists && options.Existing.ToUpper() != OVERWRITE_ALERT)
+                {
+                    // Update the alert based on the settings from the settings file or the current alarm
+                    if (options.Existing.ToUpper() == UPDATE_ALERT)
+                    {
+                        // Update User Alert
+                        Console.Write("{0}Updating alert '{1}': ", Environment.NewLine, GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication));
 
-                string userAlertRequest = CreateCreateUserAlertRequest();
-                success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/CreateUserAlarm", baseUrl), "POST", userAlertRequest);
+                        string userAlertRequest = CreateUpdateUserAlertRequest();
+                        success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/UpdateUserAlarm", baseUrl), "POST", userAlertRequest);
 
-                Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
+                        Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
+                    }
+                    else
+                    {
+                        // Do nothing
+                        Console.WriteLine("{0}BizTalk360 Alert '{1}' already exists.{0}Overwriting or updating the alert was not requested.{0}{0}Finished processing.", Environment.NewLine, userAlarm.name);
+                    }
+                }
+                else
+                {
+                    // Create User Alert
+                    Console.Write("{0}Creating alert '{1}': ", Environment.NewLine, GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication));
+
+                    string userAlertRequest = CreateCreateUserAlertRequest();
+                    success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/CreateUserAlarm", baseUrl), "POST", userAlertRequest);
+
+                    Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
+                }
             }
             catch (Exception ex)
             {
@@ -699,7 +809,7 @@ namespace AxonOlympus.BT360Deploy
         /// Deletes a BizTalk360 Alert
         /// </summary>
         /// <returns>True if succeeded, false if not succeeded</returns>
-        static private Boolean DeleteUserAlert()
+        static private bool DeleteUserAlert()
         {
             try
             {
@@ -707,19 +817,28 @@ namespace AxonOlympus.BT360Deploy
                 UserAlarms userAlarms = GetUserAlarms();
                 string alertName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication);
 
-                Boolean success = false;
+                bool success = false;
 
                 // If it exists, delete the current alarm
                 if (userAlarms.Exists(x => x.name == alertName))
                 {
-                    // Delete existing alert
-                    Console.Write("{0}Deleting existing alert '{1}': ", Environment.NewLine, alertName);
+                    // Used later on to determine if the alert has to be created or updated
+                    alarmExists = true;
+                    int i = userAlarms.FindIndex(x => x.name == alertName);
+                    userAlarm = userAlarms[i];
 
-                    string deleteUserAlertRequest = CreateDeleteUserAlertRequest(alertName);
-                    success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/DeleteUserAlarm", baseUrl), "POST", deleteUserAlertRequest);
+                    // Only delete the alert when the appropriate values has been provided
+                    if (options.Existing.ToUpper() == OVERWRITE_ALERT)
+                    {
+                        // Delete existing alert
+                        Console.Write("{0}Deleting existing alert '{1}': ", Environment.NewLine, alertName);
 
-                    Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
-                    return (success);
+                        string deleteUserAlertRequest = CreateDeleteUserAlertRequest(alertName);
+                        success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/DeleteUserAlarm", baseUrl), "POST", deleteUserAlertRequest);
+
+                        Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
+                        return (success);
+                    }
                 }
             }
             catch (Exception ex)
@@ -919,22 +1038,40 @@ namespace AxonOlympus.BT360Deploy
         /// <returns>The value from the Deployment Framework settings file or the default value</returns>
         static private string GetProperty(string property, TimeSpan def)
         {
-            Int32 unixTimestamp = 0;
             try
             {
                 string value = xmlDocument.SelectSingleNode(string.Format("/settings/property[@name='{0}']", property)).InnerText;
 
                 DateTime dateTime = Convert.ToDateTime(value);
-                //DateTime dt = new DateTime(1, 1, 1, dateTime.Hour, dateTime.Minute, 0).AddTicks(117780000000);
-
-                unixTimestamp = (Int32)(DateTime.Parse("1/12/1968 " + dateTime.Hour + ":" + dateTime.Minute).ToUniversalTime().Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-
-                return "/Date(" + unixTimestamp + "000+0000)/";
+                return ToUnixTimeStamp(dateTime);
             }
             catch (Exception)
             { }
 
-            unixTimestamp = (Int32)(DateTime.Parse("1/12/1968 0:00").ToUniversalTime().Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            return ToUnixTimeStamp(def);
+        }
+        /// <summary>
+        /// Convert DateTime object to Unix timestamp
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        static private string ToUnixTimeStamp(DateTime dateTime)
+        {
+
+            Int32 unixTimestamp = (Int32)(DateTime.Parse("1/12/1968 " + dateTime.Hour + ":" + dateTime.Minute).ToUniversalTime().Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+            return "/Date(" + unixTimestamp + "000+0000)/";
+        }
+        /// <summary>
+        /// Convert TimeSpan object to Unix timestamp
+        /// </summary>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
+        static private string ToUnixTimeStamp(TimeSpan timeSpan)
+        {
+
+            Int32 unixTimestamp = (Int32)(DateTime.Parse("1/12/1968 " + timeSpan.Hours + ":" + timeSpan.Minutes).ToUniversalTime().Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
             return "/Date(" + unixTimestamp + "000+0000)/";
         }
         /// <summary>
@@ -1142,9 +1279,9 @@ namespace AxonOlympus.BT360Deploy
         /// <returns></returns>
         static private Boolean ManageAlertMonitorConfig()
         {
-            int expectedStateReceiveLocations = 0;
-            int expectedStateOrchestrations = 0;
-            int expectedStateSendPorts = 0;
+            string expectedStateReceiveLocations = RECEIVE_LOCATION_ENABLED;
+            string expectedStateOrchestrations = ORCHESTRATION_STARTED;
+            string expectedStateSendPorts = SEND_PORT_STARTED;
             string request = "";
             Boolean success = false;
 
@@ -1155,21 +1292,14 @@ namespace AxonOlympus.BT360Deploy
                 // If the BizTalk Application contains Receive Ports, create Alert Mappings
                 if (receivePorts.Count > 0)
                 {
-                    switch (GetProperty("BizTalk360_expectedStateReceiveLocations", RECEIVE_LOCATION_DO_NOT_MONITOR))
-                    {
-                        case RECEIVE_LOCATION_ENABLED: { expectedStateReceiveLocations = 0; break; }
-                        case RECEIVE_LOCATION_DISABLED: { expectedStateReceiveLocations = 1; break; }
-                        case RECEIVE_LOCATION_DO_NOT_MONITOR: { expectedStateReceiveLocations = 2; break; }
-                        default: { expectedStateReceiveLocations = 2; break; }
-                    }
 
                     // Don't add mappings if the Receive Locations don't have to be monitored
-                    if (expectedStateReceiveLocations != 2)
+                    if (expectedStateReceiveLocations != RECEIVE_LOCATION_DO_NOT_MONITOR)
                         { 
                         // Create Receive Ports mappings to the Alert
                         Console.Write("- Adding {0} Receive Port(s) to alert: ", receivePorts.Count);
 
-                        request = CreateReceivePortsMappings(receivePorts, expectedStateReceiveLocations);
+                        request = CreateReceivePortsMappings(receivePorts, GetProperty("BizTalk360_expectedStateReceiveLocations", RECEIVE_LOCATION_DO_NOT_MONITOR));
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
                         
                         Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
@@ -1185,23 +1315,14 @@ namespace AxonOlympus.BT360Deploy
                 // If the BizTalk Application contains Orchestrations, create Alert Mappings
                 if (orchestrations.Count > 0)
                 {
-                    switch (GetProperty("BizTalk360_expectedStateOrchestrations", ORCHESTRATION_DO_NOT_MONITOR))
-                    {
-                        case ORCHESTRATION_BOUND: { expectedStateOrchestrations = 1; break; }
-                        case ORCHESTRATION_STARTED: { expectedStateOrchestrations = 2; break; }
-                        case ORCHESTRATION_STOPPED: { expectedStateOrchestrations = 3; break; }
-                        case ORCHESTRATION_UNENLISTED: { expectedStateOrchestrations = 0; break; }
-                        case ORCHESTRATION_DO_NOT_MONITOR: { expectedStateOrchestrations = 4; break; }
-                        default: { expectedStateOrchestrations = 4; break; }
-                    }
 
                     // Don't add mappings if the Orchestrations don't have to be monitored
-                    if (expectedStateOrchestrations != 4)
+                    if (expectedStateOrchestrations != ORCHESTRATION_DO_NOT_MONITOR)
                     {
                         // Create Orchestration mappings to the Alert
                         Console.Write("- Adding {0} Orchestration(s) to alert: ", orchestrations.Count);
 
-                        request = CreateOrchestrationMappings(orchestrations, expectedStateOrchestrations);
+                        request = CreateOrchestrationMappings(orchestrations, GetProperty("BizTalk360_expectedStateOrchestrations", ORCHESTRATION_DO_NOT_MONITOR));
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
                         Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
@@ -1218,22 +1339,13 @@ namespace AxonOlympus.BT360Deploy
                 if (sendPorts.Count > 0)
                 {
 
-                    switch (GetProperty("BizTalk360_expectedStateSendPorts", SEND_PORT_DO_NOT_MONITOR))
-                    {
-                        case SEND_PORT_STARTED: { expectedStateSendPorts = 2; break; }
-                        case SEND_PORT_STOPPED: { expectedStateSendPorts = 3; break; }
-                        case SEND_PORT_BOUND: { expectedStateSendPorts = 0; break; }
-                        case SEND_PORT_DO_NOT_MONITOR: { expectedStateSendPorts = 4; break; }
-                        default: { expectedStateSendPorts = 4; break; }
-                    }
-
                     // Don't add mappings if the Send Ports don't have to be monitored
-                    if (expectedStateSendPorts != 4)
+                    if (expectedStateSendPorts != SEND_PORT_DO_NOT_MONITOR)
                     {
                         // Create Send Port mappings to the Alert
                         Console.Write("- Adding {0} Send Port(s) to alert: ", sendPorts.Count);
 
-                        request = CreateSendPortMappings(sendPorts, expectedStateSendPorts);
+                        request = CreateSendPortMappings(sendPorts, GetProperty("BizTalk360_expectedStateSendPorts", SEND_PORT_DO_NOT_MONITOR));
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
                         Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
@@ -1247,7 +1359,7 @@ namespace AxonOlympus.BT360Deploy
                 }
 
                 // If the BizTalk Application contains Orchestrations or Send Ports, create Alert Mappings for Suspended Instances
-                if ((orchestrations.Count > 0 && expectedStateOrchestrations != 4) || (sendPorts.Count > 0 && expectedStateSendPorts !=4))
+                if ((orchestrations.Count > 0 && expectedStateOrchestrations != ORCHESTRATION_DO_NOT_MONITOR) || (sendPorts.Count > 0 && expectedStateSendPorts != SEND_PORT_DO_NOT_MONITOR))
                 {
                     Console.Write("- Adding Instance Warning/Error Levels to alert: ");
 

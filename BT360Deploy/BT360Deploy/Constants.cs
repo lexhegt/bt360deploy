@@ -13,6 +13,10 @@ namespace AxonOlympus.BT360Deploy
         const string SUCCESS = "SUCCESS";
         const string FAILED = "FAILED";
 
+        const string OVERWRITE_ALERT = "OVERWRITE";
+        const string UPDATE_ALERT = "UPDATE";
+        const string DO_NOTHING = "DONOTHING";
+
         const int ERROR_BAD_ARGUMENTS = 1;
         const int ERROR_BAD_SETTINGSFILE = 2;
         const int ERROR_BAD_BIZTALK360_URL = 3;
@@ -29,6 +33,13 @@ namespace AxonOlympus.BT360Deploy
         const string RECEIVE_LOCATION_ENABLED = "Enabled";
         const string RECEIVE_LOCATION_DISABLED = "Disabled";
         const string RECEIVE_LOCATION_DO_NOT_MONITOR = "Do not monitor";
+
+        enum RECEIVE_LOCATION_EXPECTED_STATE
+        {
+            RECEIVE_LOCATION_ENABLED,
+            RECEIVE_LOCATION_DISABLED,
+            RECEIVE_LOCATION_DO_NOT_MONITOR
+        };
 
         const string ORCHESTRATION_BOUND = "Bound";
         const string ORCHESTRATION_STARTED = "Started";

@@ -12,6 +12,16 @@ namespace AxonOlympus.BT360Deploy
     public class DaysOfWeek
     {
         public DaysOfWeek() { }
+        public DaysOfWeek(AxonOlympus.BT360Deploy.BizTalkGroupServiceReference.DaysOfWeek daysOfWeek)
+        {
+            Sun = daysOfWeek.Sun;
+            Sat = daysOfWeek.Sat;
+            Mon = daysOfWeek.Mon;
+            Tue = daysOfWeek.Tue;
+            Wed = daysOfWeek.Wed;
+            Thu = daysOfWeek.Thu;
+            Fri = daysOfWeek.Fri;
+        }
         public DaysOfWeek(string values)
         {
             // Fri = false, Mon = false, Sat = false, Sun = false, Thu = false, Tue = false, Wed = false
