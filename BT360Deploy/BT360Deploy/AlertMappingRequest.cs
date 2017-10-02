@@ -16,7 +16,7 @@ namespace AxonOlympus.BT360Deploy
         public string monitorGroupName { get; set; }
         public string monitorGroupType { get; set; }
         public string monitorName { get; set; }
-        public string alarmName { get; set; }
+        public string alarmId { get; set; }
         public string serializedMonitorConfigforApplicationServiceInstance { get; set; }
         public string serializedMonitorConfigforApplicationOrchestration { get; set; }
         public string serializedMonitorConfigforApplicationReceiveLocation { get; set; }

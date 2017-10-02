@@ -1,0 +1,14 @@
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\BT360Deploy.exe.config
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\BT360Deploy.exe
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\BT360Deploy.pdb
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\CommandLine.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\Newtonsoft.Json.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\System.Net.Http.Extensions.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\System.Net.Http.Formatting.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\System.Net.Http.Primitives.dll
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\CommandLine.xml
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\bin\Debug\Newtonsoft.Json.xml
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\obj\Debug\BT360Deploy.csprojResolveAssemblyReference.cache
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\obj\Debug\BT360Deploy.exe
+C:\Data\Development\bt360deploy\BT360Deploy\BT360Deploy\obj\Debug\BT360Deploy.pdb

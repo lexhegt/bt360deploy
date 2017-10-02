@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Xml;
 using AxonOlympus.BT360Deploy.BizTalkGroupServiceReference;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace AxonOlympus.BT360Deploy
 {
@@ -28,6 +29,7 @@ namespace AxonOlympus.BT360Deploy
         static private XmlDocument xmlDocument = new XmlDocument();
         static private Options options = new Options();
         static private UserAlarm userAlarm = null;
+        static private string userAlarmId = "";
 
         static private string baseUrl = "";
         static private string environmentId = "";
@@ -50,7 +52,7 @@ namespace AxonOlympus.BT360Deploy
         static void Main(string[] args)
         {
 
-            Console.WriteLine("{0}BT360Deploy v{1}.{2}.{3} - Creation of BizTalk360 Alerts{0}(c) 2016 Axon Olympus, Netherlands{0}", Environment.NewLine, Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor, Assembly.GetEntryAssembly().GetName().Version.Build);
+            Console.WriteLine("{0}BT360Deploy v{1}.{2}.{3} - Creation of BizTalk360 Alerts{0}(c) 2017 BizTalk360/Kovai Ltd., United Kingdom{0}", Environment.NewLine, Assembly.GetEntryAssembly().GetName().Version.Major, Assembly.GetEntryAssembly().GetName().Version.Minor, Assembly.GetEntryAssembly().GetName().Version.Build);
 
             // Get command line parameters
             Console.WriteLine("Get parameters");
@@ -94,6 +96,9 @@ namespace AxonOlympus.BT360Deploy
 
                 // Create (new) User Alert
                 CreateUserAlert();
+
+                // Retrieve the alarmId, so it can be added to the alarm mappings
+                GetAlarmId();
 
                 // If the BizTalk360 Alert already exists and the donothing parameter is provided, we're finished
                 if (alarmExists && options.Existing.ToUpper() == DO_NOTHING) { return; }
@@ -504,9 +509,12 @@ namespace AxonOlympus.BT360Deploy
         /// <returns>A JSON string with the entire request message to create a BizTalk360 Alert</returns>
         static private string CreateCreateUserAlertRequest()
         {
+            userAlarmId = new Guid().ToString();
+               
             // Create User Alarm objects
             UserAlertRequest userAlertRequest = new UserAlertRequest
             {
+                id = userAlarmId,
                 name = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
                 commaSeparatedEmails = GetProperty(BIZTALK360_COMMA_SEPARATED_EMAILS, ""),
                 description = GetProperty(BIZTALK360_DESCRIPTION, String.Format("Alert for BizTalk Application '{0}'", options.BizTalkApplication)),
@@ -587,8 +595,7 @@ namespace AxonOlympus.BT360Deploy
                 monitorGroupType = "Application",
                 monitorName = "Orchestrations",
                 operation = 0,
-                alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
-                serializedMonitorConfigforApplicationOrchestration = serializedMonitorConfig,
+                alarmId = userAlarmId,
                 serializedJsonMonitorConfig = serializedMonitorConfig
             };
 
@@ -620,7 +627,7 @@ namespace AxonOlympus.BT360Deploy
                 monitorGroupType = "Application",
                 monitorName = "ReceiveLocations",
                 operation = 0,
-                alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
+                alarmId = userAlarmId,
                 serializedMonitorConfigforApplicationReceiveLocation = serializedMonitorConfig,
                 serializedJsonMonitorConfig = serializedMonitorConfig
             };
@@ -652,7 +659,7 @@ namespace AxonOlympus.BT360Deploy
                 monitorGroupType = "Application",
                 monitorName = "SendPorts",
                 operation = 0,
-                alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
+                alarmId = userAlarmId,
                 serializedMonitorConfigforApplicationSendPorts = serializedMonitorConfig,
                 serializedJsonMonitorConfig = serializedMonitorConfig
             };
@@ -682,7 +689,7 @@ namespace AxonOlympus.BT360Deploy
                 monitorGroupType = "Application",
                 monitorName = "Service Instances",
                 operation = 0,
-                alarmName = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
+                alarmId = userAlarmId,
                 serializedMonitorConfigforApplicationServiceInstance = serializedMonitorConfig,
                 serializedJsonMonitorConfig = serializedMonitorConfig
             };
@@ -833,7 +840,7 @@ namespace AxonOlympus.BT360Deploy
                         // Delete existing alert
                         Console.Write("{0}Deleting existing alert '{1}': ", Environment.NewLine, alertName);
 
-                        string deleteUserAlertRequest = CreateDeleteUserAlertRequest(alertName);
+                        string deleteUserAlertRequest = CreateDeleteUserAlertRequest(userAlarm.alarmId);
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/DeleteUserAlarm", baseUrl), "POST", deleteUserAlertRequest);
 
                         Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
@@ -848,6 +855,16 @@ namespace AxonOlympus.BT360Deploy
                 throw ex;
             }
             return (true);
+        }
+        /// <summary>
+        /// Retrieves the Id of a just created alarm
+        /// </summary>
+        /// <returns></returns>
+        static void GetAlarmId()
+        {
+            UserAlarms userAlarms = GetUserAlarms();
+            string name = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication);
+            userAlarmId = userAlarms.FirstOrDefault(al => al.name == name).alarmId;
         }
         /// <summary>
         /// Retrieve the credentials from the setting file and store them in a NetworkCredential
@@ -1326,7 +1343,6 @@ namespace AxonOlympus.BT360Deploy
                         success = ProcessResponse(String.Format("{0}/Services.REST/AlertService.svc/ManageAlertMonitorConfig", baseUrl), "POST", request);
 
                         Console.WriteLine("{0}", success == true ? SUCCESS : FAILED);
-
                         if (!success) { return false; }
                     }
                     else
