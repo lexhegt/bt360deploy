@@ -706,6 +706,7 @@ namespace AxonOlympus.BT360Deploy
             // Create User Alarm objects
             UserAlertRequest userAlertRequest = new UserAlertRequest
             {
+                alarmId = userAlarm.alarmId,
                 name = GetProperty(BIZTALK360_ALERT_NAME, options.BizTalkApplication),
                 commaSeparatedEmails = GetProperty(BIZTALK360_COMMA_SEPARATED_EMAILS, userAlarm.commaSeparatedEmails),
                 description = GetProperty(BIZTALK360_DESCRIPTION, String.Format("Alert for BizTalk Application '{0}'", options.BizTalkApplication)),

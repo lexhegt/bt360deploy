@@ -12,6 +12,7 @@ namespace AxonOlympus.BT360Deploy
     public class UserAlertRequest
     {
         public string id { get; set; }
+        public string alarmId { get; set; }
         public string name { get; set; }
         public string commaSeparatedEmails { get; set; }
         public string commaSeparatedSMSNumbers { get; set; }
